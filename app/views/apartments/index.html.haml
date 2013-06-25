@@ -1,0 +1,25 @@
+%h1 Listing apartments
+
+%table
+  %tr
+    %th Title
+    %th Price
+    %th Price
+    %th Description
+    %th
+    %th
+    %th
+
+  - @apartments.each do |apartment|
+    %tr
+      %td= apartment.title
+      %td= apartment.price
+      %td= apartment.price
+      %td= apartment.description
+      %td= link_to 'Show', apartment
+      %td= link_to 'Edit', edit_apartment_path(apartment)
+      %td= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you shure?' }
+
+%br
+
+= link_to 'New Apartment', new_apartment_path
