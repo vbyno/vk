@@ -38,6 +38,7 @@ group :test, :development do
   gem 'jasmine'
   gem 'quiet_assets'
   gem 'pry-rails'
+  gem 'thin'
 end
 
 group :test do
@@ -53,7 +54,7 @@ gem 'jquery-fileupload-rails'
 gem 'bootstrap-sass', '~> 2.3.1.3'
 gem 'sanitize'
 gem 'cancan'
-gem 'simple_form'
+gem 'formtastic-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

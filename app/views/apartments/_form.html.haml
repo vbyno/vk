@@ -1,22 +1,9 @@
-= form_for @apartment do |f|
-  - if @apartment.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@apartment.errors.count, "error")} prohibited this apartment from being saved:"
-      %ul
-        - @apartment.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :description
-    = f.text_area :description
-  .actions
-    = f.submit 'Save'
+= semantic_form_for @apartment do |f|
+  = f.semantic_errors
+  = f.inputs do
+    = f.input :title
+    = f.input :price, append: 'uah'
+    = f.input :description, input_html: { class: 'tinymce' }
+  = f.actions do
+    = f.action :submit
+= tinymce
