@@ -55,6 +55,7 @@ gem 'bootstrap-sass', '~> 2.3.1.3'
 gem 'sanitize'
 gem 'cancan'
 gem 'formtastic-bootstrap'
+gem 'annotate', '>=2.5.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
