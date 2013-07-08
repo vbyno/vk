@@ -57,6 +57,7 @@ gem 'cancan'
 gem 'formtastic-bootstrap'
 gem 'annotate', '>=2.5.0'
 gem 'spork', '~> 1.0rc'
+gem 'jquery-turbolinks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
