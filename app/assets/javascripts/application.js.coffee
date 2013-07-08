@@ -16,6 +16,10 @@
 #= require turbolinks
 #= require_tree .
 
-tinymce.init
-  selector: 'textarea'
-  theme: 'advanced'
+ready = ->
+  tinymce.init
+    selector: 'textarea'
+    theme: 'advanced'
+
+$(document).ready ready
+$(document).on('page:load', ready)
