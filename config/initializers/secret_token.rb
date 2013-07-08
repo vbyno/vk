@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Vk4::Application.config.secret_key_base = 'dd2da6836002254cac82d1a02a563871344cf761285a04055158734cd631c796c7688f6934d453bdf876d6e74a690bc79c8f8d71992bba8b0032d25e136535e5'
+Vk::Application.config.secret_key_base = 'dd2da6836002254cac82d1a02a563871344cf761285a04055158734cd631c796c7688f6934d453bdf876d6e74a690bc79c8f8d71992bba8b0032d25e136535e5'

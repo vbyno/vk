@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Vk4::Application.load_tasks
+Vk::Application.load_tasks

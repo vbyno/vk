@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p= @apartment.title
+%p
+  %b Price:
+  = @apartment.price
+.content
+  = @apartment.description.html_safe
+
+= link_to 'Edit', edit_apartment_path(@apartment)
+\|
+= link_to 'Back', apartments_path
