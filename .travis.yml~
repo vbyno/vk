@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.0.0
+  - jruby-20mode
+  - rbx-20mode
 env:
   - DB=sqlite
   - DB=mysql
@@ -10,3 +12,4 @@ script:
 before_script:
   - mysql -e 'create database myapp_test'
   - psql -c 'create database myapp_test' -U postgres -p 11111111
+
