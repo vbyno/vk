@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  head:
+    title: Daily Apartments in Lviv
+    description: Аренда квартир посуточно во Львове
+    keywords: 'квартиры посуточно, квартиры во Львове'
+  navigation:
+    daily_apartments: Daily Apartments
+    how_it_works: How it works
+    places: What you should see
+    about_lviv: About Lviv
+    contacts: Contacts

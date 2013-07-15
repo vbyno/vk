@@ -1,11 +1,20 @@
 Vk::Application.routes.draw do
+  SECONDARY_LOCALES = /#{(I18n.available_locales - [I18n.default_locale]).join("|")}/
+
   resources :apartments
+
+  scope ':locale', locale: SECONDARY_LOCALES do
+    resources :apartments
+  end
+
+  get '/:locale' => 'apartments#index', constraints: { locale: SECONDARY_LOCALES }
+  root 'apartments#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'apartments#index'
+  # root 'apartments#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
