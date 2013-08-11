@@ -1,14 +1,14 @@
+SECONDARY_LOCALES = /ua|en|pl/
+
 Vk::Application.routes.draw do
-  SECONDARY_LOCALES = /#{(I18n.available_locales - [I18n.default_locale]).join("|")}/
+  root 'apartments#index'
 
   resources :apartments
 
   scope ':locale', locale: SECONDARY_LOCALES do
-    resources :apartments
+    resources :apartments, as: :locale_apartments
+    root 'apartments#index', as: :locale_root
   end
-
-  get '/:locale' => 'apartments#index', constraints: { locale: SECONDARY_LOCALES }
-  root 'apartments#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
