@@ -1,6 +1,14 @@
 - if request.fullpath == root_path
-  %span{class: 'brand'} БлаБлаБла
+  %span{class: 'brand'} #{t('navigation.daily_apartments')}
 - else
-  = link_to "БлаБлаБла", root_path, class: 'brand'
+  = link_to t('navigation.daily_apartments'), root_path, class: 'brand'
 %ul.nav
-  %li= link_to "Отдb[", root_path
+  %li= link_to t('navigation.how_it_works'), '#'
+  %li= link_to t('navigation.feedback'), '#'
+  %li= link_to t('navigation.about_lviv'), '#'
+  %li= link_to t('navigation.contacts'), '#'
+
+= render 'layouts/languages'
+
+%ul.nav.pull-right
+  %li.pull-right= link_to t('navigation.sign_in'), '#'
