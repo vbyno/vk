@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,22 +33,24 @@ group :doc do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.0'
-  gem 'factory_girl_rails'
-  gem 'jasmine'
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'thin'
+  gem 'database_cleaner'
+  gem 'spork', '~> 1.0rc'
 end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'database_cleaner', '~> 0.9.1'
   gem 'simplecov', require: false
+  gem 'rspec-rails', '~> 2.0'
+  gem 'factory_girl_rails'
+  gem 'jasmine'
+  gem 'launchy'
+  gem 'capybara'
 end
 
-gem 'devise'
-gem 'jquery-rails'
+gem 'devise', '3.0.1'
 gem 'haml-rails'
 gem 'jquery-fileupload-rails'
 gem 'bootstrap-sass', '~> 2.3.1.3'
@@ -56,7 +58,12 @@ gem 'sanitize'
 gem 'cancan'
 gem 'formtastic-bootstrap'
 gem 'annotate', '>=2.5.0'
-gem 'spork', '~> 1.0rc'
+gem 'jquery-turbolinks'
+gem 'rmagick'
+gem 'carrierwave'
+gem 'tinymce-rails'
+gem 'foreigner'
+gem 'font-awesome-sass-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
