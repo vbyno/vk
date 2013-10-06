@@ -14,12 +14,10 @@
 #= require jquery_ujs
 #= require tinymce_3.5.8/tiny_mce.js
 #= require turbolinks
+#= require jquery.turbolinks
 #= require_tree .
 
-ready = ->
+jQuery ->
   tinymce.init
     selector: 'textarea'
     theme: 'advanced'
-
-$(document).ready ready
-$(document).on('page:load', ready)
