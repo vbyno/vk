@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130625185233) do
+ActiveRecord::Schema.define(version: 20131026060022) do
 
   create_table "apartments", force: true do |t|
-    t.string   "title"
-    t.decimal  "price",       precision: 6, scale: 2
-    t.text     "description"
+    t.string   "title",                               null: false
+    t.decimal  "price",       precision: 6, scale: 2, null: false
+    t.text     "description",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
