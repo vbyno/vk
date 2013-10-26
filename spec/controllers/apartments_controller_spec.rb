@@ -1,7 +1,13 @@
 require 'spec_helper'
 
 describe ApartmentsController do
-  let(:valid_attributes) { { title: 'MyString' } }
+  let(:valid_attributes) {
+    {
+      title: 'MyString',
+      price: '9.99',
+      description: 'MyText'
+    }
+  }
   let(:valid_session) { {} }
   let!(:apartment) { Apartment.create! valid_attributes }
 
