@@ -36,8 +36,6 @@ group :test, :development do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'thin'
-  gem 'database_cleaner'
-  gem 'spork', '~> 1.0rc'
 end
 
 group :test do
@@ -48,6 +46,8 @@ group :test do
   gem 'jasmine'
   gem 'launchy'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'spork', '~> 1.0rc'
 end
 
 gem 'devise'
