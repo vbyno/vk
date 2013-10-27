@@ -1,11 +1,12 @@
-SECONDARY_LOCALES = /ua|en|pl/
-
 Vk::Application.routes.draw do
   root 'apartments#index'
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :apartments
 
-  scope ':locale', locale: SECONDARY_LOCALES do
+  scope ':locale', locale: /ua|en|pl/ do
     resources :apartments, as: :locale_apartments
     root 'apartments#index', as: :locale_root
   end
