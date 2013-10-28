@@ -113,6 +113,10 @@ GEM
       activerecord (>= 3.0.0)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
+    globalize (4.0.0.alpha.2)
+      activemodel (>= 4.0.0)
+      activerecord (>= 4.0.0)
+      paper_trail (~> 3.0.0.beta)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -166,6 +170,8 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
+    paper_trail (3.0.0.beta1)
+      activerecord (>= 3.0, < 5.0)
     pg (0.17.0)
     polyamorous (0.6.4)
       activerecord (>= 3.0)
@@ -299,6 +305,7 @@ DEPENDENCIES
   font-awesome-sass-rails
   foreigner
   formtastic-bootstrap!
+  globalize (~> 4.0.0.alpha.2)
   haml-rails
   jasmine
   jbuilder (~> 1.2)

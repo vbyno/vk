@@ -66,6 +66,7 @@ gem 'foreigner'
 gem 'font-awesome-sass-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'figaro'
+gem 'globalize', '~> 4.0.0.alpha.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
