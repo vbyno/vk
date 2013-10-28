@@ -6,4 +6,8 @@ class AdminUser < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable
+
+  def admin?
+    true
+  end
 end

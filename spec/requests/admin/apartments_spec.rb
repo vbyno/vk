@@ -2,7 +2,7 @@ require 'acceptance_helper'
 
 describe 'admin/apartments' do
   it 'creates new apartment' do
-    login_as create :admin_user
+    login_as create(:admin_user), scope: :admin_user
     visit new_admin_user_session_path
 
     click_on 'Apartments'
