@@ -1,7 +1,14 @@
 require 'spec_helper'
 
 describe ApartmentsController do
-  login_user
+  before do
+    # @request.env['devise.mapping'] = Devise.mappings[:user]
+    user = create(:user)
+    #TODO: do in in clever way
+    user.stub(:admin?).and_return true
+    sign_in user
+    controller.stub(:current_ability) { Ability.new(user) }
+  end
 
   let(:valid_attributes) { { title: 'MyString',
                              price: '9.99',

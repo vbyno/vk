@@ -40,18 +40,6 @@ Spork.prefork do
     # instead of true.
     config.use_transactional_fixtures = false
 
-    config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
-    end
-
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
-
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
@@ -65,7 +53,6 @@ Spork.prefork do
 
     config.include FactoryGirl::Syntax::Methods
     config.include Devise::TestHelpers, type: :controller
-    config.extend ControllerMacros, type: :controller
 
     config.include Capybara::DSL
     config.include Warden::Test::Helpers
