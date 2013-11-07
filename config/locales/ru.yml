@@ -16,3 +16,9 @@ ru:
         title: Заголовок
         price: Цена
         description: Описание
+  active_admin:
+    devise:
+      email:
+        title: Email
+      password:
+        title: Пароль
