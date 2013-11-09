@@ -5,6 +5,13 @@ FactoryGirl.define do
     description 'MyText'
   end
 
+  factory :apartment_translation do
+    association :apartment
+    title 'Translated Title'
+    description 'Translated Description'
+    locale 'en'
+  end
+
   factory :admin_user do
     email 'admin@example.com'
     password 'password'

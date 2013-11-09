@@ -13,7 +13,9 @@
 require 'spec_helper'
 
 describe Apartment do
-  it { validate_presence_of :title }
-  it { validate_presence_of :price }
-  it { validate_presence_of :description }
+  it { expect(subject).to have_many :apartment_translations }
+
+  it { expect(subject).to validate_presence_of :title }
+  it { expect(subject).to validate_presence_of :price }
+  it { expect(subject).to validate_presence_of :description }
 end

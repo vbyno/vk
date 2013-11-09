@@ -11,9 +11,15 @@
 #
 
 class Apartment < ActiveRecord::Base
-  validate :title, presence: true
-  validate :price, presence: true
-  validate :description, presence: true
+  has_many :apartment_translations
 
-  translates :title, :description
+  validates :title, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+
+  scope :translated_to, ->(locale) {
+    joins(:apartment_translations)
+    .where(apartment_translations: { locale: locale })
+    .includes(:apartment_translations)
+  }
 end
