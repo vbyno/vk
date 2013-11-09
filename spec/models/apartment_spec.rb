@@ -2,10 +2,12 @@
 #
 # Table name: apartments
 #
-#  id         :integer          not null, primary key
-#  price      :decimal(6, 2)    not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  title       :string(255)      not null
+#  price       :decimal(6, 2)    not null
+#  description :text             not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 require 'spec_helper'
