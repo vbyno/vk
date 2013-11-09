@@ -1,14 +1,11 @@
-
 require 'acceptance_helper'
 
 describe 'admin/login' do
-  it 'allows admin to log in' do
-    admin = create :admin_user
-    visit new_admin_user_session_path
-    fill_in 'Email', with: admin.email
-    fill_in 'Пароль', with: admin.password
-    click_on 'Войти'
+  let(:admin_login_page) { Admin::LoginPage.new }
+  let(:admin) { create :admin_user }
 
-    expect(page).to have_content 'Панель управления'
+  it 'allows admin to log in' do
+    admin_login_page.visit!.log_in(admin)
+    expect(admin_login_page).to be_loaded
   end
 end
