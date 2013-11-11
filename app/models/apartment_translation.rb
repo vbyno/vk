@@ -23,4 +23,8 @@ class ApartmentTranslation < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :apartment, presence: true
+
+  scope :by_apartment_ids, ->(ids, locale) {
+    where(apartment_id: ids, locale: locale)
+  }
 end

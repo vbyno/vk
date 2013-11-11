@@ -2,7 +2,9 @@ class ApartmentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource except: [:create]
 
-  def index; end
+  def index;
+    @apartments = ApartmentHandler.all(@locale)
+  end
 
   def show; end
 

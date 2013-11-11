@@ -20,6 +20,14 @@ class Apartment < ActiveRecord::Base
   scope :translated_to, ->(locale) {
     joins(:apartment_translations)
     .where(apartment_translations: { locale: locale })
-    .includes(:apartment_translations)
   }
+
+  %w[title description].each do |attribute|
+    define_method "translated_#{attribute}", ->(locale) {
+      apartment_translations
+      .where(apartment_translations: { locale: locale })
+      .first
+      .try(attribute)
+    }
+  end
 end
