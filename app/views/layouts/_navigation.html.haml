@@ -1,9 +1,8 @@
-- root_link = locale_root(@locale)
-- if request.fullpath == root_link
+- if request.fullpath == @locale.root_page_path
   %span{class: 'brand'}
     = t('.daily_apartments')
 - else
-  = link_to t('.daily_apartments'), root_link, class: 'brand'
+  = link_to t('.daily_apartments'), @locale.root_page_path, class: 'brand'
 %ul.nav
   %li= link_to t('.how_it_works'), '#'
   %li= link_to t('.feedback'), '#'
