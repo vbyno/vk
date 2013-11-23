@@ -2,16 +2,32 @@
 #
 # Table name: apartments
 #
-#  id         :integer          not null, primary key
-#  price      :decimal(6, 2)    not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  title       :string(255)      not null
+#  price       :decimal(6, 2)    not null
+#  description :text             not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Apartment < ActiveRecord::Base
-  validate :title, presence: true
-  validate :price, presence: true
-  validate :description, presence: true
+  has_many :apartment_translations
 
-  translates :title, :description
+  validates :title, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+
+  scope :translated_to, ->(locale) {
+    joins(:apartment_translations)
+    .where(apartment_translations: { locale: locale })
+  }
+
+  %w[title description].each do |attribute|
+    define_method "translated_#{attribute}", ->(locale) {
+      apartment_translations
+      .where(apartment_translations: { locale: locale })
+      .first
+      .try(attribute)
+    }
+  end
 end

@@ -1,14 +1,15 @@
-- if request.fullpath == root_path
-  %span{class: 'brand'} #{t('navigation.daily_apartments')}
+- if request.fullpath == @locale.root_page_path
+  %span{class: 'brand'}
+    = t('.daily_apartments')
 - else
-  = link_to t('navigation.daily_apartments'), root_path, class: 'brand'
+  = link_to t('.daily_apartments'), @locale.root_page_path, class: 'brand'
 %ul.nav
-  %li= link_to t('navigation.how_it_works'), '#'
-  %li= link_to t('navigation.feedback'), '#'
-  %li= link_to t('navigation.about_lviv'), '#'
-  %li= link_to t('navigation.contacts'), '#'
+  %li= link_to t('.how_it_works'), '#'
+  %li= link_to t('.feedback'), '#'
+  %li= link_to t('.about_lviv'), '#'
+  %li= link_to t('.contacts'), '#'
 
 = render 'layouts/languages'
 
 %ul.nav.pull-right
-  %li.pull-right= link_to t('navigation.sign_in'), '#'
+  %li.pull-right= link_to t('.sign_in'), '#'

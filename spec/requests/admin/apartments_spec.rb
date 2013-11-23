@@ -10,7 +10,7 @@ describe 'admin/apartments' do
     login_as create(:admin_user), scope: :admin_user
   end
 
-  it 'is able to create new apartment' do
+  xit 'is able to create new apartment' do
     expect(apartments_page
            .visit!
            .create_new_apartment!(apartment)
