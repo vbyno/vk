@@ -303,6 +303,7 @@ DEPENDENCIES
   foreigner
   formtastic-bootstrap!
   haml-rails
+  inherited_resources
   jasmine
   jbuilder (~> 1.2)
   jquery-fileupload-rails

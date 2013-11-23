@@ -1,7 +1,7 @@
 Vk::Application.routes.draw do
   root 'apartments#index'
 
-  resources :apartments
+  resources :apartments, only: [:index, :show]
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
