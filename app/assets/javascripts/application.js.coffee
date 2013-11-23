@@ -15,7 +15,6 @@
 #= require tinymce_3.5.8/tiny_mce.js
 #= require turbolinks
 #= require jquery.turbolinks
-#= require_tree .
 
 jQuery ->
   tinymce.init

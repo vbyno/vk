@@ -36,34 +36,37 @@ group :test, :development do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'thin'
-  gem 'database_cleaner'
-  gem 'spork', '~> 1.0rc'
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
-  gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'jasmine'
   gem 'launchy'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'spork', '~> 1.0rc'
 end
 
-gem 'devise', '3.0.1'
+gem 'devise'
 gem 'haml-rails'
 gem 'jquery-fileupload-rails'
-gem 'bootstrap-sass', '~> 2.3.1.3'
+gem 'bootstrap-sass'
 gem 'sanitize'
 gem 'cancan'
-gem 'formtastic-bootstrap'
-gem 'annotate', '>=2.5.0'
+gem 'formtastic-bootstrap', github: 'mjbellantoni/formtastic-bootstrap'
+gem 'annotate'
 gem 'jquery-turbolinks'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'tinymce-rails'
 gem 'foreigner'
 gem 'font-awesome-sass-rails'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'figaro'
+gem 'rails-i18n', '~> 4.0.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

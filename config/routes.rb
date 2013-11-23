@@ -1,14 +1,17 @@
-SECONDARY_LOCALES = /ua|en|pl/
-
 Vk::Application.routes.draw do
   root 'apartments#index'
 
   resources :apartments
 
-  scope ':locale', locale: SECONDARY_LOCALES do
+  devise_for :users
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  scope ':locale', locale: /ua|en|pl/ do
     resources :apartments, as: :locale_apartments
     root 'apartments#index', as: :locale_root
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

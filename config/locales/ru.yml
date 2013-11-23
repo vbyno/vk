@@ -3,16 +3,23 @@ ru:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
     keywords: 'квартиры посуточно, квартиры во Львове'
-  navigation:
-    daily_apartments: Квартиры посуточно
-    how_it_works: Как это работает
-    feedback: Отзывы
-    about_lviv: Львов. Что к чему
-    contacts: Контакты
-    sign_in: Регистрация
+  layouts:
+    navigation:
+      daily_apartments: Квартиры посуточно
+      how_it_works: Как это работает
+      feedback: Отзывы
+      about_lviv: Львов. Что к чему
+      contacts: Контакты
+      sign_in: Регистрация
   activerecord:
     attributes:
       apartment:
         title: Заголовок
         price: Цена
         description: Описание
+  active_admin:
+    devise:
+      email:
+        title: Email
+      password:
+        title: Пароль
