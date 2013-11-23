@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe Locale do
-  let(:en_locale_mock) do
-    mock = double()
-    mock.stub(:to_sym).and_return :en
-    mock
-  end
   let(:ru_locale) { Locale.new(:ru) }
   let(:en_locale) { Locale.new(:en) }
 
@@ -15,15 +10,15 @@ describe Locale do
   end
 
   describe '.new!' do
-    it 'creates new object and changes locale' do
-      Locale.should_receive(:new).and_return en_locale_mock
-      expect(Locale.new!(:en)).to eq en_locale_mock
+    it 'creates new locale object' do
+      expect(Locale).to receive(:new).with(:en).and_return en_locale
+      expect(Locale.new!(:en)).to eq en_locale
     end
 
     it 'changes current locale' do
-      Locale.stub(:new).and_return en_locale_mock
-      I18n.locale = :ru
-      expect { Locale.new!(:en) }.to change { I18n.locale }.from(:ru).to(:en)
+      allow(Locale).to receive(:new).with(:en).and_return en_locale
+      expect(en_locale).to receive(:change_current)
+      Locale.new!(:en)
     end
   end
 
@@ -64,7 +59,14 @@ describe Locale do
   end
 
   describe '#url_options' do
-    xit 'TODO!' do
+    it 'returns an empty hash if current locale is default' do
+      allow(I18n).to receive(:locale).and_return Locale::DEFAULT
+      expect(en_locale.url_options).to eq({})
+    end
+
+    it 'returns hash with locale attribute' do
+      allow(I18n).to receive(:locale).and_return Locale::EN
+      expect(en_locale.url_options).to eq({ locale: :en })
     end
   end
 
@@ -77,6 +79,13 @@ describe Locale do
   describe '#to_s' do
     it 'returns string' do
       expect(en_locale.to_s).to eq 'en'
+    end
+  end
+
+  describe '#change_current' do
+    it 'changes current locale' do
+      I18n.locale = :ru
+      expect { en_locale.change_current }.to change { I18n.locale }.from(:ru).to(:en)
     end
   end
 end

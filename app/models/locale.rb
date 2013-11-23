@@ -11,7 +11,7 @@ class Locale
 
   def self.new!(locale_param = nil)
     locale = self.new(locale_param)
-    current = locale.to_sym
+    locale.change_current
     locale
   end
 
@@ -44,13 +44,13 @@ class Locale
     @value
   end
 
+  def change_current
+    I18n.locale = @value
+  end
+
 private
   def current
     I18n.locale
-  end
-
-  def current=(value)
-    I18n.locale = value
   end
 
   def current_is_default?

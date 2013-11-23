@@ -4,13 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
 
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    @locale ||= set_locale
+
+    options.merge(@locale.url_options)
+  end
+
 private
   def set_locale
     @locale = Locale.new!(params[:locale])
-  end
-
-  def default_url_options(options={})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    @locale.url_options
   end
 end
