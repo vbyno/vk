@@ -1,5 +1,3 @@
-require 'support/pages/base_page.rb'
-
 class Admin::LoginPage < BasePage
   def initialize
     super(new_admin_user_session_path)

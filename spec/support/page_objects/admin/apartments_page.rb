@@ -1,5 +1,3 @@
-require 'support/pages/base_page.rb'
-
 class Admin::ApartmentsPage < BasePage
   def initialize
     super(admin_apartments_path)
