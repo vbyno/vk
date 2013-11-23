@@ -2,12 +2,16 @@ require 'spec_helper'
 
 describe ApartmentsController do
   before do
-    # @request.env['devise.mapping'] = Devise.mappings[:user]
-    user = create(:user)
+    @request.env['devise.mapping'] = Devise.mappings[:admin_user]
+    admin_user = create :admin_user
     #TODO: do in in clever way
-    user.stub(:admin?).and_return true
-    sign_in user
-    controller.stub(:current_ability) { Ability.new(user) }
+    # admin_user.stub(:admin?).and_return true
+    sign_in :amin_user, admin_user
+    # controller.stub(:current_ability).and_return Ability.new(admin_user)
+
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    controller.stub(:current_ability).and_return @ability
   end
 
   let(:valid_attributes) { { title: 'MyString',
