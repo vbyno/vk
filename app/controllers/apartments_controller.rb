@@ -34,8 +34,8 @@ class ApartmentsController < ApplicationController
     redirect_to apartments_path
   end
 
-  private
-    def apartment_params
-      params.require(:apartment).permit(:title, :price, :description)
-    end
+private
+  def apartment_params
+    params.require(:apartment).permit(:title, :price, :description)
+  end
 end
