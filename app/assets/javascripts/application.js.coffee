@@ -12,11 +12,5 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require tinymce_3.5.8/tiny_mce.js
 #= require turbolinks
 #= require jquery.turbolinks
-
-jQuery ->
-  tinymce.init
-    selector: 'textarea'
-    theme: 'advanced'

@@ -11,4 +11,14 @@ ActiveAdmin.register Apartment do
     column :price
     default_actions
   end
+
+  form do |f|
+    f.semantic_errors *f.object.errors.keys
+    f.inputs 'Apartment' do
+      f.input :title
+      f.input :price
+      f.input :description, input_html: { class: 'tinymce' }
+    end
+    f.actions
+  end
 end

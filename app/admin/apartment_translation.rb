@@ -12,4 +12,14 @@ ActiveAdmin.register ApartmentTranslation do
     column :description
     default_actions
   end
+
+  form do |f|
+    f.semantic_errors *f.object.errors.keys
+    f.inputs 'ApartmentTranslation' do
+      f.input :locale
+      f.input :title
+      f.input :description, input_html: { class: 'tinymce' }
+    end
+    f.actions
+  end
 end
