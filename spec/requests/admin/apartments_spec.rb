@@ -10,10 +10,10 @@ describe 'admin/apartments' do
     login_as create(:admin_user), scope: :admin_user
   end
 
-  xit 'is able to create new apartment' do
+  it 'is able to create new apartment', js: true do
     expect(apartments_page
-           .visit!
-           .create_new_apartment!(apartment)
+             .visit!
+             .create_new_apartment!(apartment)
           ).to be_successful
   end
 end

@@ -5,6 +5,8 @@ ActiveAdmin.register Apartment do
     end
   end
 
+  menu label: I18n.t('admin.apartments.menu_label')
+
   index do
     column :title
     column :description
@@ -19,6 +21,9 @@ ActiveAdmin.register Apartment do
       f.input :price
       f.input :description, input_html: { class: 'tinymce' }
     end
-    f.actions
+    f.actions do
+      f.action :submit, label: I18n.t('admin.apartments.submit')
+      f.action :cancel, label: I18n.t('admin.apartments.cancel')
+    end
   end
 end

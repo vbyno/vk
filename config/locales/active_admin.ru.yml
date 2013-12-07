@@ -1,0 +1,6 @@
+ru:
+  admin:
+    apartments:
+      menu_label: Квартиры
+      submit: Добавить Квартиру
+      cancel: Отмена
