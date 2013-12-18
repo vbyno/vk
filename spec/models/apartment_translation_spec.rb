@@ -15,8 +15,7 @@ require 'spec_helper'
 
 describe ApartmentTranslation do
   let(:apartment) { create :apartment }
-  let(:apartment_translation) { create :apartment_translation,
-                                       apartment: apartment }
+  let(:apartment_translation) { create :apartment_translation, apartment: apartment }
 
   it { expect(subject).to belong_to :apartment }
 
@@ -30,12 +29,10 @@ describe ApartmentTranslation do
 
   it 'validates uniquness of locale scoped to apartment' do
     apartment_translation
-    expect { create :apartment_translation,
-                    apartment: apartment }.to raise_error
+    expect { create :apartment_translation, apartment: apartment }.to raise_error
     expect { create :apartment_translation,
                     locale: 'ua',
                     apartment: apartment }.to_not raise_error
-    expect { create :apartment_translation,
-                    locale: 'en' }.to_not raise_error
+    expect { create :apartment_translation, locale: 'en' }.to_not raise_error
   end
 end

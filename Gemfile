@@ -1,41 +1,42 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'devise'
+gem 'cancan'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'rmagick'
+gem 'carrierwave'
+gem 'figaro'
 
-# Use postgresql as the database for Active Record
-gem 'pg'
-
-# Use SCSS for stylesheets
+gem 'haml-rails'
+gem 'sanitize'
+gem 'bootstrap-sass'
+gem 'formtastic-bootstrap', github: 'mjbellantoni/formtastic-bootstrap'
+gem 'tinymce-rails'
 gem 'sass-rails', '~> 4.0.0'
+gem 'font-awesome-sass-rails'
+gem 'jquery-fileupload-rails'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'jquery-turbolinks'
 gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+gem 'jbuilder', '~> 1.2.0'
+gem 'therubyracer', platforms: :ruby
+gem 'uglifier', '~> 1.3.0'
+gem 'pg'
+gem 'rails-i18n', '~> 4.0.0'
+gem 'rails', '~> 4.0.0'
 
 group :test, :development do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'thin'
+  gem 'database_cleaner'
+end
+
+group :development do
+  gem 'annotate'
+  gem 'sdoc', require: false
 end
 
 group :test do
@@ -46,37 +47,5 @@ group :test do
   gem 'jasmine'
   gem 'launchy'
   gem 'capybara'
-  gem 'database_cleaner'
   gem 'spork', '~> 1.0rc'
 end
-
-gem 'devise'
-gem 'haml-rails'
-gem 'jquery-fileupload-rails'
-gem 'bootstrap-sass'
-gem 'sanitize'
-gem 'cancan'
-gem 'formtastic-bootstrap', github: 'mjbellantoni/formtastic-bootstrap'
-gem 'annotate'
-gem 'jquery-turbolinks'
-gem 'rmagick'
-gem 'carrierwave'
-gem 'tinymce-rails'
-gem 'foreigner'
-gem 'font-awesome-sass-rails'
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'figaro'
-gem 'rails-i18n', '~> 4.0.0'
-gem 'inherited_resources'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
