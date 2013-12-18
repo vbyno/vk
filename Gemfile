@@ -67,6 +67,7 @@ gem 'font-awesome-sass-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'figaro'
 gem 'rails-i18n', '~> 4.0.0'
+gem 'inherited_resources'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

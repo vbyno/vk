@@ -10,4 +10,13 @@ class BasePage
     visit @url
     self
   end
+
+  def fill_in_tinymce(label, options)
+    element_id = find('label', text: label)[:for]
+    content = options.delete(:with)
+
+    page.execute_script(
+      "tinyMCE.get('#{element_id}').setContent('#{content}')"
+    )
+  end
 end
