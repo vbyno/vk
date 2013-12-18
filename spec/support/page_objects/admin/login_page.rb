@@ -1,19 +1,14 @@
-class Admin::LoginPage < BasePage
+class Admin::LoginPage < BasicPage
   def initialize
-    super(new_admin_user_session_path)
+    super(new_admin_user_session_path, main_content: 'Панель управления')
   end
 
   def log_in(admin)
-    fill_in 'Email', with: admin.email
-    fill_in 'Пароль', with: admin.password
-    click_on 'Войти'
+    form.fill_in_with('Email' => admin.email, 'Пароль' => admin.password).submit!
     self
   end
 
-  def loaded?
-    content = 'Панель управления'
-    return true if has_content? content
-    raise "Expected Admin::LoginPage to have content '#{content}'"\
-          " but it was not found"
+  def form
+    BasicForm.new(submit: 'Войти')
   end
 end
