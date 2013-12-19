@@ -2,6 +2,8 @@ class BasicPage
   include Capybara::DSL
   include Rails.application.routes.url_helpers
 
+  attr_reader :url
+
   def initialize(url = root_path, options = {})
     @url = url
     @main_content = options[:main_content]

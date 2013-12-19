@@ -23,3 +23,6 @@ en:
         title: Email
       password:
         title: Password
+  apartments:
+    index:
+      headline: Apartments
