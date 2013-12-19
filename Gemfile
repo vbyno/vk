@@ -37,6 +37,7 @@ end
 group :development do
   gem 'annotate'
   gem 'sdoc', require: false
+  gem 'newrelic_rpm'
 end
 
 group :test do
