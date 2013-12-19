@@ -1,8 +1,26 @@
 FactoryGirl.define do
   factory :apartment do
-    title 'MyString'
-    price '9.99'
-    description 'MyText'
+    title 'Apartment Title'
+    price 9.99
+    description 'Apartment Description'
+
+    trait :with_translations do
+      after(:build) do |apartment|
+        translations = ApartmentTranslation::LOCALES.map { |locale|
+          FactoryGirl.build(:apartment_translation,
+                            locale: locale,
+                            apartment: apartment)
+        }
+      end
+
+      after(:create) do |apartment|
+        translations = ApartmentTranslation::LOCALES.map { |locale|
+          FactoryGirl.create(:apartment_translation,
+                             locale: locale,
+                             apartment: apartment)
+        }
+      end
+    end
   end
 
   factory :apartment_translation do

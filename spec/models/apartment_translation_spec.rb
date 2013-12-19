@@ -17,6 +17,10 @@ describe ApartmentTranslation do
   let(:apartment) { create :apartment }
   let(:apartment_translation) { create :apartment_translation, apartment: apartment }
 
+  it 'has appropriate locales lists' do
+    expect(ApartmentTranslation::LOCALES).to eq ['ua', 'en', 'pl']
+  end
+
   it { expect(subject).to belong_to :apartment }
 
   it { expect(subject).to validate_presence_of :locale }

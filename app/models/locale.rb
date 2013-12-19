@@ -11,7 +11,7 @@ class Locale
 
   def self.new!(locale_param = nil)
     locale = self.new(locale_param)
-    locale.change_current
+    self.change_current_to(locale)
     locale
   end
 
@@ -31,11 +31,6 @@ class Locale
     @root_page_path ||= default? ? root_path : locale_root_path(@value)
   end
 
-  def url_options
-    return {} if current_is_default?
-    { locale: current }
-  end
-
   def to_s
     @value.to_s
   end
@@ -44,16 +39,26 @@ class Locale
     @value
   end
 
-  def change_current
-    I18n.locale = @value
+  def self.change_current_to(locale)
+    I18n.locale = locale
   end
 
-private
-  def current
+  def self.url_options
+    return {} if current_is_default?
+    { locale: current }
+  end
+
+  def self.change_to_default!
+    change_current_to(DEFAULT)
+  end
+
+  def self.current
     I18n.locale
   end
 
-  def current_is_default?
+  def self.current_is_default?
     current == DEFAULT
   end
+
+  private_class_method :current, :current_is_default?
 end

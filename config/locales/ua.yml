@@ -1,10 +1,15 @@
 ua:
-  navigation:
-    daily_apartments: Квартири подобово
-    how_it_works: Як це працює
-    places: Де відпочити
-    about_lviv: Про Львів
-    contacts: Контакти
+  head:
+    title: Квартиры посуточно во Львове
+    description: Аренда квартир посуточно во Львове
+    keywords: 'квартиры посуточно, квартиры во Львове'
+  layouts:
+    navigation:
+      daily_apartments: Квартири подобово
+      how_it_works: Як це працює
+      places: Де відпочити
+      about_lviv: Про Львів
+      contacts: Контакти
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
@@ -15,3 +20,6 @@ ua:
         title: Заголовок
         price: Цена
         description: Описание
+  apartments:
+    index:
+      headline: Квартиры

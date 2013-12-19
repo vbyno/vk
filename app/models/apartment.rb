@@ -11,14 +11,13 @@
 #
 
 class Apartment < ActiveRecord::Base
-  has_many :apartment_translations
+  has_many :translations, class_name: ApartmentTranslation, dependent: :destroy
 
   validates :title, presence: true
   validates :price, presence: true
   validates :description, presence: true
 
   scope :translated_to, ->(locale) {
-    joins(:apartment_translations)
-      .where(apartment_translations: { locale: locale })
+    joins(:translations).where(apartment_translations: { locale: locale })
   }
 end

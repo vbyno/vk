@@ -1,4 +1,4 @@
-%h1 Listing
+%h1= t('.headline')
 
 %table
   %tr
@@ -8,7 +8,7 @@
 
   - @apartments.each do |apartment|
     %tr
-      %td= link_to apartment.title, apartment
+      %td= link_to apartment.title, apartment.path
       %td= apartment.price
       %td= apartment.description
 %br
