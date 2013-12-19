@@ -23,3 +23,6 @@ ru:
         title: Email
       password:
         title: Пароль
+  apartments:
+    index:
+      headline: Квартиры

@@ -1,9 +1,11 @@
 class ApartmentsController < ApplicationController
-  load_and_authorize_resource only: :show
+  load_resource only: :show
 
   def index;
-    @apartments = ApartmentHandler.all(@locale)
+    @apartments = ApartmentPresenter.all(@locale)
   end
 
-  def show; end
+  def show
+    @apartment = ApartmentPresenter.new(@apartment, locale: @locale)
+  end
 end

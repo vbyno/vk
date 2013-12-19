@@ -13,7 +13,9 @@
 require 'spec_helper'
 
 describe Apartment do
-  it { expect(subject).to have_many :apartment_translations }
+  it { expect(subject).to have_many(:translations)
+                            .class_name(ApartmentTranslation)
+                            .dependent(:destroy) }
 
   it { expect(subject).to validate_presence_of :title }
   it { expect(subject).to validate_presence_of :price }

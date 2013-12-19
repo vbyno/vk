@@ -3,3 +3,6 @@ pl:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
     keywords: 'квартиры посуточно, квартиры во Львове'
+  apartments:
+    index:
+      headline: Flats

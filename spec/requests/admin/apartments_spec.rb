@@ -8,6 +8,7 @@ describe 'admin/apartments' do
 
   before do
     login_as create(:admin_user), scope: :admin_user
+    Locale.change_to_default!
   end
 
   it 'is able to create new apartment', js: true do
