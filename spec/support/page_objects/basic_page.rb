@@ -1,3 +1,8 @@
+require 'support/page_objects/basic_form'
+require 'support/page_objects/basic_button'
+
+class NoSelectorError < ArgumentError; end
+
 class BasicPage
   include Capybara::DSL
   include Rails.application.routes.url_helpers
@@ -16,7 +21,15 @@ class BasicPage
 
   def loaded?
     return true if has_content? @main_content
-    raise "Expected #{self.class} to have content '#{@main_content}'"\
-          " but it was not found"
+    raise NoSelectorError, "Expected #{self.class} to have content "\
+                           "'#{@main_content}', but it was not found"
+  end
+
+  def not_loaded?
+    begin
+      !loaded?
+    rescue NoSelectorError
+      return true
+    end
   end
 end

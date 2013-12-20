@@ -4,7 +4,7 @@ class Admin::LoginPage < BasicPage
   end
 
   def log_in(admin)
-    form.fill_in_with('Email' => admin.email, 'Пароль' => admin.password).submit!
+    form.fill_with('Email' => admin.email, 'Пароль' => admin.password).submit_button.click!
     self
   end
 
