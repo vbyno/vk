@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :apartment do
-    title 'Apartment Title'
-    price 9.99
-    description 'Apartment Description'
+    sequence(:title) { |n| "Apartment #{n} Title" }
+    sequence(:price) { |n| 100.99 + n }
+    sequence(:description) { |n| "Apartment #{n} Description" }
 
     trait :with_translations do
       after(:build) do |apartment|
