@@ -21,9 +21,6 @@ ActiveAdmin.register Apartment do
       f.input :price
       f.input :description, input_html: { class: 'tinymce' }
     end
-    f.actions do
-      f.action :submit, label: I18n.t('admin.apartments.submit')
-      f.action :cancel, label: I18n.t('admin.apartments.cancel')
-    end
+    f.actions
   end
 end

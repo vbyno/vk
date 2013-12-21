@@ -2,10 +2,5 @@ ru:
   admin:
     apartments:
       menu_label: Квартиры
-      submit: Добавить Квартиру
-      cancel: &cancel
-        Отмена
     apartment_translations:
       menu_label: Переводы
-      submit: Добавить Перевод
-      cancel: *cancel
