@@ -38,7 +38,7 @@ private
     return [apartment.title, apartment.description] if @locale.default?
 
     # searching for translation if we have no translation and locale is not default
-    translation = apartment.translations.find_by(locale: @locale)
+    translation = apartment.translations.find_by(locale: @locale.to_s)
     [translation.title, translation.description]
   end
 end
