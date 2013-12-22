@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109223724) do
+ActiveRecord::Schema.define(version: 20131221214223) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -58,12 +58,25 @@ ActiveRecord::Schema.define(version: 20131109223724) do
   add_index "apartment_translations", ["apartment_id"], name: "index_apartment_translations_on_apartment_id", using: :btree
 
   create_table "apartments", force: true do |t|
-    t.string   "title",                               null: false
-    t.decimal  "price",       precision: 6, scale: 2, null: false
-    t.text     "description",                         null: false
+    t.string   "title",                                                 null: false
+    t.decimal  "price",         precision: 6, scale: 2,                 null: false
+    t.text     "description",                                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "main_image_id"
+    t.boolean  "active",                                default: false, null: false
+  end
+
+  create_table "gallery_images", force: true do |t|
+    t.integer  "apartment_id", null: false
+    t.string   "image",        null: false
+    t.string   "title"
+    t.string   "alt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "gallery_images", ["apartment_id"], name: "index_gallery_images_on_apartment_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

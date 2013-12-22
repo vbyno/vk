@@ -5,7 +5,7 @@ ActiveAdmin.register ApartmentTranslation do
     end
   end
 
-  menu label: I18n.t('admin.apartment_translations.menu_label', locale: Locale::DEFAULT)
+  menu label: I18n.t('admin.menu_labels.apartment_translations', locale: Locale::DEFAULT)
 
   index do
     column :apartment

@@ -3,6 +3,19 @@ FactoryGirl.define do
     sequence(:title) { |n| "Apartment #{n} Title" }
     sequence(:price) { |n| 100.99 + n }
     sequence(:description) { |n| "Apartment #{n} Description" }
+    active false
+
+    trait :active_with_main_image do
+      after(:build) do |apartment|
+        main_image = FactoryGirl.build(:gallery_image, apartment: apartment)
+        active = true
+      end
+
+      after(:create) do |apartment|
+        main_image = FactoryGirl.create(:gallery_image, apartment: apartment)
+        active = true
+      end
+    end
 
     trait :with_translations do
       after(:build) do |apartment|
@@ -21,6 +34,11 @@ FactoryGirl.define do
         }
       end
     end
+  end
+
+  factory :gallery_image do
+    image { File.new("#{Rails.root}/spec/support/images/main_image.jpg") }
+    association :apartment
   end
 
   factory :apartment_translation do
