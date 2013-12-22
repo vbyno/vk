@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'cancan'
 gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
 

@@ -158,6 +158,8 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25)
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
@@ -206,7 +208,6 @@ GEM
     ref (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
-    rmagick (2.13.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -255,6 +256,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    subexec (0.2.3)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -307,13 +309,13 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   launchy
+  mini_magick
   newrelic_rpm
   pg
   pry-rails
   quiet_assets
   rails (~> 4.0.0)
   rails-i18n (~> 4.0.0)
-  rmagick
   rspec-rails
   sanitize
   sass-rails (~> 4.0.0)

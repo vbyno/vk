@@ -1,6 +1,6 @@
 ru:
   admin:
-    apartments:
-      menu_label: Квартиры
-    apartment_translations:
-      menu_label: Переводы
+    menu_labels:
+      apartments: Квартиры
+      apartment_translations: Переводы
+      gallery_images: Фотографии Квартир
