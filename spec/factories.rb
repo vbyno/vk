@@ -2,7 +2,8 @@ FactoryGirl.define do
   factory :apartment do
     sequence(:title) { |n| "Apartment #{n} Title" }
     sequence(:price) { |n| 100.99 + n }
-    sequence(:description) { |n| "Apartment #{n} Description" }
+    description 'Apartment Description'
+    sequence(:short_description) { |n| "Apartment #{n} Short Description" }
     active false
 
     trait :active_with_main_image do
@@ -45,6 +46,7 @@ FactoryGirl.define do
     association :apartment
     title 'Translated Title'
     description 'Translated Description'
+    sequence(:short_description) { |n| "Translated Apartment #{n} Short Description" }
     locale 'en'
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221214223) do
+ActiveRecord::Schema.define(version: 20131223130243) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -47,24 +47,26 @@ ActiveRecord::Schema.define(version: 20131221214223) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "apartment_translations", force: true do |t|
-    t.string   "locale",       null: false
-    t.string   "title",        null: false
-    t.text     "description",  null: false
-    t.integer  "apartment_id", null: false
+    t.string   "locale",                         null: false
+    t.string   "title",                          null: false
+    t.text     "description",                    null: false
+    t.integer  "apartment_id",                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short_description", default: "", null: false
   end
 
   add_index "apartment_translations", ["apartment_id"], name: "index_apartment_translations_on_apartment_id", using: :btree
 
   create_table "apartments", force: true do |t|
-    t.string   "title",                                                 null: false
-    t.decimal  "price",         precision: 6, scale: 2,                 null: false
-    t.text     "description",                                           null: false
+    t.string   "title",                                                     null: false
+    t.decimal  "price",             precision: 6, scale: 2,                 null: false
+    t.text     "description",                                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "main_image_id"
-    t.boolean  "active",                                default: false, null: false
+    t.boolean  "active",                                    default: false, null: false
+    t.string   "short_description",                         default: "",    null: false
   end
 
   create_table "gallery_images", force: true do |t|

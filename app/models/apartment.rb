@@ -17,9 +17,10 @@ class Apartment < ActiveRecord::Base
   has_many :translations, class_name: ApartmentTranslation, dependent: :destroy
   has_many :gallery_images, dependent: :destroy
 
-  validates :title, :price, :description, presence: true
+  validates :title, :price, :description, :short_description, presence: true
   validates :main_image, presence: true, if: :active?
 
+  scope :active, -> { where(active: true) }
   scope :translated_to, ->(locale) {
     joins(:translations).where(apartment_translations: { locale: locale })
   }

@@ -1,7 +1,12 @@
 ActiveAdmin.register Apartment do
   controller do
     def permitted_params
-      params.permit apartment: [:title, :price, :description, :active, :main_image_id]
+      params.permit apartment: [:title,
+                                :active,
+                                :price,
+                                :short_description,
+                                :description,
+                                :main_image_id]
     end
   end
 
@@ -9,8 +14,9 @@ ActiveAdmin.register Apartment do
 
   index do
     column :title
-    column :description
     column :price
+    column :short_description
+    column :description
     default_actions
   end
 
@@ -21,6 +27,7 @@ ActiveAdmin.register Apartment do
       f.input :main_image, as: :select, collection: f.object.gallery_images
       f.input :title
       f.input :price
+      f.input :short_description
       f.input :description, input_html: { class: 'tinymce' }
     end
     f.actions
