@@ -2,10 +2,14 @@ require 'acceptance_helper'
 
 describe 'admin/apartments' do
   let!(:apartment) { create :apartment }
+  let(:apartment_attributes_hash) {
+    { attributes: [:title, :description, :price, :short_description] }
+  }
 
   let(:new_apartment_params) { { 'Заголовок' => 'Apartment 1 Title',
                                  'Цена' => '300.55',
-                                 'Описание' => 'Apartment Description' } }
+                                 'Описание' => 'Apartment Description',
+                                 'Short description' => 'Apartment Short Description' } }
   let(:update_apartment_params) { { 'Заголовок' => 'Apartment 2 Title' } }
 
   before do
@@ -15,10 +19,7 @@ describe 'admin/apartments' do
 
   it 'CRUD apartment', js: true do
     index_page = Admin::IndexPage.new(Apartment)
-    expect(index_page.visit!).to have_instances(apartment,
-                                                attributes: [
-                                                  :title, :description, :price
-                                                ])
+    expect(index_page.visit!).to have_instances(apartment, apartment_attributes_hash)
     index_page.new_button.click!
 
     new_page = Admin::NewPage.new(Apartment,
@@ -29,8 +30,7 @@ describe 'admin/apartments' do
     new_apartment = Apartment.last
     show_page = Admin::ShowPage.new(new_apartment)
     expect(show_page).to be_loaded
-    expect(show_page).to have_instance(new_apartment,
-                                       attributes: [:title, :description, :price])
+    expect(show_page).to have_instance(new_apartment, apartment_attributes_hash)
     show_page.edit_button.click!
 
     edit_page = Admin::EditPage.new(new_apartment)
@@ -42,8 +42,6 @@ describe 'admin/apartments' do
 
     expect(index_page.visit!).to have_instances(apartment,
                                                 new_apartment,
-                                                attributes: [
-                                                  :title, :description, :price
-                                                ])
+                                                apartment_attributes_hash)
   end
 end

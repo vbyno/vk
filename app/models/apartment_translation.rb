@@ -20,9 +20,7 @@ class ApartmentTranslation < ActiveRecord::Base
             presence: true,
             inclusion: { in: LOCALES },
             uniqueness: { scope: :apartment_id }
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :apartment, presence: true
+  validates :title, :description, :short_description, :apartment, presence: true
 
   scope :by_apartment_ids, ->(ids, locale) { where(apartment_id: ids, locale: locale) }
 end

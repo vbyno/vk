@@ -26,6 +26,7 @@ describe ApartmentTranslation do
   it { expect(subject).to validate_presence_of :locale }
   it { expect(subject).to validate_presence_of :title }
   it { expect(subject).to validate_presence_of :description }
+  it { expect(subject).to validate_presence_of :short_description }
   it { expect(subject).to validate_presence_of :apartment }
 
   it { expect(subject).to ensure_inclusion_of(:locale)

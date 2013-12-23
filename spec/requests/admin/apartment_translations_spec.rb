@@ -2,10 +2,14 @@ require 'acceptance_helper'
 
 describe 'admin/apartments' do
   let!(:translation) { create :apartment_translation }
+  let(:translation_attributes_hash) {
+    { attributes: [:title, :description, :short_description, :locale] }
+  }
   let(:new_translation_params) { { 'Apartment' => Apartment.first.title,
                                    'Locale' => 'ua',
                                    'Title' => 'Unique Translation Title',
-                                   'Description' => 'Unique Translation Description' } }
+                                   'Description' => 'Unique Translation Description',
+                                   'Short description' => 'Short Description' } }
   let(:update_translation_params) { { 'Title' => 'Unique Translation New Title' } }
 
   before do
@@ -15,10 +19,7 @@ describe 'admin/apartments' do
 
   it 'CRUD apartment translation', js: true do
     index_page = Admin::IndexPage.new(ApartmentTranslation)
-    expect(index_page.visit!).to have_instances(translation,
-                                                attributes: [
-                                                  :title, :description, :locale
-                                                ])
+    expect(index_page.visit!).to have_instances(translation, translation_attributes_hash)
     index_page.new_button.click!
 
     new_page = Admin::NewPage.new(ApartmentTranslation,
@@ -30,8 +31,7 @@ describe 'admin/apartments' do
     new_translation = ApartmentTranslation.last
     show_page = Admin::ShowPage.new(new_translation)
     expect(show_page).to be_loaded
-    expect(show_page).to have_instance(new_translation,
-                                       attributes: [:title, :description, :locale])
+    expect(show_page).to have_instance(new_translation, translation_attributes_hash)
     # TODO - to have link to apartment!
     show_page.edit_button.click!
 
@@ -46,8 +46,6 @@ describe 'admin/apartments' do
 
     expect(index_page.visit!).to have_instances(translation,
                                                 new_translation,
-                                                attributes: [
-                                                  :title, :description, :locale
-                                                ])
+                                                translation_attributes_hash)
   end
 end

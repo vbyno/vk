@@ -1,7 +1,11 @@
 ActiveAdmin.register ApartmentTranslation do
   controller do
     def permitted_params
-      params.permit apartment_translation: [:apartment_id, :title, :description, :locale]
+      params.permit apartment_translation: [:title,
+                                            :description,
+                                            :locale,
+                                            :short_description,
+                                            :apartment_id]
     end
   end
 
@@ -11,7 +15,8 @@ ActiveAdmin.register ApartmentTranslation do
     column :apartment
     column :locale
     column :title
-    column :description
+    column :short_description
+    column :description # TODO dotdotdot or truncate
     default_actions
   end
 
@@ -21,6 +26,7 @@ ActiveAdmin.register ApartmentTranslation do
       f.input :apartment
       f.input :locale, as: :select, collection: ApartmentTranslation::LOCALES
       f.input :title
+      f.input :short_description
       f.input :description, input_html: { class: 'tinymce' }
     end
     f.actions

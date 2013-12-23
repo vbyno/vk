@@ -22,6 +22,7 @@ describe Apartment do
   it { expect(subject).to validate_presence_of :title }
   it { expect(subject).to validate_presence_of :price }
   it { expect(subject).to validate_presence_of :description }
+  it { expect(subject).to validate_presence_of :short_description }
 
   context 'main image' do
     let(:active) { build :apartment, active: true, main_image: nil }
