@@ -16,7 +16,9 @@ ActiveAdmin.register ApartmentTranslation do
     column :locale
     column :title
     column :short_description
-    column :description # TODO dotdotdot or truncate
+    column :description do |apartment_translation|
+      truncate(apartment_translation.description, length: 100)
+    end
     default_actions
   end
 
