@@ -9,7 +9,6 @@
 
   - @apartments.each do |apartment|
     %tr
-      //%td= image_tag(apartment.main_image.image.url, size: "80x100")
       %td= image_tag apartment.main_image.image_url(:medium).to_s, class: 'img-polaroid'
       %td= link_to apartment.title, apartment.path
       %td= apartment.price.ceil

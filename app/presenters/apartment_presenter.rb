@@ -1,18 +1,16 @@
 class ApartmentPresenter
   include Rails.application.routes.url_helpers
 
-  attr_reader :id, :title, :description, :price, :main_image, :short_description
+  attr_reader :title, :description, :short_description
 
   def initialize(apartment, params = {locale: nil, translation: nil})
+    @apartment = apartment
     translation = params[:translation]
     @locale = params[:locale] || Locale.new(translation.try(:locale))
 
-    @id, @price, @main_image = apartment.id, apartment.price, apartment.main_image
-    @title, @description, @short_description = translated_attributes(apartment,
-                                                                     translation,
-                                                                     :title,
-                                                                     :description,
-                                                                     :short_description)
+    @title, @description, @short_description = translated_attributes(
+      translation, :title, :description, :short_description
+    )
   end
 
   def path
@@ -35,11 +33,15 @@ class ApartmentPresenter
     }
   end
 
-private
-  def translated_attributes(apartment, translation, *attributes)
-    return attributes.map { |a| apartment.public_send(a) } if @locale.default?
+  def method_missing(*args)
+    @apartment.public_send(*args)
+  end
 
-    translation ||= apartment.translations.find_by(locale: @locale.to_s)
+private
+  def translated_attributes(translation, *attributes)
+    return attributes.map { |a| @apartment.public_send(a) } if @locale.default?
+
+    translation ||= @apartment.translations.find_by(locale: @locale.to_s)
     attributes.map { |a| translation.public_send(a) }
   end
 end

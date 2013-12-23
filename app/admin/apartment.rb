@@ -16,7 +16,9 @@ ActiveAdmin.register Apartment do
     column :title
     column :price
     column :short_description
-    column :description
+    column :description do |apartment|
+      truncate(apartment.description, length: 100)
+    end
     default_actions
   end
 
