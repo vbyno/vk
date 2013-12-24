@@ -7,32 +7,26 @@ FactoryGirl.define do
     active false
 
     trait :active_with_main_image do
-      after(:build) do |apartment|
-        main_image = FactoryGirl.build(:gallery_image, apartment: apartment)
-        active = true
+      after :build do |apartment|
+        apartment.main_image = build :gallery_image, apartment: apartment
+        apartment.active = true
       end
 
-      after(:create) do |apartment|
-        main_image = FactoryGirl.create(:gallery_image, apartment: apartment)
-        active = true
+      after :create do |apartment|
+        apartment.main_image.save!
+        apartment.save!
       end
     end
 
     trait :with_translations do
-      after(:build) do |apartment|
-        translations = ApartmentTranslation::LOCALES.map { |locale|
-          FactoryGirl.build(:apartment_translation,
-                            locale: locale,
-                            apartment: apartment)
+      after :build do |apartment|
+        apartment.translations = ApartmentTranslation::LOCALES.map { |locale|
+          build(:apartment_translation, locale: locale, apartment: apartment)
         }
       end
 
-      after(:create) do |apartment|
-        translations = ApartmentTranslation::LOCALES.map { |locale|
-          FactoryGirl.create(:apartment_translation,
-                             locale: locale,
-                             apartment: apartment)
-        }
+      after :create do |apartment|
+        apartment.translations.each(&:save!)
       end
     end
   end

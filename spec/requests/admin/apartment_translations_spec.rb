@@ -5,7 +5,7 @@ describe 'admin/apartments' do
   let(:translation_attributes_hash) {
     { attributes: [:title, :description, :short_description, :locale] }
   }
-  let(:new_translation_params) { { 'Apartment' => Apartment.first.title,
+  let(:new_translation_params) { { 'Apartment' => translation.apartment.title,
                                    'Locale' => 'ua',
                                    'Title' => 'Unique Translation Title',
                                    'Description' => 'Unique Translation Description',

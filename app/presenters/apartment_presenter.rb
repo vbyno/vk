@@ -14,7 +14,7 @@ class ApartmentPresenter
   end
 
   def path
-    @locale.default? ? apartment_path(@id) : locale_apartment_path(@locale, @id)
+    @locale.default? ? apartment_path(id) : locale_apartment_path(@locale, id)
   end
 
   def self.all(locale)

@@ -14,3 +14,4 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require jquery.turbolinks
+#= require bootstrap-image-gallery.min
