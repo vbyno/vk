@@ -4,15 +4,15 @@
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1" }
     %title= content_for?(:title) ? yield(:title) : t('head.title')
     %meta{ content: content_for?(:description) ? yield(:description) : "App_Name", name: "description" }
-    = stylesheet_link_tag :application, media: "all"
+    = stylesheet_link_tag :application, media: 'all'
+    = yield :additional_stylesheet
     = javascript_include_tag :application
     = csrf_meta_tags
-    = yield(:head)
+    = yield :head
   %body
-    %header.header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
+    %header.header.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        = render 'layouts/navigation'
     #main{role: "main"}
       .container
         .content
@@ -21,3 +21,4 @@
               //= render 'layouts/messages'
               = yield
           %footer
+    = yield :additional_javascript

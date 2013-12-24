@@ -1,12 +1,18 @@
-%p#notice= notice
+- content_for :additional_stylesheet do
+  = stylesheet_link_tag 'http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'
 
+%p#notice= notice
 %p= @apartment.title
 %p
   %b Price:
   = @apartment.price
 .content
   = @apartment.description.html_safe
-  - @apartment.gallery_images.each do |image|
-    = image_tag image.image_url(:medium).to_s, class: 'img-polaroid'
+  #links
+    = render(@apartment.gallery_images)
 
 = link_to 'Back', apartments_path
+= render 'blueimp_gallery'
+
+- content_for :additional_javascript do
+  = javascript_include_tag 'http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js'

@@ -1,15 +1,14 @@
-- if request.fullpath == @locale.root_page_path
-  %span{class: 'brand'}
-    = t('.daily_apartments')
-- else
-  = link_to t('.daily_apartments'), @locale.root_page_path, class: 'brand'
-%ul.nav
-  %li= link_to t('.how_it_works'), '#'
-  %li= link_to t('.feedback'), '#'
-  %li= link_to t('.about_lviv'), '#'
-  %li= link_to t('.contacts'), '#'
-
-= render 'layouts/languages'
-
-%ul.nav.pull-right
-  %li.pull-right= link_to t('.sign_in'), '#'
+.navbar-header
+  - if request.fullpath == @locale.root_page_path
+    %span{class: 'navbar-brand'}= t('.daily_apartments')
+  - else
+    = link_to t('.daily_apartments'), @locale.root_page_path, class: 'navbar-brand'
+%nav.collapse.navbar-collapse.bs-navbar-collapse{role: 'navigation'}
+  %ul.nav.navbar-nav
+    %li= link_to t('.how_it_works'), '#'
+    %li= link_to t('.feedback'), '#'
+    %li= link_to t('.about_lviv'), '#'
+    %li= link_to t('.contacts'), '#'
+  %ul.nav.navbar-nav.navbar-right
+    %li= render 'layouts/languages'
+    %li= link_to t('.sign_in'), '#'
