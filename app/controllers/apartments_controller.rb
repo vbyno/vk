@@ -1,7 +1,7 @@
 class ApartmentsController < ApplicationController
   load_resource only: :show
 
-  def index;
+  def index
     @apartments = ApartmentPresenter.all(@locale)
   end
 
