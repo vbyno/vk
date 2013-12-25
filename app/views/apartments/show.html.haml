@@ -12,8 +12,12 @@
   %b Price:
   = @apartment.price.ceil
 %p= @apartment.short_description
-#links
+%br
+
+%ul.bxslider
   = render(@apartment.gallery_images)
+%br
+
 = @apartment.description.html_safe
 
 = link_to 'Back', apartments_path

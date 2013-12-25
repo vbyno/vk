@@ -15,3 +15,5 @@
 #= require turbolinks
 #= require jquery.turbolinks
 #= require bootstrap-image-gallery.min
+#= require vk
+#= require_tree ./public
