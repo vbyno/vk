@@ -24,8 +24,12 @@ class GalleryImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  version :medium do
-    process resize_to_limit: [300, 200]
+  version :fixed_height do
+    process resize_to_fit: [10000, 180]
+  end
+
+  version :fixed_size do
+    process resize_to_fill: [350, 200]
   end
 
   def extension_white_list
