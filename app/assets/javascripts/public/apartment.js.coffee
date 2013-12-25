@@ -6,7 +6,7 @@ jQuery ->
   $('.bxslider').bxSlider
     minSlides: 2
     maxSlides: 3
-    infiniteLoop: true
+    infiniteLoop: false
     hideControlOnEnd: false
     slideMargin: 0
     slideWidth: 400
