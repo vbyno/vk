@@ -42,6 +42,7 @@ private
     return attributes.map { |a| @apartment.public_send(a) } if @locale.default?
 
     translation ||= @apartment.translations.find_by(locale: @locale.to_s)
-    attributes.map { |a| translation.public_send(a) }
+    return attributes.map { |a| translation.public_send(a) } if translation
+    raise ActiveRecord::RecordNotFound.new("No #{@locale} translation for #{@apartment}")
   end
 end

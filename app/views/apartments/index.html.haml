@@ -2,14 +2,16 @@
 
 %table
   %tr
-    %th.span4 Photo
+    %th.col-md-4 Photo
     %th Title
     %th Price
     %th Description
 
   - @apartments.each do |apartment|
     %tr
-      %td= image_tag apartment.main_image.image_url(:medium).to_s, class: 'img-thumbnail'
+      %td= image_tag(apartment.main_image.image_url(:fixed_size).to_s,
+                      class: 'img-thumbnail',
+                      size: '350x200')
       %td= link_to apartment.title, apartment.path
       %td= apartment.price.ceil
       %td= apartment.short_description
