@@ -1,5 +1,9 @@
 - content_for :additional_stylesheet do
-  = stylesheet_link_tag 'http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'
+  = stylesheet_link_tag('http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css',
+                        'data-turbolinks-track' => true)
+- content_for :additional_javascript do
+  = javascript_include_tag('http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js',
+                           'data-turbolinks-track' => true)
 
 %p#notice= notice
 %p= @apartment.title
@@ -13,6 +17,3 @@
 
 = link_to 'Back', apartments_path
 = render 'blueimp_gallery'
-
-- content_for :additional_javascript do
-  = javascript_include_tag 'http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js'
