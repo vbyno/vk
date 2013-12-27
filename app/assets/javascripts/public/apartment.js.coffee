@@ -1,4 +1,4 @@
-#= require bxslider.min
+#= require bxslider
 
 'use strict'
 
@@ -7,7 +7,7 @@ jQuery ->
     minSlides: 3
     maxSlides: 3
     infiniteLoop: false
-    hideControlOnEnd: false
+    hideControlOnEnd: true
     slideMargin: 10
     slideWidth: 0
     responsive: true
