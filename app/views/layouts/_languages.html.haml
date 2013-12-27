@@ -1,1 +1,4 @@
-= I18n.locale
+%span.languages
+  - (Locale::ALL_LOCALES - [@locale.to_sym]).map { |l| Locale.new(l) }.each do |locale|
+    %a{href: locale.root_page_path}
+      = image_tag '', class: "flag flag-#{locale}", size: '25x15'
