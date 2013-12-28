@@ -1,0 +1,10 @@
+= semantic_form_for reservation do |f|
+  = f.semantic_errors
+  = f.inputs do
+    = f.input :apartment_id, as: :hidden
+    = f.input :customer_name, label: 'Your Name'
+    = f.input :customer_email, label: 'Your Email'
+    = f.input :check_in
+    = f.input :check_out
+  = f.actions do
+    = f.submit 'Send Reservation', class: 'btn btn-big btn-success'

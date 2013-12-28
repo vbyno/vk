@@ -2,12 +2,15 @@
 #
 # Table name: apartments
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)      not null
-#  price       :decimal(6, 2)    not null
-#  description :text             not null
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                :integer          not null, primary key
+#  title             :string(255)      not null
+#  price             :decimal(6, 2)    not null
+#  description       :text             not null
+#  created_at        :datetime
+#  updated_at        :datetime
+#  main_image_id     :integer
+#  active            :boolean          default(FALSE), not null
+#  short_description :string(255)      default(""), not null
 #
 
 require 'spec_helper'
@@ -17,7 +20,8 @@ describe Apartment do
   it { expect(subject).to have_many(:translations)
                             .class_name(ApartmentTranslation)
                             .dependent(:destroy) }
-  it { expect(subject).to have_many :gallery_images }
+  it { expect(subject).to have_many(:gallery_images).dependent(:destroy) }
+  it { expect(subject).to have_many(:reservations).dependent(:destroy) }
 
   it { expect(subject).to validate_presence_of :title }
   it { expect(subject).to validate_presence_of :price }

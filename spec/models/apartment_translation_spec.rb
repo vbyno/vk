@@ -2,13 +2,14 @@
 #
 # Table name: apartment_translations
 #
-#  id           :integer          not null, primary key
-#  locale       :string(255)      not null
-#  title        :string(255)      not null
-#  description  :text             not null
-#  apartment_id :integer          not null
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id                :integer          not null, primary key
+#  locale            :string(255)      not null
+#  title             :string(255)      not null
+#  description       :text             not null
+#  apartment_id      :integer          not null
+#  created_at        :datetime
+#  updated_at        :datetime
+#  short_description :string(255)      default(""), not null
 #
 
 require 'spec_helper'

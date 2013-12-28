@@ -1,4 +1,4 @@
-require 'support/page_objects/basic_button'
+require 'requests/page_objects/basic_button'
 
 class BasicForm
   include Capybara::DSL

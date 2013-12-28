@@ -44,6 +44,15 @@ FactoryGirl.define do
     locale 'en'
   end
 
+  factory :reservation do
+    association :apartment
+    customer_name 'Customer Name'
+    customer_email 'customer@email.comx'
+    check_in { DateTime.tomorrow + 12.hours }
+    check_out { DateTime.tomorrow + 1.day + 11.hours }
+    status Reservation::PENDING
+  end
+
   factory :admin_user do
     email 'admin@example.com'
     password 'password'

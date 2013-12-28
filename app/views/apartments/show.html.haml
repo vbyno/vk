@@ -17,5 +17,7 @@
     = render(@apartment.gallery_images)
 = @apartment.description.html_safe
 
+= render 'reservations/form', reservation: @apartment.reservations.build
+
 = link_to 'Back', apartments_path
 = render 'blueimp_gallery'
