@@ -2,6 +2,7 @@ Vk::Application.routes.draw do
   root 'apartments#index'
 
   resources :apartments, only: [:index, :show]
+  resources :reservations, only: :create
 
   devise_for :users
 
