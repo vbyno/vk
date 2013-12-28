@@ -23,7 +23,6 @@ describe Reservation do
   it { expect(subject).to validate_presence_of :customer_email }
   it { expect(subject).to validate_presence_of :check_in }
   it { expect(subject).to validate_presence_of :check_out }
-  it { expect(subject).to validate_presence_of :status }
 
   it { expect(subject).to(ensure_inclusion_of(:status).in_array Reservation::STATUSES) }
 

@@ -1,5 +1,5 @@
-require 'support/page_objects/basic_form'
-require 'support/page_objects/basic_button'
+require 'requests/page_objects/basic_form'
+require 'requests/page_objects/basic_button'
 
 class NoSelectorError < ArgumentError; end
 

@@ -22,15 +22,9 @@ class Reservation < ActiveRecord::Base
 
   before_validation :set_default_status, on: :create
 
-  validates :apartment,
-            :customer_name,
-            :customer_email,
-            :check_in,
-            :check_out,
-            :status,
+  validates :apartment, :customer_name, :customer_email, :check_in, :check_out,
             presence: true
-  validates :status, inclusion: { in: STATUSES }
-
+  validates :status, presence: true, inclusion: { in: STATUSES }
 
 private
   def set_default_status
