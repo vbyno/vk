@@ -14,9 +14,11 @@
 #
 
 class Reservation < ActiveRecord::Base
-  STATUSES = [ BOOKED = 'Booked',
-               PENDING = 'Pending',
-               CANCELLED = 'Cancelled' ]
+  STATUSES = [
+    BOOKED = 'Booked',
+    PENDING = 'Pending',
+    CANCELLED = 'Cancelled'
+  ]
 
   belongs_to :apartment
 

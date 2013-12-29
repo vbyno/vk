@@ -5,8 +5,7 @@ ActiveAdmin.register GalleryImage do
     end
   end
 
-  menu label: I18n.t('admin.menu_labels.gallery_images',
-                     locale: Locale::DEFAULT)
+  menu label: I18n.t('admin.menu_labels.gallery_images', locale: Locale::DEFAULT)
 
   index do
     column :apartment
