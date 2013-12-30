@@ -33,6 +33,9 @@ span.languages
     width: 25px
     height: 15px
     background: url(flags.png) no-repeat
+    @include opacity(0.5)
+    &:hover
+      @include opacity(1)
     &.flag-en
       background-position: -25px 0
     &.flag-pl
