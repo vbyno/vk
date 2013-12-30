@@ -26,3 +26,6 @@ en:
   apartments:
     index:
       headline: Apartments
+  reservations:
+    create:
+      thank_you: Thank You!!!

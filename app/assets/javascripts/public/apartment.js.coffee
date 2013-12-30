@@ -5,9 +5,14 @@
 'use strict'
 
 jQuery ->
+  locale = $('body').data('locale')
+  # TODO think about better way
+
   $('.datepicker').datepicker
-    format: 'dd/mm/yyyy',
+    format: 'dd/mm/yyyy'
     startDate: '0d'
+    language: locale
+
   $('.bxslider').bxSlider
     minSlides: 3
     maxSlides: 3
@@ -20,4 +25,3 @@ jQuery ->
     pager: false
     moveSlides: 1
     adaptiveHeight: false
-

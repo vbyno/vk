@@ -1,4 +1,4 @@
-= semantic_form_for reservation do |f|
+= semantic_form_for @reservation, remote: true do |f|
   = f.semantic_errors
   = f.inputs do
     = f.input :apartment_id, as: :hidden
