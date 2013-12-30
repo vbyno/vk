@@ -1,0 +1,7 @@
+- if @reservation.errors.any?
+  // TODO make date picker work here
+  :plain
+    $('#reservation-form').html("#{escape_javascript(render 'form')}");
+- else
+  :plain
+    $('#reservation-form').html("<p>#{t('.thank_you')}</p>");

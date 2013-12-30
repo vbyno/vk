@@ -26,3 +26,6 @@ ru:
   apartments:
     index:
       headline: Квартиры
+  reservations:
+    create:
+      thank_you: Спасибо!

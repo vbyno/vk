@@ -6,3 +6,6 @@ pl:
   apartments:
     index:
       headline: Flats
+  reservations:
+    create:
+      thank_you: Thank You PL!!!
