@@ -24,7 +24,12 @@ describe Reservation do
   it { expect(subject).to validate_presence_of :check_in }
   it { expect(subject).to validate_presence_of :check_out }
 
-  it { expect(subject).to(ensure_inclusion_of(:status).in_array Reservation::STATUSES) }
+  it { expect(subject).to ensure_inclusion_of(:status).in_array Reservation::STATUSES }
+
+  context 'customer_email format' do
+    it { expect(subject).to allow_value('some_email@gmail.comx').for :customer_email }
+    it { expect(subject).not_to allow_value('some_emailgmail.comx').for :customer_email }
+  end
 
   it 'sets pending status before validation' do
     reservation = build :reservation, status: nil

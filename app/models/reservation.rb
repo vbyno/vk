@@ -24,9 +24,10 @@ class Reservation < ActiveRecord::Base
 
   before_validation :set_default_status, on: :create
 
-  validates :apartment, :customer_name, :customer_email, :check_in, :check_out,
+  validates :apartment, :customer_name, :customer_email, :check_in, :check_out, :status,
             presence: true
-  validates :status, presence: true, inclusion: { in: STATUSES }
+  validates :status, inclusion: { in: STATUSES }
+  validates :customer_email, format: { with: Devise.email_regexp }
 
 private
   def set_default_status
