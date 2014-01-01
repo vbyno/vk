@@ -2,9 +2,9 @@
   = f.semantic_errors *f.object.errors.keys
   = f.inputs do
     = f.input :apartment_id, as: :hidden
-    = f.input :customer_name, label: 'Your Name'
-    = f.input :customer_email, label: 'Your Email'
+    = f.input :customer_name
+    = f.input :customer_email
     = f.input :check_in, as: :string, input_html: { class: 'datepicker' }
     = f.input :check_out, as: :string, input_html: { class: 'datepicker' }
   = f.actions do
-    = f.submit 'Send Reservation', class: 'btn btn-big btn-success'
+    = f.action :submit, as: :button, button_html: { class: 'btn btn-big btn-success' }

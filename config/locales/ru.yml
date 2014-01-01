@@ -29,3 +29,14 @@ ru:
   reservations:
     create:
       thank_you: Спасибо!
+  formtastic:
+    labels:
+      reservation:
+        customer_name: Ваше имя
+        customer_email: Ваш email
+        check_in: Дата заселения
+        check_out: Дата выселения
+        message: Сообщение
+    actions:
+      reservation:
+        create: Забронировать!

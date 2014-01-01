@@ -26,3 +26,14 @@ ua:
   reservations:
     create:
       thank_you: Дякую Тобі!
+  formtastic:
+    labels:
+      reservation:
+        customer_name: Ваше імя
+        customer_email: Ваш email
+        check_in: Дата заселення
+        check_out: Дата виселення
+        message: Повідомлення
+    actions:
+      reservation:
+        create: Забронювати!
