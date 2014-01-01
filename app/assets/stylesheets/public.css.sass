@@ -16,8 +16,11 @@ span.languages
   .flag
     width: 25px
     height: 15px
-    background: url(flags.png) no-repeat
+    background-image: url(flags.png)
+    display: inline-block
+    vertical-align: middle
     @include opacity(0.5)
+
     &:hover
       @include opacity(1)
     &.flag-en
