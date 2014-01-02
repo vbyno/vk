@@ -12,7 +12,7 @@ describe 'homepage' do
   root_pages = Locale::ALL_LOCALES.map do |locale_sym|
     locale = Locale.new(locale_sym)
     BasicPage.new(locale.root_page_path,
-                  main_content: I18n.t('apartments.index.headline', locale: locale))
+                  main_content: I18n.t('apartments.index.headline', locale: locale.to_i18n))
   end
 
   after :all do

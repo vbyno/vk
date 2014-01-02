@@ -70,22 +70,20 @@ describe Locale do
     end
   end
 
-  describe '.url_options' do
-    it 'returns an empty hash if current locale is default' do
-      allow(I18n).to receive(:locale).and_return Locale::DEFAULT
-      expect(Locale.url_options).to eq({})
+  describe '#url_options' do
+    it 'returns an empty hash if locale is default' do
+      expect(ru_locale.url_options).to eq({})
     end
 
     it 'returns hash with locale attribute' do
-      allow(I18n).to receive(:locale).and_return Locale::EN
-      expect(Locale.url_options).to eq({ locale: :en })
+      expect(en_locale.url_options).to eq({ locale: :en })
     end
   end
 
-  describe '.change_current_to' do
+  describe '#change_current_to' do
     it 'changes current locale' do
       I18n.locale = :ru
-      expect { Locale.change_current_to(en_locale) }.to change { I18n.locale }.from(:ru).to(:en)
+      expect { en_locale.change_current! }.to change { I18n.locale }.from(:ru).to(:en)
     end
   end
 end
