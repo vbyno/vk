@@ -1,7 +1,12 @@
 - if @reservation.errors.any?
-  // TODO make date picker work here
   :plain
     $('#reservation-form').html("#{escape_javascript(render 'form')}");
+    $('.datepicker').datepicker({format: 'dd/mm/yyyy',
+                                 startDate: '0d',
+                                 language: $('body').data('locale')});
+    $('.alert .close').on('click', function() {
+      $('.alert').remove();
+    })
 - else
   :plain
     $('#reservation-form').html("<p>#{t('.thank_you')}</p>");

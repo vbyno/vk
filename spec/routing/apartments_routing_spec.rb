@@ -3,8 +3,8 @@ require 'spec_helper'
 describe ApartmentsController do
   describe 'routing' do
 
-    it 'routes to #index' do
-      expect(get '/apartments').to route_to('apartments#index')
+    it 'does not routes to #index' do
+      expect(get '/apartments').not_to route_to('apartments#index')
     end
 
     it 'routes to #show' do
