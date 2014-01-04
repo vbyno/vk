@@ -5,8 +5,8 @@ describe Locale do
   let(:en_locale) { Locale.new(:en) }
 
   it 'has appropriate locales lists' do
-    expect(Locale::ALL_LOCALES).to eq [:ru, :ua, :en, :pl]
-    expect(Locale::SECONDARY_LOCALES).to eq [:ua, :en, :pl]
+    expect(Locale::ALL_LOCALES).to eq Set.new [:ru, :ua, :en, :pl]
+    expect(Locale::SECONDARY_LOCALES).to eq Set.new [:ua, :en, :pl]
   end
 
   describe '.new!' do

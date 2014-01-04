@@ -1,13 +1,13 @@
 class Locale
   include Rails.application.routes.url_helpers
 
-  ALL_LOCALES = [
+  ALL_LOCALES = Set.new [
     RU = DEFAULT = :ru,
     UA = :ua,
     EN = :en,
     PL = :pl
   ]
-  SECONDARY_LOCALES = [UA, EN, PL]
+  SECONDARY_LOCALES = Set.new [UA, EN, PL]
 
   def self.new!(locale_param = nil)
     self.new(locale_param).tap(&:change_current!)

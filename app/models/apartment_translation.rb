@@ -13,7 +13,7 @@
 #
 
 class ApartmentTranslation < ActiveRecord::Base
-  LOCALES = Locale::SECONDARY_LOCALES.map(&:to_s)
+  LOCALES = Set.new Locale::SECONDARY_LOCALES.map(&:to_s)
 
   belongs_to :apartment
 

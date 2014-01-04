@@ -14,7 +14,7 @@
 #
 
 class Reservation < ActiveRecord::Base
-  STATUSES = [
+  STATUSES = Set.new [
     BOOKED = 'Booked',
     PENDING = 'Pending',
     CANCELLED = 'Cancelled'
