@@ -11,7 +11,8 @@ private
       :customer_name,
       :customer_email,
       :check_in,
-      :check_out
+      :check_out,
+      :body
     )
   end
 end

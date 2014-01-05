@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228190120) do
+ActiveRecord::Schema.define(version: 20140105172111) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20131228190120) do
     t.string   "status",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "body"
   end
 
   add_index "reservations", ["apartment_id"], name: "index_reservations_on_apartment_id", using: :btree

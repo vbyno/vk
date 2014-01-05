@@ -36,7 +36,7 @@ ru:
         customer_email: Ваш email
         check_in: Дата заселения
         check_out: Дата выселения
-        message: Сообщение
+        body: Сообщение
     actions:
       reservation:
         create: Забронировать!
