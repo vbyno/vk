@@ -15,4 +15,4 @@
 #= require turbolinks
 #= require jquery.turbolinks
 #= require vk
-#= require_tree ./public
+#= require public

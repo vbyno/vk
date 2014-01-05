@@ -1,18 +1,10 @@
 #= require bxslider
 #= require bootstrap-image-gallery.min
-#= require bootstrap-datepicker
 
 'use strict'
 
 jQuery ->
-  locale = $('body').data('locale')
-  # TODO think about better way
-
-  $('.datepicker').datepicker
-    format: 'dd/mm/yyyy'
-    startDate: '0d'
-    language: locale
-
+  $('.datepicker').custom_datepicker()
   $('.bxslider').bxSlider
     minSlides: 3
     maxSlides: 3

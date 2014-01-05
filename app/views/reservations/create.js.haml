@@ -1,9 +1,7 @@
 - if @reservation.errors.any?
   :plain
     $('#reservation-form').html("#{escape_javascript(render 'form')}");
-    $('.datepicker').datepicker({format: 'dd/mm/yyyy',
-                                 startDate: '0d',
-                                 language: $('body').data('locale')});
+    $('.datepicker').custom_datepicker();
     $('.alert .close').on('click', function() {
       $('.alert').remove();
     })
