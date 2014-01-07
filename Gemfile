@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem 'cancan'
-gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
@@ -39,6 +38,7 @@ group :development do
   gem 'annotate'
   gem 'sdoc', require: false
   gem 'newrelic_rpm'
+  gem 'sextant'
 end
 
 group :test do

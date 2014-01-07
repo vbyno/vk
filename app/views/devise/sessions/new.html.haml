@@ -1,0 +1,9 @@
+%h2 Sign in
+= semantic_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = f.semantic_errors
+  = f.inputs do
+    = f.input :email, required: true, autofocus: true
+    = f.input :password, required: true
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  = f.actions do
+    = f.submit 'Sign In', class: 'btn btn-big btn-success'

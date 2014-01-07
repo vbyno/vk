@@ -10,7 +10,6 @@ ru:
       feedback: Отзывы
       about_lviv: Львов. Что к чему
       contacts: Контакты
-      sign_in: Регистрация
   activerecord:
     attributes:
       apartment:
