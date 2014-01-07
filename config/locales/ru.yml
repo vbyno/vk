@@ -41,6 +41,22 @@ ru:
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение
+      apartment: &apartment_labels
+        title: Заголовок
+        price: Цена
+        active: Активная
+        short_description: Вводной текст
+        description: Описание
+        main_image: Фото
     actions:
       reservation:
         create: Забронировать!
+      apartment:
+        update: Обновить
+  admin:
+    apartments:
+      index:
+        <<: *apartment_labels
+        actions: Действия
+      edit:
+        headline: Изменить

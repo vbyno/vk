@@ -13,7 +13,7 @@ gem 'formtastic-bootstrap', '~> 3.0.0.rc.2'
 gem 'bootstrap-datepicker-rails'
 gem 'tinymce-rails'
 gem 'sass-rails', '~> 4.0.0'
-gem 'font-awesome-sass-rails'
+gem 'font-awesome-rails'
 gem 'jquery-fileupload-rails'
 
 gem 'coffee-rails', '~> 4.0.0'
