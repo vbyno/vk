@@ -17,3 +17,4 @@ jQuery ->
     pager: false
     moveSlides: 1
     adaptiveHeight: false
+    startSlide: 0
