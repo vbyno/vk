@@ -10,6 +10,11 @@ ru:
       feedback: Отзывы
       about_lviv: Львов. Что к чему
       contacts: Контакты
+    admin:
+      title: Панель администратора
+      navigation:
+        apartments: Квартиры
+        sign_out: Выйти
   activerecord:
     attributes:
       apartment:
