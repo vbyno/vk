@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: admin_users
+# Table name: admins
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null
@@ -17,7 +17,7 @@
 #  updated_at             :datetime
 #
 
-class AdminUser < ActiveRecord::Base
+class Admin < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 

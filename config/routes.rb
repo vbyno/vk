@@ -4,7 +4,8 @@ Vk::Application.routes.draw do
   resources :apartments, only: :show
   resources :reservations, only: :create
 
-  devise_for :admin_users
+  devise_for :users
+  devise_for :admins
 
   namespace :admin do
     resources :apartments, except: :show
