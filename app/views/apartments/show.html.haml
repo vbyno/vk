@@ -12,9 +12,12 @@
   %b Price:
   = @apartment.price.ceil
 %p= @apartment.short_description
-.gallery-images-list
-  %ul.bxslider
-    = render(@apartment.gallery_images)
+
+- if @apartment.gallery_images.any?
+  .gallery-images-list
+    %ul.bxslider
+      = render(@apartment.gallery_images)
+
 = @apartment.description.html_safe
 
 #reservation-form

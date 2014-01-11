@@ -33,6 +33,8 @@ ru:
   reservations:
     create:
       thank_you: Спасибо!
+    form:
+      submit_loading: Отправляется заявка...
   formtastic:
     labels:
       reservation:
