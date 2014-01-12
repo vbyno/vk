@@ -27,27 +27,27 @@ gem 'pg'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'rails', '~> 4.0.0'
 
-group :test, :development do
-  gem 'quiet_assets'
-  gem 'pry-rails'
-  gem 'thin'
-  gem 'database_cleaner'
-end
-
 group :development do
+  gem 'quiet_assets'
   gem 'annotate'
-  gem 'sdoc', require: false
   gem 'newrelic_rpm'
   gem 'sextant'
+  gem 'sdoc', require: false
+end
+
+group :development, :test do
+  gem 'thin'
+  gem 'database_cleaner'
+  gem 'pry-rails'
 end
 
 group :test do
-  gem 'shoulda-matchers'
-  gem 'simplecov', require: false
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'jasmine'
+
   gem 'launchy'
   gem 'capybara'
-  gem 'spork', '~> 1.0rc'
+
+  gem 'simplecov', require: false
 end
