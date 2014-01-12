@@ -46,6 +46,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
 
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'capybara'
 
