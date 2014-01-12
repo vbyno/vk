@@ -8,5 +8,4 @@
     = f.input :check_out, as: :string, input_html: { class: 'datepicker' }
     = f.input :body, input_html: { rows: 10, cols: 10, maxlength: 2000 }
   = f.actions do
-    = f.action :submit, as: :button,
-      button_html: { class: 'btn btn-big btn-success pull-right', data: { 'loading-text' => t('.submit_loading') } }
+    = f.action :submit, as: :button, button_html: { class: 'btn btn-big btn-success pull-right', data: { 'loading-text' => t('.submit_loading') } }

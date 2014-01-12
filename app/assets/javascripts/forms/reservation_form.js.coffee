@@ -7,6 +7,6 @@ class Vk.Forms.ReservationForm
     $('.datepicker').datepicker
       format: 'dd/mm/yyyy'
       startDate: '0d'
-      language: $('body').data('locale')
+      language: $('html').attr('lang')
       autoclose: true
     $('button').lazyButton()

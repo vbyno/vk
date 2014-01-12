@@ -1,15 +1,7 @@
 !!!
-%html
-  %head
-    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }
-    %title= content_for?(:title) ? yield(:title) : t('head.title')
-    %meta{ content: content_for?(:description) ? yield(:description) : 'App_Name', name: 'description' }
-    = stylesheet_link_tag :application, media: 'all'
-    = yield :additional_stylesheet
-    = javascript_include_tag :application
-    = csrf_meta_tags
-    = yield :head
-  %body{class: [controller_name, action_name], data: { locale: @locale.to_s }}
+%html{lang: @locale.to_i18n}
+  = render 'layouts/head'
+  %body{class: [controller_name, action_name]}
     %header.header.navbar.navbar-inverse.navbar-fixed-top
       .container
         = render 'layouts/navigation'
@@ -21,4 +13,3 @@
               = render 'layouts/flash_messages'
               = yield
           %footer
-    = yield :additional_javascript

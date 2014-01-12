@@ -10,3 +10,8 @@
 #= require_tree ./helpers
 #= require_tree ./forms
 #= require_tree ./pages
+
+'use strict'
+
+jQuery ->
+  $('button').lazyButton()
