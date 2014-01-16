@@ -1,0 +1,5 @@
+:plain
+  var form = Vk.Forms.ApartmentForm.newWith("#{escape_javascript(render 'form')}");
+- if @apartment.errors.empty?
+  :plain
+    form.successNotification();
