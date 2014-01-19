@@ -13,7 +13,7 @@ describe 'admin/apartments' do
   let(:update_translation_params) { { 'Title' => 'Unique Translation New Title' } }
 
   before do
-    login_as create(:admin_user), scope: :admin_user
+    login_as create(:admin), scope: :admin
     Locale.change_to_default!
   end
 

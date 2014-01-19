@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: gallery_images
+# Table name: photos
 #
 #  id           :integer          not null, primary key
 #  apartment_id :integer          not null
@@ -11,7 +11,7 @@
 #  updated_at   :datetime
 #
 
-class GalleryImage < ActiveRecord::Base
+class Photo < ActiveRecord::Base
   belongs_to :apartment
 
   validates :image, :apartment, presence: true

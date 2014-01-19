@@ -14,8 +14,8 @@
 #
 
 class Apartment < ActiveRecord::Base
-  belongs_to :main_photo, class_name: GalleryImage
-  has_many :photos, class_name: GalleryImage, dependent: :destroy
+  belongs_to :main_photo, class_name: Photo
+  has_many :photos, dependent: :destroy
   has_many :translations, class_name: ApartmentTranslation, dependent: :destroy
   has_many :reservations, dependent: :destroy
 

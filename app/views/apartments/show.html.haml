@@ -6,10 +6,10 @@
   = @apartment.price.ceil
 %p= @apartment.short_description
 
-- if @apartment.gallery_images.any?
+- if @apartment.photos.any?
   .gallery-images-list
     %ul.bxslider
-      = render(@apartment.gallery_images)
+      = render(@apartment.photos)
 
 = @apartment.description.html_safe
 

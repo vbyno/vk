@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: gallery_images
+# Table name: photos
 #
 #  id           :integer          not null, primary key
 #  apartment_id :integer          not null
@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-describe GalleryImage do
+describe Photo do
   it { expect(subject).to belong_to :apartment }
   it { expect(subject).to validate_presence_of :apartment }
   it { expect(subject).to validate_presence_of :image }

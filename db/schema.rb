@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119080600) do
+ActiveRecord::Schema.define(version: 20140119113531) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140119080600) do
     t.string   "short_description",                         default: "",    null: false
   end
 
-  create_table "gallery_images", force: true do |t|
+  create_table "photos", force: true do |t|
     t.integer  "apartment_id", null: false
     t.string   "image",        null: false
     t.string   "title"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140119080600) do
     t.datetime "updated_at"
   end
 
-  add_index "gallery_images", ["apartment_id"], name: "index_gallery_images_on_apartment_id", using: :btree
+  add_index "photos", ["apartment_id"], name: "index_photos_on_apartment_id", using: :btree
 
   create_table "reservations", force: true do |t|
     t.integer  "apartment_id",   null: false

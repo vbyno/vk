@@ -10,7 +10,7 @@
 
   - @apartments.each do |apartment|
     %tr
-      %td= image_tag(apartment.main_image.image_url(:fixed_size).to_s,
+      %td= image_tag(apartment.main_photo.image_url(:fixed_size).to_s,
                       class: 'img-thumbnail',
                       size: '350x200')
       %td= link_to apartment.title, apartment.path

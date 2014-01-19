@@ -16,13 +16,11 @@
 require 'spec_helper'
 
 describe Apartment do
-  it { expect(subject).to belong_to(:main_photo).class_name(GalleryImage) }
+  it { expect(subject).to belong_to(:main_photo).class_name(Photo) }
   it { expect(subject).to have_many(:translations).
                             class_name(ApartmentTranslation).
                             dependent(:destroy) }
-  it { expect(subject).to have_many(:photos).
-                            class_name(GalleryImage).
-                            dependent(:destroy) }
+  it { expect(subject).to have_many(:photos).dependent(:destroy) }
   it { expect(subject).to have_many(:reservations).dependent(:destroy) }
 
   it { expect(subject).to accept_nested_attributes_for(:photos) }

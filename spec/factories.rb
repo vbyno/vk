@@ -8,7 +8,7 @@ FactoryGirl.define do
 
     trait :active_with_main_photo do
       after :build do |apartment|
-        apartment.main_photo = build :gallery_image, apartment: apartment
+        apartment.main_photo = build :photo, apartment: apartment
         apartment.active = true
       end
 
@@ -31,7 +31,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :gallery_image do
+  factory :photo do
     image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
     association :apartment
   end

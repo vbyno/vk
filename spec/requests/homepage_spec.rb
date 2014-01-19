@@ -30,7 +30,7 @@ describe 'homepage' do
   context 'with apartment but without translations:' do
     before :all do
       Apartment.destroy_all
-      create :apartment, :active_with_main_image
+      create :apartment, :active_with_main_photo
     end
 
     it_behaves_like 'pages are accessible', root_pages
@@ -39,7 +39,7 @@ describe 'homepage' do
   context 'with apartment and translations:' do
     before :all do
       Apartment.destroy_all
-      create :apartment, :active_with_main_image, :with_translations
+      create :apartment, :active_with_main_photo, :with_translations
     end
 
     it_behaves_like 'pages are accessible', root_pages
