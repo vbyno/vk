@@ -8,7 +8,7 @@
 #  description       :text             not null
 #  created_at        :datetime
 #  updated_at        :datetime
-#  main_image_id     :integer
+#  main_photo_id     :integer
 #  active            :boolean          default(FALSE), not null
 #  short_description :string(255)      default(""), not null
 #
@@ -16,12 +16,16 @@
 require 'spec_helper'
 
 describe Apartment do
-  it { expect(subject).to belong_to(:main_image).class_name(GalleryImage) }
-  it { expect(subject).to have_many(:translations)
-                            .class_name(ApartmentTranslation)
-                            .dependent(:destroy) }
-  it { expect(subject).to have_many(:gallery_images).dependent(:destroy) }
+  it { expect(subject).to belong_to(:main_photo).class_name(GalleryImage) }
+  it { expect(subject).to have_many(:translations).
+                            class_name(ApartmentTranslation).
+                            dependent(:destroy) }
+  it { expect(subject).to have_many(:photos).
+                            class_name(GalleryImage).
+                            dependent(:destroy) }
   it { expect(subject).to have_many(:reservations).dependent(:destroy) }
+
+  it { expect(subject).to accept_nested_attributes_for(:photos) }
 
   it { expect(subject).to validate_presence_of :title }
   it { expect(subject).to validate_presence_of :price }
@@ -29,9 +33,9 @@ describe Apartment do
   it { expect(subject).to validate_presence_of :short_description }
 
   context 'main image' do
-    let(:active) { build :apartment, active: true, main_image: nil }
-    let(:inactive) { build :apartment, active: false, main_image: nil }
-    let(:active_with_main_image) { build :apartment, :active_with_main_image }
+    let(:active) { build :apartment, active: true, main_photo: nil }
+    let(:inactive) { build :apartment, active: false, main_photo: nil }
+    let(:active_with_main_photo) { build :apartment, :active_with_main_photo }
 
     it 'can be empty for inactive apartment' do
       expect(inactive).to be_valid
@@ -42,7 +46,7 @@ describe Apartment do
     end
 
     it 'is valid if apartment active' do
-      expect(active_with_main_image).to be_valid
+      expect(active_with_main_photo).to be_valid
     end
   end
 

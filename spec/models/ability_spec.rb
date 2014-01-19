@@ -21,7 +21,7 @@ shared_examples 'it is not able to manage global resources' do
 end
 
 describe Ability do
-  let(:admin_ability) { Ability.new(build :admin_user) }
+  let(:admin_ability) { Ability.new(build :admin) }
   let(:user_ability) { Ability.new(build :user) }
   let(:guest_ability) { Ability.new(nil) }
 

@@ -4,7 +4,11 @@
     = f.input :title
     = f.input :active
     = f.input :price
-    = f.input :main_image, as: :select, collection: @apartment.gallery_images
+  = f.semantic_fields_for :photos, f.object.photos.build do |p|
+    = p.inputs do
+      = p.input :title
+      = p.input :alt
+      = p.input :image
   = f.inputs class: 'col-md-12' do
     = f.input :short_description
     = f.input :description, input_html: { class: 'tinymce' }

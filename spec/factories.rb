@@ -6,14 +6,14 @@ FactoryGirl.define do
     sequence(:short_description) { |n| "Apartment #{n} Short Description" }
     active false
 
-    trait :active_with_main_image do
+    trait :active_with_main_photo do
       after :build do |apartment|
-        apartment.main_image = build :gallery_image, apartment: apartment
+        apartment.main_photo = build :gallery_image, apartment: apartment
         apartment.active = true
       end
 
       after :create do |apartment|
-        apartment.main_image.save!
+        apartment.main_photo.save!
         apartment.save!
       end
     end
@@ -32,7 +32,7 @@ FactoryGirl.define do
   end
 
   factory :gallery_image do
-    image { File.new("#{Rails.root}/spec/support/images/main_image.jpg") }
+    image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
     association :apartment
   end
 
@@ -53,7 +53,7 @@ FactoryGirl.define do
     status Reservation::PENDING
   end
 
-  factory :admin_user do
+  factory :admin do
     email 'admin@example.com'
     password 'password'
     password_confirmation 'password'

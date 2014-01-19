@@ -25,7 +25,8 @@ private
       :price,
       :short_description,
       :description,
-      :main_image_id
+      :main_image_id,
+      photos_attributes: [:id, :alt, :title, :image, :apartment_id]
     )
   end
 end
