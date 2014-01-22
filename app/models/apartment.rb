@@ -19,7 +19,7 @@ class Apartment < ActiveRecord::Base
   has_many :translations, class_name: ApartmentTranslation, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, allow_destroy: true
 
   validates :title, :price, :description, :short_description, presence: true
   validates :main_photo, presence: true, if: :active?

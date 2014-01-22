@@ -1,5 +1,3 @@
-#= require tinymce
-
 'use strict'
 
 class Vk.Forms.ApartmentForm
@@ -9,9 +7,19 @@ class Vk.Forms.ApartmentForm
 
   constructor: ->
     $('button').lazyButton()
+
     tinyMCE.init
       selector: '.tinymce'
       toolbar: 'sizeselect | bold italic | fontselect |  fontsizeselect'
+
+    $('#add-photos').on 'click', ->
+      $('#photo_image').click()
+      false
+
+    $("#new_photo").fileupload
+      dataType: 'json'
+      maxFileSize: 5000000
+      acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
 
   successNotification: ->
     $('#apartment-form').prepend(

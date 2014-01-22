@@ -1,5 +1,3 @@
-#= require bootstrap-datepicker
-
 'use strict'
 
 class Vk.Forms.ReservationForm

@@ -21,6 +21,10 @@ ru:
         title: Заголовок
         price: Цена
         description: Описание
+      photo:
+        alt: Описание
+        title: Заголовок
+        image: Изображение
   active_admin:
     devise:
       email:
@@ -62,3 +66,7 @@ ru:
         actions: Действия
       edit:
         headline: Изменить
+      form:
+        add_photos: Добавить фотографии
+  actions:
+    delete: Удалить

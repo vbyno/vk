@@ -1,7 +1,3 @@
-#= require bxslider
-#= require bootstrap-image-gallery.min
-#= require jquery.blueimp-gallery.min
-
 'use strict'
 
 class Vk.Pages.ApartmentPage

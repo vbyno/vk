@@ -7,8 +7,7 @@ class Admin::ApartmentsController < Admin::BaseController
   def edit; end
 
   def create
-    @apartment = Apartment.new(apartment_params)
-    @apartment.save
+    @apartment = Apartment.create(apartment_params)
     render 'create_update'
   end
 
@@ -26,7 +25,12 @@ private
       :short_description,
       :description,
       :main_image_id,
-      photos_attributes: [:id, :alt, :title, :image, :apartment_id]
+      photos_attributes: [:id,
+                          :alt,
+                          :title,
+                          :image,
+                          :apartment_id,
+                          :_destroy]
     )
   end
 end

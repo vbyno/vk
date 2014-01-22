@@ -1,0 +1,14 @@
+%table.table.table-striped.col-md-12
+  %tr
+    %th= photos.human_attribute_name :image
+    %th= photos.human_attribute_name :title
+    %th= photos.human_attribute_name :alt
+    %th
+
+  - photos.each do |photo|
+    %tr
+      = form.semantic_fields_for :photos, photo do |f|
+        %td= image_tag photo.image.fixed_size.url, width: '80'
+        %td= f.input :title, label: false
+        %td= f.input :alt, label: false
+        %td= f.input :_destroy, as: :boolean, label: t('actions.delete')

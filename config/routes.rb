@@ -8,7 +8,9 @@ Vk::Application.routes.draw do
   devise_for :admins
 
   namespace :admin do
-    resources :apartments, except: :show
+    resources :apartments, except: :show do
+      resources :photos, only: :create
+    end
     resources :reservations, only: [:edit, :update]
   end
 
