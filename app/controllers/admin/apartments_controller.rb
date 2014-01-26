@@ -24,7 +24,7 @@ private
       :price,
       :short_description,
       :description,
-      :main_image_id,
+      :main_photo_id,
       photos_attributes: [:id,
                           :alt,
                           :title,

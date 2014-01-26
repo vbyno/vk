@@ -21,6 +21,7 @@ ru:
         title: Заголовок
         price: Цена
         description: Описание
+        main_photo: Главное фото
       photo:
         alt: Описание
         title: Заголовок

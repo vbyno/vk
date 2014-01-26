@@ -6,7 +6,7 @@ class Vk.Forms.ApartmentForm
     new Vk.Forms.ApartmentForm()
 
   constructor: ->
-    $('apartment_submit_action').lazyButton()
+    $('#apartment_submit_action').lazyButton()
 
     tinyMCE.init
       selector: '.tinymce'
@@ -25,6 +25,7 @@ class Vk.Forms.ApartmentForm
         $("#photos tr:last").after(
           $("<tr>
               <td>#{data.files[0].name}</td>
+              <td></td>
               <td>
                 <div id='#{data.my_id}' class='progress progress-striped active'>
                   <div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%'></div>
@@ -39,6 +40,7 @@ class Vk.Forms.ApartmentForm
       done: (e, data) ->
         photo = data.result
         row = $("<td><image src='#{photo.url}' width='80'></td>
+                 <td></td>
                  <td></td>
                  <td></td>
                  <td></td>")
