@@ -19,18 +19,11 @@ class Admin::ApartmentsController < Admin::BaseController
 private
   def apartment_params
     params.require(:apartment).permit(
-      :title,
-      :active,
-      :price,
-      :short_description,
-      :description,
-      :main_photo_id,
-      photos_attributes: [:id,
-                          :alt,
-                          :title,
-                          :image,
-                          :apartment_id,
-                          :_destroy]
+      :title, :active, :price, :short_description,
+      :description, :main_photo_id,
+      photos_attributes: [
+        :id, :alt, :title, :image, :apartment_id, :_destroy
+      ]
     )
   end
 end

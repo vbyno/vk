@@ -4,3 +4,4 @@ this.module = (name) ->
 module 'Vk'
 module.apply(Vk, ['Forms'])
 module.apply(Vk, ['Pages'])
+module.apply(Vk, ['Helpers'])

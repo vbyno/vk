@@ -7,10 +7,7 @@ class Vk.Forms.ApartmentForm
 
   constructor: ->
     $('#apartment_submit_action').lazyButton()
-
-    tinyMCE.init
-      selector: '.tinymce'
-      toolbar: 'sizeselect | bold italic | fontselect |  fontsizeselect'
+    Vk.Helpers.tinymceInit()
 
     $('#add-photos').on 'click', ->
       $('#photo_image').click()
