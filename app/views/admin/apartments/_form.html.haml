@@ -12,9 +12,7 @@
 
   = f.actions class: 'col-md-12' do
     = f.button t('.add_photos'), id: 'add-photos', class: 'btn btn-big btn-primary'
-    = f.action :submit,
-      as: :button,
-      label: t('formtastic.actions.apartment.update'),
+    = f.action :submit, as: :button,
       button_html: { class: 'btn btn-big btn-success pull-right' }
 
 .hide

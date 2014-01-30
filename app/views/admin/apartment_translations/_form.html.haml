@@ -1,0 +1,15 @@
+- if (locale = params[:locale]) && @apartment_translation.new_record?
+  - @apartment_translation.locale = locale
+
+= semantic_form_for [:admin, @apartment_translation] do |f|
+  = f.semantic_errors *f.object.errors.keys
+  = f.inputs class: 'col-md-4' do
+    = f.input :title
+    = f.input :locale, as: :select, collection: Locale::SECONDARY_LOCALES,
+      input_html: { readonly: @apartment_translation.locale.present? }
+  = f.inputs class: 'col-md-12' do
+    = f.input :short_description
+    = f.input :description, input_html: { class: 'tinymce' }
+  = f.action :submit, as: :button,
+    label: t('formtastic.actions.apartment.update'),
+    button_html: { class: 'btn btn-big btn-success pull-right' }

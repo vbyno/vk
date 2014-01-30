@@ -10,8 +10,10 @@ Vk::Application.routes.draw do
   namespace :admin do
     resources :apartments, except: :show do
       resources :photos, only: :create
+      resources :apartment_translations, only: [:new, :create],
+                as: :translations, path: :translations
     end
-    resources :reservations, only: [:edit, :update]
+    resources :apartment_translations, :reservations, only: [:edit, :update]
   end
 
   scope ':locale', locale: /ua|en|pl/ do

@@ -64,4 +64,31 @@ describe Apartment do
       end
     end
   end
+
+  describe '#locales_with_translations' do
+    let(:apartment) { build :apartment }
+    let(:en_translation) {
+      build :apartment_translation, locale: 'en', apartment: apartment
+    }
+    let(:pl_translation) {
+      build :apartment_translation, locale: 'pl', apartment: apartment
+    }
+    subject(:locales_with_translations) { apartment.locales_with_translations }
+
+    it 'returns empty set if no translations' do
+      expect(locales_with_translations).to eq({ ua: nil, en: nil, pl: nil })
+    end
+
+    it 'returns set of locales' do
+      allow(apartment).to receive(:translations).and_return [
+        pl_translation, en_translation
+      ]
+
+      expect(locales_with_translations).to eq({
+        ua: nil,
+        en: en_translation,
+        pl: pl_translation
+      })
+    end
+  end
 end

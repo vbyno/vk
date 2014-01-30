@@ -32,6 +32,13 @@ class Apartment < ActiveRecord::Base
   %w[title description].each do |attribute|
     define_method "translated_#{attribute}", ->(locale) do
       translations.find_by(locale: locale).try(attribute)
-   end
- end
+    end
+  end
+
+  def locales_with_translations
+    values = Locale::SECONDARY_LOCALES.map { |locale|
+      translations.detect {|t| t.locale.to_sym == locale }
+    }
+    Hash[Locale::SECONDARY_LOCALES.zip values]
+  end
 end

@@ -1,11 +1,12 @@
 = link_to 'New', new_admin_apartment_path
 %table.table.table-striped
   %tr
-    %th= t('.title')
-    %th= t('.price')
-    %th= t('.active')
-    %th= t('.short_description')
-    %th= t('.description')
+    %th= @apartments.human_attribute_name :title
+    %th= @apartments.human_attribute_name :price
+    %th= @apartments.human_attribute_name :active
+    %th= @apartments.human_attribute_name :short_description
+    %th= @apartments.human_attribute_name :description
+    %th= ApartmentTranslation.model_name.human(:count => Float::INFINITY)
     %th= t('.actions')
 
   - @apartments.each do |apartment|
@@ -17,6 +18,7 @@
           %i.fa.fa-check
       %td= apartment.short_description
       %td= truncate(apartment.description, length: 100)
+      %td= render 'locale_links', apartment: apartment
       %td
         = link_to edit_admin_apartment_path(apartment) do
           %i.fa.fa-pencil
