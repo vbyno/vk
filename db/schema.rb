@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119113531) do
+ActiveRecord::Schema.define(version: 20140201123419) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -53,6 +56,15 @@ ActiveRecord::Schema.define(version: 20140119113531) do
     t.boolean  "active",                                    default: false, null: false
     t.string   "short_description",                         default: "",    null: false
   end
+
+  create_table "photo_translations", force: true do |t|
+    t.integer "apartment_translation_id", null: false
+    t.integer "photo_id",                 null: false
+    t.string  "alt"
+    t.string  "title"
+  end
+
+  add_index "photo_translations", ["apartment_translation_id"], name: "index_photo_translations_on_apartment_translation_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.integer  "apartment_id", null: false

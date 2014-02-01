@@ -16,12 +16,28 @@ class ApartmentTranslation < ActiveRecord::Base
   LOCALES = Set.new Locale::SECONDARY_LOCALES.map(&:to_s)
 
   belongs_to :apartment
+  has_many :photos, through: :apartment
+  has_many :photo_translations, dependent: :destroy
+
+  accepts_nested_attributes_for :photo_translations,
+                                allow_destroy: true,
+                                reject_if: proc { |pt| pt[:title].blank? &&
+                                                         pt[:alt].blank? }
 
   validates :locale,
             presence: true,
             inclusion: { in: LOCALES },
             uniqueness: { scope: :apartment_id }
-  validates :title, :description, :short_description, :apartment, presence: true
+  validates :title, :description, :short_description, :apartment,
+            presence: true
 
-  scope :by_apartment_ids, ->(ids, locale) { where(apartment_id: ids, locale: locale) }
+  scope :by_apartment_ids, ->(ids, locale) { where(apartment_id: ids,
+                                                   locale: locale) }
+  def forced_photo_translations
+    photo_ids = photos.pluck(:id) - photo_translations.pluck(:photo_id)
+    photo_ids.each do |photo_id|
+      photo_translations.build(photo_id: photo_id)
+    end
+    photo_translations
+  end
 end

@@ -1,0 +1,15 @@
+%table.table.table-striped.col-md-12
+  %tr
+    %th.col-md-1= PhotoTranslation.human_attribute_name :image
+    %th= PhotoTranslation.human_attribute_name :title
+    %th= PhotoTranslation.human_attribute_name :alt
+    %th
+
+  - @apartment_translation.forced_photo_translations.each do |photo_translation|
+    %tr
+      = form.semantic_fields_for :photo_translations, photo_translation do |f|
+        %td= image_tag photo_translation.image.fixed_size.url, width: '80'
+        %td= f.input :title, label: false
+        %td= f.input :alt, label: false
+        %td= f.input :_destroy, as: :boolean, label: t('actions.delete')
+        = f.input :photo_id, as: :hidden

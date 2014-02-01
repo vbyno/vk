@@ -10,6 +10,9 @@
   = f.inputs class: 'col-md-12' do
     = f.input :short_description
     = f.input :description, input_html: { class: 'tinymce' }
+  = render 'fields_for_photo_translations',
+           photo_translations: @apartment_translation.photo_translations,
+           form: f
   = f.action :submit, as: :button,
     label: t('formtastic.actions.apartment.update'),
     button_html: { class: 'btn btn-big btn-success pull-right' }

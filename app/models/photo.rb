@@ -13,6 +13,7 @@
 
 class Photo < ActiveRecord::Base
   belongs_to :apartment
+  has_many :translations, class_name: PhotoTranslation, dependent: :destroy
 
   validates :image, :apartment, presence: true
 

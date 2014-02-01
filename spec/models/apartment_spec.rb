@@ -23,12 +23,12 @@ describe Apartment do
   it { expect(subject).to have_many(:photos).dependent(:destroy) }
   it { expect(subject).to have_many(:reservations).dependent(:destroy) }
 
-  it { expect(subject).to accept_nested_attributes_for(:photos) }
+  it { expect(subject).to accept_nested_attributes_for(:photos).
+                            allow_destroy(true) }
 
-  it { expect(subject).to validate_presence_of :title }
-  it { expect(subject).to validate_presence_of :price }
-  it { expect(subject).to validate_presence_of :description }
-  it { expect(subject).to validate_presence_of :short_description }
+  %i[title price description short_description].each do |attribute|
+    it { expect(subject).to validate_presence_of attribute }
+  end
 
   context 'main image' do
     let(:active) { build :apartment, active: true, main_photo: nil }

@@ -15,6 +15,9 @@ require 'spec_helper'
 
 describe Photo do
   it { expect(subject).to belong_to :apartment }
+  it { expect(subject).to have_many(:translations).
+                          class_name(PhotoTranslation).
+                          dependent(:destroy) }
   it { expect(subject).to validate_presence_of :apartment }
   it { expect(subject).to validate_presence_of :image }
 end

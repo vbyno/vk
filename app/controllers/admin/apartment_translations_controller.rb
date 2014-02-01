@@ -29,7 +29,8 @@ private
 
   def update_params
     params.require(:apartment_translation).permit(
-      :title, :short_description, :description
+      :title, :short_description, :description,
+      photo_translations_attributes: [:id, :photo_id, :alt, :title, :_destroy]
     )
   end
 end

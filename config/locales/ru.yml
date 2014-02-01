@@ -1,4 +1,14 @@
 ru:
+  shared_fields:
+    apartment_fields: &apartment_fields
+      title: Заголовок
+      price: Цена
+      description: Описание
+      short_description: Краткое описание
+    photo_fields: &photo_fields
+      alt: Описание
+      title: Заголовок
+      image: Изображение
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
@@ -17,17 +27,17 @@ ru:
         sign_out: Выйти
   activerecord:
     attributes:
+      apartment_translation:
+        <<: *apartment_fields
+        locale: Язык перевода
       apartment:
-        title: Заголовок
-        price: Цена
-        description: Описание
-        short_description: Краткое описание
+        <<: *apartment_fields
         main_photo: Главное фото
         active: Активная
       photo:
-        alt: Описание
-        title: Заголовок
-        image: Изображение
+        <<: *photo_fields
+      photo_translation:
+        <<: *photo_fields
     models:
       apartment:
         one: Квартира
@@ -51,13 +61,6 @@ ru:
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение
-      apartment: &apartment_labels
-        title: Заголовок
-        price: Цена
-        active: Активная
-        short_description: Вводной текст
-        description: Описание
-        main_image: Фото
     actions:
       reservation:
         create: Забронировать!

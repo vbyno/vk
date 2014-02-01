@@ -3,10 +3,10 @@
 
 %table
   %tr
-    %th.col-md-4 Photo
-    %th Title
-    %th Price
-    %th Description
+    %th.col-md-4= Apartment.human_attribute_name :main_photo
+    %th= Apartment.human_attribute_name :title
+    %th= Apartment.human_attribute_name :price
+    %th= Apartment.human_attribute_name :description
 
   - @apartments.each do |apartment|
     %tr

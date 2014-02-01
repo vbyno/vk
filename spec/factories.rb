@@ -36,12 +36,29 @@ FactoryGirl.define do
     association :apartment
   end
 
+  factory :photo_translation do
+    association :photo
+
+    trait :rich do
+      alt 'Translated Photo Alt'
+      title 'Translated Photo Title'
+    end
+
+    trait :pure do
+      photo nil
+    end
+  end
+
   factory :apartment_translation do
     association :apartment
     title 'Translated Title'
     description 'Translated Description'
     sequence(:short_description) { |n| "Translated Apartment #{n} Short Description" }
     locale 'en'
+
+    trait :pure do
+      apartment nil
+    end
   end
 
   factory :reservation do
