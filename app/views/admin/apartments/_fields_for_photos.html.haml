@@ -1,16 +1,17 @@
-%table.table.table-striped.col-md-12#photos
-  %tr
-    %th.col-md-1= photos.human_attribute_name :image
-    %th.col-md-1= Apartment.human_attribute_name :main_photo
-    %th= photos.human_attribute_name :title
-    %th= photos.human_attribute_name :alt
-    %th
-
-  - photos.each do |photo|
+.table-responsive
+  %table.table.table-striped.table-condensed.col-md-12#photos
     %tr
-      = form.semantic_fields_for :photos, photo do |f|
-        %td= image_tag photo.image.fixed_size.url, width: '80'
-        %td= radio_button(:apartment, :main_photo_id, photo.id)
-        %td= f.input :title, label: false
-        %td= f.input :alt, label: false
-        %td= f.input :_destroy, as: :boolean, label: t('actions.delete')
+      %th.col-md-1= photos.human_attribute_name :image
+      %th.col-md-1= Apartment.human_attribute_name :main_photo
+      %th= photos.human_attribute_name :title
+      %th= photos.human_attribute_name :alt
+      %th.col-md-1
+
+    - photos.each do |photo|
+      %tr
+        = form.semantic_fields_for :photos, photo do |f|
+          %td= image_tag photo.image.thumb.url, size: '80x40'
+          %td= radio_button(:apartment, :main_photo_id, photo.id)
+          %td= f.input :title, label: false
+          %td= f.input :alt, label: false
+          %td= f.input :_destroy, as: :boolean, label: t('actions.delete')
