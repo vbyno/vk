@@ -1,10 +1,7 @@
 - if @reservation.errors.any?
   :plain
     $('#reservation-form').html("#{escape_javascript(render 'form')}");
-    $('.datepicker').custom_datepicker();
-    $('.alert .close').on('click', function() {
-      $('.alert').remove();
-    })
+    new Vk.Forms.ReservationForm();
 - else
   :plain
     $('#reservation-form').html("<p>#{t('.thank_you')}</p>");

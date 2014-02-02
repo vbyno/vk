@@ -8,7 +8,7 @@
 #  description       :text             not null
 #  created_at        :datetime
 #  updated_at        :datetime
-#  main_image_id     :integer
+#  main_photo_id     :integer
 #  active            :boolean          default(FALSE), not null
 #  short_description :string(255)      default(""), not null
 #
@@ -16,22 +16,24 @@
 require 'spec_helper'
 
 describe Apartment do
-  it { expect(subject).to belong_to(:main_image).class_name(GalleryImage) }
-  it { expect(subject).to have_many(:translations)
-                            .class_name(ApartmentTranslation)
-                            .dependent(:destroy) }
-  it { expect(subject).to have_many(:gallery_images).dependent(:destroy) }
+  it { expect(subject).to belong_to(:main_photo).class_name(Photo) }
+  it { expect(subject).to have_many(:translations).
+                            class_name(ApartmentTranslation).
+                            dependent(:destroy) }
+  it { expect(subject).to have_many(:photos).dependent(:destroy) }
   it { expect(subject).to have_many(:reservations).dependent(:destroy) }
 
-  it { expect(subject).to validate_presence_of :title }
-  it { expect(subject).to validate_presence_of :price }
-  it { expect(subject).to validate_presence_of :description }
-  it { expect(subject).to validate_presence_of :short_description }
+  it { expect(subject).to accept_nested_attributes_for(:photos).
+                            allow_destroy(true) }
+
+  %i[title price description short_description].each do |attribute|
+    it { expect(subject).to validate_presence_of attribute }
+  end
 
   context 'main image' do
-    let(:active) { build :apartment, active: true, main_image: nil }
-    let(:inactive) { build :apartment, active: false, main_image: nil }
-    let(:active_with_main_image) { build :apartment, :active_with_main_image }
+    let(:active) { build :apartment, active: true, main_photo: nil }
+    let(:inactive) { build :apartment, active: false, main_photo: nil }
+    let(:active_with_main_photo) { build :apartment, :active_with_main_photo }
 
     it 'can be empty for inactive apartment' do
       expect(inactive).to be_valid
@@ -42,7 +44,7 @@ describe Apartment do
     end
 
     it 'is valid if apartment active' do
-      expect(active_with_main_image).to be_valid
+      expect(active_with_main_photo).to be_valid
     end
   end
 
@@ -60,6 +62,33 @@ describe Apartment do
           ua_translation.public_send(attribute)
         )
       end
+    end
+  end
+
+  describe '#locales_with_translations' do
+    let(:apartment) { build :apartment }
+    let(:en_translation) {
+      build :apartment_translation, locale: 'en', apartment: apartment
+    }
+    let(:pl_translation) {
+      build :apartment_translation, locale: 'pl', apartment: apartment
+    }
+    subject(:locales_with_translations) { apartment.locales_with_translations }
+
+    it 'returns empty set if no translations' do
+      expect(locales_with_translations).to eq({ ua: nil, en: nil, pl: nil })
+    end
+
+    it 'returns set of locales' do
+      allow(apartment).to receive(:translations).and_return [
+        pl_translation, en_translation
+      ]
+
+      expect(locales_with_translations).to eq({
+        ua: nil,
+        en: en_translation,
+        pl: pl_translation
+      })
     end
   end
 end

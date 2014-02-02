@@ -3,14 +3,14 @@
 
 %table
   %tr
-    %th.col-md-4 Photo
-    %th Title
-    %th Price
-    %th Description
+    %th.col-md-4= Apartment.human_attribute_name :main_photo
+    %th= Apartment.human_attribute_name :title
+    %th= Apartment.human_attribute_name :price
+    %th= Apartment.human_attribute_name :description
 
   - @apartments.each do |apartment|
     %tr
-      %td= image_tag(apartment.main_image.image_url(:fixed_size).to_s,
+      %td= image_tag(apartment.main_photo.image.small.url.to_s,
                       class: 'img-thumbnail',
                       size: '350x200')
       %td= link_to apartment.title, apartment.path

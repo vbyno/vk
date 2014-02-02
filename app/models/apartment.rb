@@ -8,19 +8,21 @@
 #  description       :text             not null
 #  created_at        :datetime
 #  updated_at        :datetime
-#  main_image_id     :integer
+#  main_photo_id     :integer
 #  active            :boolean          default(FALSE), not null
 #  short_description :string(255)      default(""), not null
 #
 
 class Apartment < ActiveRecord::Base
-  belongs_to :main_image, class_name: GalleryImage
+  belongs_to :main_photo, class_name: Photo
+  has_many :photos, dependent: :destroy
   has_many :translations, class_name: ApartmentTranslation, dependent: :destroy
-  has_many :gallery_images, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
+  accepts_nested_attributes_for :photos, allow_destroy: true
+
   validates :title, :price, :description, :short_description, presence: true
-  validates :main_image, presence: true, if: :active?
+  validates :main_photo, presence: true, if: :active?
 
   scope :active, -> { where(active: true) }
   scope :translated_to, ->(locale) {
@@ -30,6 +32,13 @@ class Apartment < ActiveRecord::Base
   %w[title description].each do |attribute|
     define_method "translated_#{attribute}", ->(locale) do
       translations.find_by(locale: locale).try(attribute)
-   end
- end
+    end
+  end
+
+  def locales_with_translations
+    values = Locale::SECONDARY_LOCALES.map { |locale|
+      translations.detect {|t| t.locale.to_sym == locale }
+    }
+    Hash[Locale::SECONDARY_LOCALES.zip values]
+  end
 end

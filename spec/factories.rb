@@ -6,14 +6,14 @@ FactoryGirl.define do
     sequence(:short_description) { |n| "Apartment #{n} Short Description" }
     active false
 
-    trait :active_with_main_image do
+    trait :active_with_main_photo do
       after :build do |apartment|
-        apartment.main_image = build :gallery_image, apartment: apartment
+        apartment.main_photo = build :photo, apartment: apartment
         apartment.active = true
       end
 
       after :create do |apartment|
-        apartment.main_image.save!
+        apartment.main_photo.save!
         apartment.save!
       end
     end
@@ -31,9 +31,22 @@ FactoryGirl.define do
     end
   end
 
-  factory :gallery_image do
-    image { File.new("#{Rails.root}/spec/support/images/main_image.jpg") }
+  factory :photo do
+    image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
     association :apartment
+  end
+
+  factory :photo_translation do
+    association :photo
+
+    trait :rich do
+      alt 'Translated Photo Alt'
+      title 'Translated Photo Title'
+    end
+
+    trait :pure do
+      photo nil
+    end
   end
 
   factory :apartment_translation do
@@ -42,6 +55,10 @@ FactoryGirl.define do
     description 'Translated Description'
     sequence(:short_description) { |n| "Translated Apartment #{n} Short Description" }
     locale 'en'
+
+    trait :pure do
+      apartment nil
+    end
   end
 
   factory :reservation do
@@ -53,7 +70,7 @@ FactoryGirl.define do
     status Reservation::PENDING
   end
 
-  factory :admin_user do
+  factory :admin do
     email 'admin@example.com'
     password 'password'
     password_confirmation 'password'

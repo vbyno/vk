@@ -2,7 +2,7 @@ require 'acceptance_helper'
 
 describe 'admin/login' do
   let(:admin_login_page) { Admin::LoginPage.new }
-  let(:admin) { create :admin_user }
+  let(:admin) { create :admin }
 
   it 'allows admin to log in' do
     admin_login_page.visit!.log_in(admin)

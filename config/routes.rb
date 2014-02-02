@@ -5,12 +5,19 @@ Vk::Application.routes.draw do
   resources :reservations, only: :create
 
   devise_for :users
+  devise_for :admins
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  namespace :admin do
+    resources :apartments, except: :show do
+      resources :photos, only: :create
+      resources :apartment_translations, only: [:new, :create],
+                as: :translations, path: :translations
+    end
+    resources :apartment_translations, :reservations, only: [:edit, :update]
+  end
 
   scope ':locale', locale: /ua|en|pl/ do
-    resources :apartments, as: :locale_apartments
+    resources :apartments, as: :locale_apartments, only: :show
     root 'apartments#index', as: :locale_root
   end
 end

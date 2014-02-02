@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem 'cancan'
-gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
@@ -10,11 +9,12 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'sanitize'
 gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'formtastic', '2.3.0.rc2'
 gem 'formtastic-bootstrap', '~> 3.0.0.rc.2'
 gem 'bootstrap-datepicker-rails'
 gem 'tinymce-rails'
 gem 'sass-rails', '~> 4.0.0'
-gem 'font-awesome-sass-rails'
+gem 'font-awesome-rails'
 gem 'jquery-fileupload-rails'
 
 gem 'coffee-rails', '~> 4.0.0'
@@ -26,28 +26,30 @@ gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 1.3.0'
 gem 'pg'
 gem 'rails-i18n', '~> 4.0.0'
-gem 'rails', '~> 4.0.0'
-
-group :test, :development do
-  gem 'quiet_assets'
-  gem 'pry-rails'
-  gem 'thin'
-  gem 'database_cleaner'
-end
+gem 'rails', '~> 4.0.2'
 
 group :development do
+  gem 'quiet_assets'
   gem 'annotate'
-  gem 'sdoc', require: false
   gem 'newrelic_rpm'
+  gem 'sextant'
+  gem 'sdoc', require: false
+end
+
+group :development, :test do
+  gem 'thin'
+  gem 'database_cleaner'
+  gem 'pry-rails'
 end
 
 group :test do
-  gem 'shoulda-matchers'
-  gem 'simplecov', require: false
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'jasmine'
+
+  gem 'selenium-webdriver'
   gem 'launchy'
   gem 'capybara'
-  gem 'spork', '~> 1.0rc'
+
+  gem 'simplecov', require: false
 end

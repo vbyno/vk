@@ -1,42 +1,51 @@
-# encoding: utf-8
-
 class GalleryImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  SIZES_TO_FILL = {
+    small: [350, 200],
+    thumb: [80, 40]
+  }.freeze
+  SIZES_TO_FIT = {
+    full_screen: [1920, 1080],
+    small_fixed_height: [10000, 180]
+  }.freeze
+
   storage :file
+  after :remove, :delete_empty_upstream_dir
+  process :watermarking
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
-
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  version :fixed_height do
-    process resize_to_fit: [10000, 180]
+  def filename
+    "#{model.class.to_s.underscore}.jpg" if original_filename
   end
 
-  version :fixed_size do
-    process resize_to_fill: [350, 200]
+  def watermarking
+    manipulate! do |img|
+      logo = MiniMagick::Image.open("#{Rails.root}/app/assets/images/watermark.png")
+      # img = img.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+      img = img.composite(logo, 'jpg') do |c|
+        c.gravity 'center'
+      end
+    end
+  end
+
+  SIZES_TO_FIT.each do |name, sizes|
+    version(name) { process resize_to_fit: sizes }
+  end
+
+  SIZES_TO_FILL.each do |name, sizes|
+    version(name) { process resize_to_fill: sizes }
   end
 
   def extension_white_list
-    %w[jpg jpeg]
+    %w[jpg jpeg png]
   end
 
-  def filename
-    "#{model.class.to_s.underscore}.jpg" if original_filename
+  def delete_empty_upstream_dir
+    path = ::File.expand_path(store_dir, root)
+    FileUtils.rm_rf(path) # TODO not safe way!
   end
 end

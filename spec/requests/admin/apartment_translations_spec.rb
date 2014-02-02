@@ -13,17 +13,17 @@ describe 'admin/apartments' do
   let(:update_translation_params) { { 'Title' => 'Unique Translation New Title' } }
 
   before do
-    login_as create(:admin_user), scope: :admin_user
+    login_as create(:admin), scope: :admin
     Locale.change_to_default!
   end
 
   it 'CRUD apartment translation', js: true do
-    index_page = Admin::IndexPage.new(ApartmentTranslation)
-    expect(index_page.visit!).to have_instances(translation, translation_attributes_hash)
-    index_page.new_button.click!
+    index_page = Admin::IndexPage.new(Apartment)
+    expect(index_page.visit!).to have_instances(translation.apartment,
+                                                attributes: %i[title description])
+    index_page.locale_link('en').click!
 
     new_page = Admin::NewPage.new(ApartmentTranslation,
-                                  selects: ['Apartment', 'Locale'],
                                   tiny_mce_textareas: 'Description')
     expect(new_page).to be_loaded
     new_page.form.fill_with(new_translation_params).submit_button.click!

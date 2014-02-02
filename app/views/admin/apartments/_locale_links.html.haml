@@ -1,0 +1,5 @@
+- apartment.locales_with_translations.each do |locale, apartment_translation|
+  - if apartment_translation
+    = link_to locale, edit_admin_apartment_translation_path(apartment_translation)
+  - else
+    = link_to locale, new_admin_apartment_translation_path(locale: locale, apartment_id: apartment), class: 'text-danger'
