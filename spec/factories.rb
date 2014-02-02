@@ -81,4 +81,18 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
   end
+
+  factory :page, class: Page do
+    sequence(:permalink) { |n| "permalink_#{n}" }
+    locale 'ru'
+    content '<p>Page Content</p>'
+    seo_title 'Seo Title'
+
+    factory :child_page, class: ChildPage do
+      association(:parent_page)
+    end
+
+    factory :parent_page, class: ParentPage do
+    end
+  end
 end

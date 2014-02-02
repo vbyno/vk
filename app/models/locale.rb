@@ -8,6 +8,7 @@ class Locale
     PL = :pl
   ]
   SECONDARY_LOCALES = Set.new [UA, EN, PL]
+  ALL = ALL_LOCALES.map(&:to_s)
 
   def self.new!(locale_param = nil)
     self.new(locale_param).tap(&:change_current!)
