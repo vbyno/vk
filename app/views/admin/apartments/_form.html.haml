@@ -10,14 +10,16 @@
     = f.input :short_description
     = f.input :description, input_html: { class: 'tinymce' }
 
-  = render 'fields_for_photos', photos: @apartment.photos.where.not(id: nil), form: f
+  - unless @apartment.new_record?
+    = render 'fields_for_photos', photos: @apartment.photos.where.not(id: nil), form: f
 
   = f.actions class: 'col-md-12' do
-    = f.button t('.add_photos'), id: 'add-photos', class: 'btn btn-big btn-primary'
-    = f.action :submit, as: :button,
+    = f.button t('actions.photos.add'), id: 'add-photos', class: 'btn btn-big btn-primary'
+    = f.action :submit, as: :button, label: t("actions.apartment.#{action_name}"),
       button_html: { class: 'btn btn-big btn-success pull-right' }
 
-.hide
-  = semantic_form_for [:admin, @apartment, @apartment.photos.build], html: { multipart: true }, remote: true do |f|
-    = f.inputs class: 'col-md-4' do
-      = f.file_field :image, multiple: true, name: 'photo[image]'
+- unless @apartment.new_record?
+  .hide
+    = semantic_form_for [:admin, @apartment, @apartment.photos.build], html: { multipart: true }, remote: true do |f|
+      = f.inputs class: 'col-md-4' do
+        = f.file_field :image, multiple: true, name: 'photo[image]'

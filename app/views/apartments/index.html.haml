@@ -11,8 +11,8 @@
   - @apartments.each do |apartment|
     %tr
       %td= image_tag(apartment.main_photo.image.small.url.to_s,
-                     class: 'img-thumbnail',
-                     size: '350x200')
+                      class: 'img-thumbnail',
+                      size: '350x200')
       %td= link_to apartment.title, apartment.path
       %td= apartment.price.ceil
       %td= apartment.short_description

@@ -1,10 +1,14 @@
 class Admin::LoginPage < BasicPage
   def initialize
-    super(new_admin_session_path, main_content: 'Панель управления')
+    main_content = Apartment.model_name.human(:count => Float::INFINITY)
+    super(new_admin_session_path, main_content: main_content)
   end
 
   def log_in(admin)
-    form.fill_with('Email' => admin.email, 'Пароль' => admin.password).submit_button.click!
+    email = Admin.human_attribute_name :email
+    password = Admin.human_attribute_name :password
+    form.fill_with(email => admin.email, password => admin.password).
+         submit_button.click!
     self
   end
 

@@ -38,10 +38,14 @@ ru:
         <<: *photo_fields
       photo_translation:
         <<: *photo_fields
+      admin:
+        email: Почта
+        password: Пароль
+        remember_me: Запомнить меня
     models:
       apartment:
         one: Квартира
-        others: Квартиры
+        other: Квартиры
       apartment_translation:
         one: Перевод
         other: Переводы
@@ -76,6 +80,11 @@ ru:
       edit:
         headline: Изменить
       form:
-        add_photos: Добавить фотографии
   actions:
     delete: Удалить
+    sign_in: Войти
+    apartment:
+      new: Добавить квартиру
+      edit: Изменить квартиру
+    photos:
+      add: Добавить фотографии
