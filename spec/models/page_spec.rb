@@ -32,18 +32,20 @@ describe Page do
   end
 
   describe '#child?' do
-    subject(:child?) { page.child? }
-
     it 'returns false' do
-      expect(child?).to be_false
+      expect(page.child?).to be_false
     end
   end
 
   describe '#parent?' do
-    subject(:parent?) { page.parent? }
-
     it 'returns false' do
-      expect(parent?).to be_false
+      expect(page.parent?).to be_false
+    end
+  end
+
+  describe '#to_param' do
+    it 'returns permalink' do
+      expect(page.to_param).to eq page.permalink
     end
   end
 end

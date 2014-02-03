@@ -20,4 +20,8 @@ Vk::Application.routes.draw do
     resources :apartments, as: :locale_apartments, only: :show
     root 'apartments#index', as: :locale_root
   end
+
+  get '/:parent_permalink' => 'parent_pages#show', as: :parent_page
+  get '/:parent_permalink/:child_permalink' => 'child_pages#show',
+                                               as: :child_page
 end

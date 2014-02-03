@@ -28,4 +28,8 @@ class Page < ActiveRecord::Base
   def child?
     false
   end
+
+  def to_param
+    permalink
+  end
 end

@@ -16,8 +16,6 @@
 #  updated_at      :datetime
 #
 
-require 'spec_helper'
-
 class ParentPage < Page
   has_many :child_pages, foreign_key: :parent_id
 end
