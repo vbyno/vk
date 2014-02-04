@@ -29,6 +29,9 @@ FactoryGirl.define do
         apartment.translations.each(&:save!)
       end
     end
+
+    trait :pure do
+    end
   end
 
   factory :photo do

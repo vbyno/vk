@@ -1,7 +1,16 @@
 Vk::Application.routes.draw do
-  root 'apartments#index'
+  concern :apartment_presenter do
+    root 'apartments#index'
+    resources :apartments, only: :show
+  end
 
-  resources :apartments, only: :show
+  concern :seo_hierarchical do
+    get '/:parent_permalink' => 'parent_pages#show', as: :parent_page
+    get '/:parent_permalink/:child_permalink' => 'child_pages#show',
+                                                 as: :child_page
+  end
+
+  concerns :apartment_presenter
   resources :reservations, only: :create
 
   devise_for :users
@@ -16,12 +25,8 @@ Vk::Application.routes.draw do
     resources :apartment_translations, :reservations, only: [:edit, :update]
   end
 
-  scope ':locale', locale: /ua|en|pl/ do
-    resources :apartments, as: :locale_apartments, only: :show
-    root 'apartments#index', as: :locale_root
+  scope ':locale', locale: /ua|en|pl/, as: :locale do
+    concerns :apartment_presenter, :seo_hierarchical
   end
-
-  get '/:parent_permalink' => 'parent_pages#show', as: :parent_page
-  get '/:parent_permalink/:child_permalink' => 'child_pages#show',
-                                               as: :child_page
+  concerns :seo_hierarchical
 end
