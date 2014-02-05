@@ -15,10 +15,9 @@ describe ChildPagesController do
       expect(response).to render_template :show
     end
 
-    it 'assigns parent and child pages' do
+    it 'assigns child page' do
       get :show, params
-      expect(assigns(:parent_page)).to eq child_page.parent_page
-      expect(assigns(:child_page)).to eq child_page
+      expect(assigns(:page)).to eq child_page
     end
 
     it 'throws exception if child permalink is wrong' do

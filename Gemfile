@@ -32,8 +32,8 @@ group :development do
   gem 'quiet_assets'
   gem 'annotate'
   gem 'newrelic_rpm'
-  gem 'sextant'
-  gem 'sdoc', require: false
+  gem 'factory_girl_rails', require: false
+  gem 'ffaker', require: false
 end
 
 group :development, :test do
@@ -46,6 +46,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'ffaker'
 
   gem 'selenium-webdriver'
   gem 'launchy'

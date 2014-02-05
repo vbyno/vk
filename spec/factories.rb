@@ -86,16 +86,18 @@ FactoryGirl.define do
   end
 
   factory :page, class: Page do
-    sequence(:permalink) { |n| "permalink_#{n}" }
+    sequence(:permalink) { |n| "page_#{n}" }
     locale 'ru'
-    content '<p>Page Content</p>'
+    content { "<p>#{Faker::Lorem.paragraph}</p>" }
     seo_title 'Seo Title'
 
     factory :child_page, class: ChildPage do
       association(:parent_page)
+      sequence(:permalink) { |n| "child_#{n}" }
     end
 
     factory :parent_page, class: ParentPage do
+      sequence(:permalink) { |n| "parent_#{n}" }
     end
   end
 end
