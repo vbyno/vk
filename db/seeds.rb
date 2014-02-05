@@ -5,9 +5,6 @@ namespace :db do
   Page.destroy_all
 
   Locale::ALL.each do |locale|
-    2.times do
-      parent_page = FactoryGirl.create :parent_page, locale: locale
-      FactoryGirl.create :child_page, locale: locale, parent_page: parent_page
-    end
+    2.times { FactoryGirl.create :child_page, locale: locale }
   end
 end

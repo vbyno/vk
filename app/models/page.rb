@@ -17,9 +17,12 @@
 #
 
 class Page < ActiveRecord::Base
+  TYPES = %w[ParentPage ChildPage].to_set
+
   validates :content, :seo_title, presence: true
-  validates :permalink, presence: true, uniqueness: { scope: :locale }
+  validates :permalink, presence: true
   validates :locale, presence: true, inclusion: { in: Locale::ALL }
+  validates :type, presence: true, inclusion: { in: TYPES }
 
   def parent?
     false

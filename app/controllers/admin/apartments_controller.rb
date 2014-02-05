@@ -1,15 +1,13 @@
 class Admin::ApartmentsController < Admin::BaseController
-  load_and_authorize_resource except: :create
-  authorize_resource only: :create
-
   def index; end
   def new; end
-  def edit; end
 
   def create
     @apartment = Apartment.create(apartment_params)
     render 'create_update'
   end
+
+  def edit; end
 
   def update
     @apartment.update(apartment_params)

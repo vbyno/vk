@@ -18,4 +18,10 @@
 
 class ParentPage < Page
   has_many :child_pages, foreign_key: :parent_id
+
+  validates :permalink, presence: true, uniqueness: { scope: :locale }
+
+  def parent?
+    true
+  end
 end

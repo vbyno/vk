@@ -20,4 +20,9 @@ class ChildPage < Page
   belongs_to :parent_page, foreign_key: :parent_id
 
   validates :parent_page, presence: true
+  validates :permalink, presence: true, uniqueness: { scope: :locale }
+
+  def child?
+    true
+  end
 end

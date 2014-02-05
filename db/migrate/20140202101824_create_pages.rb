@@ -1,7 +1,7 @@
 class CreatePages < ActiveRecord::Migration
   def change
     create_table :pages do |t|
-      t.string :type
+      t.string :type, null: false
       t.integer :parent_id, index: true
       t.string :permalink, null: false
       t.string :locale, null: false

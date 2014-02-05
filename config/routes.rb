@@ -23,6 +23,7 @@ Vk::Application.routes.draw do
                 as: :translations, path: :translations
     end
     resources :apartment_translations, :reservations, only: [:edit, :update]
+    resources :pages, only: [:new, :create]
   end
 
   scope ':locale', locale: /ua|en|pl/, as: :locale do

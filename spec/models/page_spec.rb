@@ -22,14 +22,9 @@ describe Page do
   let(:page) { build :page }
 
   it_behaves_like 'presence validator', %i[permalink locale content seo_title]
-  it { expect(subject).to ensure_inclusion_of(:locale).in_array(Locale::ALL) }
 
-  it 'validates uniquness of permalink' do
-    create :page, locale: 'ru', permalink: 'foo'
-    expect(build :page, locale: 'ru', permalink: 'foo').not_to be_valid
-    expect(build :page, locale: 'ru', permalink: 'bar').to be_valid
-    expect(build :page, locale: 'ua', permalink: 'foo').to be_valid
-  end
+  it { expect(subject).to ensure_inclusion_of(:locale).in_array(Locale::ALL) }
+  it { expect(subject).to ensure_inclusion_of(:type).in_array(Page::TYPES) }
 
   describe '#child?' do
     it 'returns false' do

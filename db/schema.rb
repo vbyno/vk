@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140202101824) do
   end
 
   create_table "pages", force: true do |t|
-    t.string   "type"
+    t.string   "type",                            null: false
     t.integer  "parent_id"
     t.string   "permalink",                       null: false
     t.string   "locale",                          null: false
