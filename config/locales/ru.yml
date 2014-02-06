@@ -65,24 +65,24 @@ ru:
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение
-    actions:
-      reservation:
-        create: Забронировать!
-      apartment:
-        update: Обновить
   admin:
     apartment_translations:
       create:
         success: Перевод успешно создан
     apartments:
-      index:
-        actions: Действия
       edit:
         headline: Изменить
-      form:
+    pages:
+      create:
+        success: Страница успешно создана
+      update:
+        success: Страница успешно обновлена
   actions:
+    actions: Действия
+    update: Обновить
     delete: Удалить
     sign_in: Войти
+    book_it: Забронировать!
     apartment:
       new: Добавить квартиру
       edit: Изменить квартиру

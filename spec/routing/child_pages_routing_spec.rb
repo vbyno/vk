@@ -12,7 +12,7 @@ describe ChildPagesController do
     end
 
     it 'returns correct url' do
-      expect(get child_page_path(parent_page, child_page)).
+      expect(get child_page_path(parent_page.permalink, child_page.permalink)).
         to route_to(controller: 'child_pages', action: 'show',
                     parent_permalink: parent_page.permalink,
                     child_permalink: child_page.permalink)
@@ -28,7 +28,8 @@ describe ChildPagesController do
     end
 
     it 'returns correct url' do
-      expect(get locale_child_page_path(Locale::PL, parent_page, child_page)).
+      expect(get locale_child_page_path(Locale::PL, parent_page.permalink,
+                                        child_page.permalink)).
         to route_to(controller: 'child_pages',
                     action: 'show',
                     locale: 'pl',

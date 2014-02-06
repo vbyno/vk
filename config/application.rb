@@ -7,6 +7,8 @@ module Vk
     config.i18n.enforce_available_locales = false
     config.i18n.default_locale = :ru
 
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
     config.generators do |g|
       g.test_framework :rspec,
                        controller_specs: true,

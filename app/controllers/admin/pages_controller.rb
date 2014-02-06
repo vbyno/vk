@@ -1,8 +1,24 @@
 class Admin::PagesController < Admin::BaseController
+  def index; end
   def new; end
 
   def create
-    @page = Page.create(page_params)
+    @page = Page.new(page_params)
+    if @page.save
+      redirect_to admin_pages_path, notice: t('.success')
+    else
+      render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @page.update_attributes(page_params)
+      redirect_to admin_pages_path, notice: t('.success')
+    else
+      render :edit
+    end
   end
 
 private

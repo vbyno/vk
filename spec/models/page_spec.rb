@@ -3,7 +3,7 @@
 # Table name: pages
 #
 #  id              :integer          not null, primary key
-#  type            :string(255)
+#  type            :string(255)      not null
 #  parent_id       :integer
 #  permalink       :string(255)      not null
 #  locale          :string(255)      not null
@@ -35,12 +35,6 @@ describe Page do
   describe '#parent?' do
     it 'returns false' do
       expect(page.parent?).to be_false
-    end
-  end
-
-  describe '#to_param' do
-    it 'returns permalink' do
-      expect(page.to_param).to eq page.permalink
     end
   end
 end

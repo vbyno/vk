@@ -11,7 +11,7 @@ describe ParentPagesController do
     end
 
     it 'returns correct url' do
-      expect(get parent_page_path(parent_page)).
+      expect(get parent_page_path(parent_page.permalink)).
         to route_to(controller: 'parent_pages', action: 'show',
                     parent_permalink: parent_page.permalink)
     end
@@ -25,7 +25,7 @@ describe ParentPagesController do
     end
 
     it 'returns correct url' do
-      expect(get locale_parent_page_path(Locale::PL, parent_page)).
+      expect(get locale_parent_page_path(Locale::PL, parent_page.permalink)).
         to route_to(controller: 'parent_pages',
                     action: 'show',
                     parent_permalink: parent_page.permalink,

@@ -1,0 +1,14 @@
+= semantic_form_for [:admin, @page] do |f|
+  = f.semantic_errors *f.object.errors.keys
+  = f.inputs class: 'col-md-4' do
+    = f.input :type, as: :select, collection: Page::TYPES
+    = f.input :parent_id, as: :select, collection: ParentPage.all
+    = f.input :permalink
+    = f.input :locale, as: :select, collection: Locale::ALL
+    = f.input :seo_title
+    = f.input :seo_description
+    = f.input :seo_keywords
+    = f.input :active
+    = f.input :content, input_html: { class: 'tinymce' }
+  = f.actions class: 'col-md-4' do
+    = f.action :submit, as: :button, button_html: { class: 'btn btn-big btn-success pull-right' }

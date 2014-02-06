@@ -3,7 +3,7 @@
 # Table name: pages
 #
 #  id              :integer          not null, primary key
-#  type            :string(255)
+#  type            :string(255)      not null
 #  parent_id       :integer
 #  permalink       :string(255)      not null
 #  locale          :string(255)      not null
@@ -17,6 +17,10 @@
 #
 
 class Page < ActiveRecord::Base
+  include ::ModelNameCustomizer
+  self.param_key = :page
+  self.route_key = :pages
+
   TYPES = %w[ParentPage ChildPage].to_set
 
   validates :content, :seo_title, presence: true
@@ -30,9 +34,5 @@ class Page < ActiveRecord::Base
 
   def child?
     false
-  end
-
-  def to_param
-    permalink
   end
 end

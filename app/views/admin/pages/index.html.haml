@@ -1,0 +1,21 @@
+%h1= Page.model_name.human(:count => Float::INFINITY)
+= link_to 'New', new_admin_page_path
+%table.table.table-striped
+  %tr
+    %th= @pages.human_attribute_name :type
+    %th= @pages.human_attribute_name :permalink
+    %th= @pages.human_attribute_name :locale
+    %th= @pages.human_attribute_name :active
+    %th= t('actions.actions')
+
+  - @pages.each do |page|
+    %tr
+      %td= page.type
+      %td= page.permalink
+      %td= page.locale
+      %td
+        - if page.active?
+          %i.fa.fa-check
+      %td
+        = link_to edit_admin_page_path(page) do
+          %i.fa.fa-pencil

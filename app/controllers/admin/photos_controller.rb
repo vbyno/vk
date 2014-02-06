@@ -6,8 +6,6 @@ class Admin::PhotosController < Admin::BaseController
 private
   def photo_params
     params[:photo].merge!({ apartment_id: params[:apartment_id] })
-    params.require(:photo).permit(
-      :apartment_id, :alt, :title, :image
-    )
+    params.require(:photo).permit(:apartment_id, :alt, :title, :image)
   end
 end

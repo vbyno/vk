@@ -3,7 +3,7 @@
 # Table name: pages
 #
 #  id              :integer          not null, primary key
-#  type            :string(255)
+#  type            :string(255)      not null
 #  parent_id       :integer
 #  permalink       :string(255)      not null
 #  locale          :string(255)      not null

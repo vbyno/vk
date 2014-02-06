@@ -3,6 +3,10 @@ require 'acceptance_helper'
 describe 'reservation' do
   let(:apartment) { create :apartment, :with_translations }
 
+  before do
+    Locale.change_to_default!
+  end
+
   it 'can be created', js: true do
     apartment_page = Apartment::ShowPage.new(apartment_path(apartment)).visit!
     apartment_page.reservation_form.fill_with(
