@@ -42,6 +42,18 @@ ru:
         email: Почта
         password: Пароль
         remember_me: Запомнить меня
+      page:
+        type: Тип страницы
+        title: Название
+        intro: Вводной текст
+        permalink: URL-ссылка
+        locale: Язык перевода
+        content: Содержание
+        active: Активная?
+        parent_id: Родительская страница
+        seo_title: СЕО-заголовок
+        seo_description: СЕО-описание
+        seo_keywords: СЕО Ключевые слова
     models:
       apartment:
         one: Квартира
@@ -49,6 +61,12 @@ ru:
       apartment_translation:
         one: Перевод
         other: Переводы
+    errors:
+      models:
+        page:
+          parent_id:
+            should_exist: Родительская страница должна присутствовать
+            should_not_exist: Не должно быть ссылки на родительскую страницу
   apartments:
     index:
       headline: Квартиры
@@ -79,6 +97,8 @@ ru:
         success: Страница успешно обновлена
   actions:
     actions: Действия
+    new: Создать
+    edit: Изменить
     update: Обновить
     delete: Удалить
     sign_in: Войти

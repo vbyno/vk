@@ -6,8 +6,10 @@
 #  type            :string(255)      not null
 #  parent_id       :integer
 #  permalink       :string(255)      not null
-#  locale          :string(255)      not null
+#  title           :string(255)      not null
+#  intro           :string(255)      not null
 #  content         :text             not null
+#  locale          :string(255)      not null
 #  active          :boolean          default(FALSE), not null
 #  seo_title       :string(255)      not null
 #  seo_description :string(255)
@@ -17,16 +19,18 @@
 #
 
 class Page < ActiveRecord::Base
+  include ActiveModel::Validations
   include ::ModelNameCustomizer
   self.param_key = :page
   self.route_key = :pages
 
   TYPES = %w[ParentPage ChildPage].to_set
 
-  validates :content, :seo_title, presence: true
-  validates :permalink, presence: true
+  validates_with PageValidator
+  validates :content, :seo_title, :intro, :permalink, :type, presence: true
   validates :locale, presence: true, inclusion: { in: Locale::ALL }
   validates :type, presence: true, inclusion: { in: TYPES }
+  validates :title, presence: true, length: { in: 2..60 }
 
   def parent?
     false

@@ -6,8 +6,10 @@
 #  type            :string(255)      not null
 #  parent_id       :integer
 #  permalink       :string(255)      not null
-#  locale          :string(255)      not null
+#  title           :string(255)      not null
+#  intro           :string(255)      not null
 #  content         :text             not null
+#  locale          :string(255)      not null
 #  active          :boolean          default(FALSE), not null
 #  seo_title       :string(255)      not null
 #  seo_description :string(255)
@@ -19,12 +21,8 @@
 require 'spec_helper'
 
 describe ChildPage do
-  let(:child_page) { build :child_page }
-
-  it { expect(subject).to belong_to(:parent_page)
-                          .with_foreign_key(:parent_id) }
-
-  it_behaves_like 'presence validator', [:parent_page, :type]
+  it { expect(subject).to belong_to(:parent_page).
+                          with_foreign_key(:parent_id) }
 
   it 'validates uniquness of permalink' do
     create :child_page, locale: 'ru', permalink: 'foo'
@@ -35,6 +33,8 @@ describe ChildPage do
   end
 
   describe '#child?' do
+    let(:child_page) { build :child_page }
+
     it 'returns true' do
       expect(child_page.child?).to be_true
     end

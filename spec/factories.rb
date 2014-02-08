@@ -56,7 +56,9 @@ FactoryGirl.define do
     association :apartment
     title 'Translated Title'
     description 'Translated Description'
-    sequence(:short_description) { |n| "Translated Apartment #{n} Short Description" }
+    sequence(:short_description) { |n|
+      "Translated Apartment #{n} Short Description"
+    }
     locale 'en'
 
     trait :pure do
@@ -87,17 +89,19 @@ FactoryGirl.define do
 
   factory :page, class: Page do
     sequence(:permalink) { |n| "page_#{n}" }
+    sequence(:title) { |n| "Page #{n} Title" }
+    intro 'Short intro for page'
     locale 'ru'
     content { "<p>#{Faker::Lorem.paragraph}</p>" }
     seo_title 'Seo Title'
 
-    factory :child_page, class: ChildPage do
-      association(:parent_page)
-      sequence(:permalink) { |n| "child_#{n}" }
-    end
-
     factory :parent_page, class: ParentPage do
       sequence(:permalink) { |n| "parent_#{n}" }
+    end
+
+    factory :child_page, class: ChildPage do
+      association :parent_page
+      sequence(:permalink) { |n| "child_#{n}" }
     end
   end
 end

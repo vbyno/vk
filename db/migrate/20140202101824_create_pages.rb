@@ -4,8 +4,10 @@ class CreatePages < ActiveRecord::Migration
       t.string :type, null: false
       t.integer :parent_id, index: true
       t.string :permalink, null: false
-      t.string :locale, null: false
+      t.string :title, null: false
+      t.string :intro, null: false
       t.text :content, null: false
+      t.string :locale, null: false
       t.boolean :active, null: false, default: false
       t.string :seo_title, null: false
       t.string :seo_description

@@ -6,8 +6,10 @@
 #  type            :string(255)      not null
 #  parent_id       :integer
 #  permalink       :string(255)      not null
-#  locale          :string(255)      not null
+#  title           :string(255)      not null
+#  intro           :string(255)      not null
 #  content         :text             not null
+#  locale          :string(255)      not null
 #  active          :boolean          default(FALSE), not null
 #  seo_title       :string(255)      not null
 #  seo_description :string(255)
@@ -17,11 +19,8 @@
 #
 
 describe ParentPage do
-  let(:parent_page) { build :parent_page }
-
   it { expect(subject).to have_many(:child_pages).
                           with_foreign_key(:parent_id) }
-  it { expect(subject).to validate_presence_of :type }
 
   it 'validates uniquness of permalink' do
     create :parent_page, locale: 'ru', permalink: 'foo'
@@ -32,6 +31,8 @@ describe ParentPage do
   end
 
   describe '#parent?' do
+    let(:parent_page) { build :parent_page }
+
     it 'returns true' do
       expect(parent_page.parent?).to be_true
     end
