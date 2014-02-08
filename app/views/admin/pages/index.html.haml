@@ -1,18 +1,22 @@
 %h1= Page.model_name.human(:count => Float::INFINITY)
-= link_to 'New', new_admin_page_path
+= link_to I18nUtil.action(:new), new_admin_page_path, class: 'btn btn-big btn-success pull-right'
 %table.table.table-striped
   %tr
-    %th= @pages.human_attribute_name :type
+    %th= @pages.human_attribute_name :title
     %th= @pages.human_attribute_name :permalink
+    %th= @pages.human_attribute_name :type
     %th= @pages.human_attribute_name :locale
+    %th= @pages.human_attribute_name :parent_page
     %th= @pages.human_attribute_name :active
     %th= t('actions.actions')
 
   - @pages.each do |page|
     %tr
-      %td= page.type
+      %td= page.title
       %td= page.permalink
+      %td= I18nUtil.value(page.type)
       %td= page.locale
+      %td= page.parent_page.title if page.child?
       %td
         - if page.active?
           %i.fa.fa-check

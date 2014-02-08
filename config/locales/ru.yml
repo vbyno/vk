@@ -24,6 +24,7 @@ ru:
       title: Панель администратора
       navigation:
         apartments: Квартиры
+        pages: Страницы
         sign_out: Выйти
   activerecord:
     attributes:
@@ -50,7 +51,9 @@ ru:
         locale: Язык перевода
         content: Содержание
         active: Активная?
-        parent_id: Родительская страница
+        parent_page: &parent_page
+          Родительская страница
+        parent_id: *parent_page
         seo_title: СЕО-заголовок
         seo_description: СЕО-описание
         seo_keywords: СЕО Ключевые слова
@@ -97,7 +100,8 @@ ru:
         success: Страница успешно обновлена
   actions:
     actions: Действия
-    new: Создать
+    new: &new Создать
+    create: *new
     edit: Изменить
     update: Обновить
     delete: Удалить
@@ -109,5 +113,5 @@ ru:
     photos:
       add: Добавить фотографии
   values:
-    parent_page: Родительская страница
-    child_page: Страница второго уровня
+    parent_page: Основная
+    child_page: Вложенная

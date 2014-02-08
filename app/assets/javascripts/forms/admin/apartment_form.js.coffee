@@ -45,5 +45,5 @@ class Vk.Forms.ApartmentForm
 
   successNotification: ->
     $('#apartment-form').prepend(
-      "<div class='alert alert-info'>Success!</div>"
+      "<div class='alert alert-info'>Это успех, брат!</div>"
       )

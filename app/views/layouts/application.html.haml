@@ -5,11 +5,9 @@
     %header.header.navbar.navbar-inverse.navbar-fixed-top
       .container
         = render 'layouts/navigation'
-    #main{role: 'main'}
-      .container
-        .content
-          .row
-            .col-md-12
-              = render 'layouts/flash_messages'
-              = yield
-          %footer
+    .container
+      .row
+        .col-md-12
+          = render 'layouts/flash_messages'
+          = yield
+    %footer

@@ -1,16 +1,18 @@
-= semantic_form_for [:admin, @page] do |f|
+= semantic_form_for [:admin, @page], html: { role: 'form' } do |f|
   = f.semantic_errors *f.object.errors.keys
-  = f.inputs class: 'col-md-4' do
-    = f.input :type, as: :select, collection: Page::TYPES.map { |pt| [t("values.#{pt.underscore}"), pt] }
+  .col-md-3
+    = f.input :type, as: :select, collection: Page::TYPES.map { |pt| [I18nUtil.value(pt), pt] }
     = f.input :parent_id, as: :select, collection: ParentPage.all.map { |p| [p.title, p.id] }
     = f.input :title
     = f.input :permalink
     = f.input :intro
     = f.input :locale, as: :select, collection: Locale::ALL
+    = f.input :active
+  .col-md-9
+    = f.input :content, input_html: { class: 'tinymce' }
+  = f.inputs class: 'col-md-12' do
     = f.input :seo_title
     = f.input :seo_description
     = f.input :seo_keywords
-    = f.input :active
-    = f.input :content, input_html: { class: 'tinymce' }
-  = f.actions class: 'col-md-4' do
-    = f.action :submit, as: :button, button_html: { class: 'btn btn-big btn-success pull-right' }, label: t("actions.#{action_name}")
+  = f.actions class: 'col-md-12' do
+    = f.action :submit, as: :button, button_html: { class: 'btn btn-big btn-success pull-right' }, label: I18nUtil.action(action_name)
