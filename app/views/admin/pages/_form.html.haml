@@ -1,7 +1,7 @@
 = semantic_form_for [:admin, @page] do |f|
   = f.semantic_errors *f.object.errors.keys
   = f.inputs class: 'col-md-4' do
-    = f.input :type, as: :select, collection: Page::TYPES
+    = f.input :type, as: :select, collection: Page::TYPES.map { |pt| [t("values.#{pt.underscore}"), pt] }
     = f.input :parent_id, as: :select, collection: ParentPage.all
     = f.input :permalink
     = f.input :locale, as: :select, collection: Locale::ALL
