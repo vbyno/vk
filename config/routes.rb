@@ -26,7 +26,7 @@ Vk::Application.routes.draw do
     resources :pages, only: [:index, :new, :create, :edit, :update]
   end
 
-  scope ':locale', locale: /ua|en|pl/, as: :locale do
+  scope ':locale', locale: /uk|en|pl/, as: :locale do
     concerns :apartment_presenter, :seo_hierarchical
   end
   concerns :seo_hierarchical

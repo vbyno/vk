@@ -13,8 +13,6 @@
 #
 
 class ApartmentTranslation < ActiveRecord::Base
-  LOCALES = Set.new Locale::SECONDARY_LOCALES.map(&:to_s)
-
   belongs_to :apartment
   has_many :photos, through: :apartment
   has_many :photo_translations, dependent: :destroy
@@ -26,7 +24,7 @@ class ApartmentTranslation < ActiveRecord::Base
 
   validates :locale,
             presence: true,
-            inclusion: { in: LOCALES },
+            inclusion: { in: Locale::SECONDARY },
             uniqueness: { scope: :apartment_id }
   validates :title, :description, :short_description, :apartment,
             presence: true

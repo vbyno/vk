@@ -24,11 +24,13 @@ describe ParentPage do
                           with_foreign_key(:parent_id) }
 
   it 'validates uniquness of permalink' do
-    create :parent_page, locale: 'ru', permalink: 'foo'
-    expect(build :parent_page, locale: 'ru', permalink: 'foo').not_to be_valid
-    expect(build :child_page, locale: 'ru', permalink: 'foo').to be_valid
-    expect(build :parent_page, locale: 'ru', permalink: 'bar').to be_valid
-    expect(build :parent_page, locale: 'ua', permalink: 'foo').to be_valid
+    create :parent_page, locale: Locale::RU, permalink: 'foo'
+
+    expect(build :parent_page, locale: Locale::RU, permalink: 'foo').
+      not_to be_valid
+    expect(build :child_page, locale: Locale::RU, permalink: 'foo').to be_valid
+    expect(build :parent_page, locale: Locale::RU, permalink: 'bar').to be_valid
+    expect(build :parent_page, locale: Locale::UK, permalink: 'foo').to be_valid
   end
 
   describe '#parent?' do

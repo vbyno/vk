@@ -20,7 +20,7 @@ FactoryGirl.define do
 
     trait :with_translations do
       after :build do |apartment|
-        apartment.translations = ApartmentTranslation::LOCALES.map { |locale|
+        apartment.translations = Locale::SECONDARY.map { |locale|
           build(:apartment_translation, locale: locale, apartment: apartment)
         }
       end

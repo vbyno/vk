@@ -50,17 +50,16 @@ describe Apartment do
 
   describe '#translated_title & #translated_description' do
     let(:apartment) { create :apartment }
-    let!(:ua_translation) { create :apartment_translation,
+    let!(:uk_translation) { create :apartment_translation,
                                   apartment: apartment,
                                   title: 'UA Title',
                                   description: 'UA description',
-                                  locale: 'ua' }
+                                  locale: Locale::UK }
 
     %w[title description].each do |attribute|
       it "returns translated #{attribute}" do
-        expect(apartment.public_send("translated_#{attribute}", :ua)).to eq(
-          ua_translation.public_send(attribute)
-        )
+        expect(apartment.public_send("translated_#{attribute}", Locale::UK.to_sym)).
+          to eq uk_translation.public_send(attribute)
       end
     end
   end
@@ -68,15 +67,16 @@ describe Apartment do
   describe '#locales_with_translations' do
     let(:apartment) { build :apartment }
     let(:en_translation) {
-      build :apartment_translation, locale: 'en', apartment: apartment
+      build :apartment_translation, locale: Locale::EN, apartment: apartment
     }
     let(:pl_translation) {
-      build :apartment_translation, locale: 'pl', apartment: apartment
+      build :apartment_translation, locale: Locale::PL, apartment: apartment
     }
     subject(:locales_with_translations) { apartment.locales_with_translations }
 
     it 'returns empty set if no translations' do
-      expect(locales_with_translations).to eq({ ua: nil, en: nil, pl: nil })
+      expect(locales_with_translations).
+        to eq({ Locale::UK => nil, Locale::EN => nil, Locale::PL => nil })
     end
 
     it 'returns set of locales' do
@@ -85,9 +85,9 @@ describe Apartment do
       ]
 
       expect(locales_with_translations).to eq({
-        ua: nil,
-        en: en_translation,
-        pl: pl_translation
+        Locale::UK => nil,
+        Locale::EN => en_translation,
+        Locale::PL => pl_translation
       })
     end
   end

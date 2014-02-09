@@ -28,7 +28,7 @@ end
 describe ApartmentsController do
   let(:apartment) { create :apartment, :pure }
 
-  it_behaves_like 'apartment_presenter', Locale::SECONDARY_LOCALES + [nil]
+  it_behaves_like 'apartment_presenter', Locale::SECONDARY + [nil]
 
   context 'root parser' do
     it 'parse apartment_path' do

@@ -9,10 +9,10 @@ shared_examples 'pages are accessible' do |pages|
 end
 
 describe 'homepage' do
-  root_pages = Locale::ALL_LOCALES.map do |locale_sym|
-    locale = Locale.new(locale_sym)
+  root_pages = Locale::ALL.map do |locale_s|
+    locale = Locale.new(locale_s)
     BasicPage.new(locale.root_page_path,
-                  main_content: I18n.t('apartments.index.headline', locale: locale.to_i18n))
+                  main_content: I18n.t('apartments.index.headline', locale: locale_s))
   end
 
   after :all do

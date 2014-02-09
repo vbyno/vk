@@ -17,10 +17,6 @@ require 'spec_helper'
 describe ApartmentTranslation do
   let(:apartment) { build_stubbed :apartment }
 
-  it 'has appropriate locales lists' do
-    expect(ApartmentTranslation::LOCALES).to eq ['ua', 'en', 'pl'].to_set
-  end
-
   it { expect(subject).to belong_to :apartment }
   it { expect(subject).to have_many(:photos).through(:apartment) }
   it { expect(subject).to have_many(:photo_translations).dependent(:destroy) }
@@ -30,7 +26,7 @@ describe ApartmentTranslation do
   end
 
   it { expect(subject).to ensure_inclusion_of(:locale).
-                          in_array ApartmentTranslation::LOCALES }
+                          in_array Locale::SECONDARY }
   it { expect(subject).to accept_nested_attributes_for(:photo_translations).
                           allow_destroy(true) }
 
@@ -38,9 +34,10 @@ describe ApartmentTranslation do
     create :apartment_translation, apartment: apartment
     expect { create :apartment_translation, apartment: apartment }.to raise_error
     expect { create :apartment_translation,
-                    locale: 'ua',
+                    locale: Locale::UK,
                     apartment: apartment }.to_not raise_error
-    expect { create :apartment_translation, locale: 'en' }.to_not raise_error
+    expect { create :apartment_translation, locale: Locale::EN }
+      .to_not raise_error
   end
 
   describe '#forced_photo_translations' do
