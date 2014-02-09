@@ -8,7 +8,7 @@ class Locale
     PL = :pl
   ]
   SECONDARY_LOCALES = Set.new [UA, EN, PL]
-  ALL = ALL_LOCALES.map(&:to_s)
+  ALL = ALL_LOCALES.map(&:to_s).freeze
 
   def self.new!(locale_param = nil)
     self.new(locale_param).tap(&:change_current!)
@@ -50,6 +50,10 @@ class Locale
 
   def self.change_to_default!
     self.new(DEFAULT).change_current!
+  end
+
+  def self.all_except(locale)
+    (ALL - [locale.to_s]).map { |l| new(l) }
   end
 
   def to_s

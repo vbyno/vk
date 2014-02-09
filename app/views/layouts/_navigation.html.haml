@@ -1,11 +1,14 @@
 .navbar-header
-  - if request.fullpath == @locale.root_page_path
-    %span{class: 'navbar-brand'}= t('.daily_apartments')
-  - else
-    = link_to t('.daily_apartments'), @locale.root_page_path, class: 'navbar-brand'
+  = locale_link_to(t('.daily_apartments'), :root_path, class: 'navbar-brand') do |text|
+    %span.navbar-brand= text
 %nav.collapse.navbar-collapse.bs-navbar-collapse{role: 'navigation'}
   %ul.nav.navbar-nav
     = list_of ParentPage.for_menu(@locale.to_s, 5) do |page|
-      = locale_link_to(page.title, suffix: :parent_page, identifiers: page.permalink)
+      = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink) do |text|
+        %p.navbar-text= text
+
   %ul.nav.navbar-nav.navbar-right
-    %li= render 'layouts/languages'
+    %span.languages
+      - Locale.all_except(@locale).each do |locale|
+        = link_to locale.root_page_path do
+          %div{class: "flag flag-#{locale}"}

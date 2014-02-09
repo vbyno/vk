@@ -1,2 +1,2 @@
 = list_of(@parent_page.child_pages) do |child_page|
-  = locale_link_to child_page.title, suffix: :child_page, identifiers: [@parent_page.permalink, child_page.permalink]
+  = locale_link_to child_page.title, :child_page_path, identifiers: [@parent_page.permalink, child_page.permalink]
