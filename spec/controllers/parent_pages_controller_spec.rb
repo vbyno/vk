@@ -11,7 +11,7 @@ describe ParentPagesController do
 
     it 'assigns parent_page' do
       get :show, parent_permalink: parent_page.permalink
-      expect(assigns(:page)).to eq parent_page
+      expect(assigns(:parent_page)).to eq parent_page
     end
 
     it 'throws exception if record was not found' do

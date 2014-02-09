@@ -8,6 +8,7 @@
     %th= @pages.human_attribute_name :locale
     %th= @pages.human_attribute_name :parent_page
     %th= @pages.human_attribute_name :active
+    %th= @pages.human_attribute_name :priority
     %th= t('actions.actions')
 
   - @pages.each do |page|
@@ -20,6 +21,7 @@
       %td
         - if page.active?
           %i.fa.fa-check
+      %td= page.priority
       %td
         = link_to edit_admin_page_path(page) do
           %i.fa.fa-pencil

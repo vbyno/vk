@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140202101824) do
     t.text     "content",                         null: false
     t.string   "locale",                          null: false
     t.boolean  "active",          default: false, null: false
+    t.integer  "priority",        default: 0,     null: false
     t.string   "seo_title",                       null: false
     t.string   "seo_description"
     t.string   "seo_keywords"

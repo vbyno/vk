@@ -8,6 +8,7 @@
     = f.input :intro
     = f.input :locale, as: :select, collection: Locale::ALL
     = f.input :active
+    = f.input :priority
   .col-md-9
     = f.input :content, input_html: { class: 'tinymce' }
   = f.inputs class: 'col-md-12' do

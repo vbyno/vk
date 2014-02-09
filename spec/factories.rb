@@ -94,13 +94,17 @@ FactoryGirl.define do
     locale 'ru'
     content { "<p>#{Faker::Lorem.paragraph}</p>" }
     seo_title 'Seo Title'
+    priority 0
+    active true
 
     factory :parent_page, class: ParentPage do
+      sequence(:title) { |n| "Parent Page #{n} Title" }
       sequence(:permalink) { |n| "parent_#{n}" }
     end
 
     factory :child_page, class: ChildPage do
       association :parent_page
+      sequence(:title) { |n| "Child Page #{n} Title" }
       sequence(:permalink) { |n| "child_#{n}" }
     end
   end

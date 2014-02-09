@@ -11,6 +11,7 @@
 #  content         :text             not null
 #  locale          :string(255)      not null
 #  active          :boolean          default(FALSE), not null
+#  priority        :integer          default(0), not null
 #  seo_title       :string(255)      not null
 #  seo_description :string(255)
 #  seo_keywords    :string(255)
@@ -24,7 +25,7 @@ describe Page do
   let(:page) { build :page }
 
   it_behaves_like 'presence validator',
-    %i[permalink locale content seo_title title intro type]
+    %i[permalink locale content seo_title title intro type priority]
 
   it { expect(subject).to ensure_inclusion_of(:locale).in_array(Locale::ALL) }
   it { expect(subject).to ensure_inclusion_of(:type).in_array(Page::TYPES) }

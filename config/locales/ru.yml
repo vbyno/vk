@@ -16,10 +16,6 @@ ru:
   layouts:
     navigation:
       daily_apartments: Квартиры посуточно
-      how_it_works: Как это работает
-      feedback: Отзывы
-      about_lviv: Львов. Что к чему
-      contacts: Контакты
     admin:
       title: Панель администратора
       navigation:
@@ -51,12 +47,12 @@ ru:
         locale: Язык перевода
         content: Содержание
         active: Активная?
-        parent_page: &parent_page
-          Родительская страница
+        parent_page: &parent_page Родительская страница
         parent_id: *parent_page
-        seo_title: СЕО-заголовок
-        seo_description: СЕО-описание
-        seo_keywords: СЕО Ключевые слова
+        priority: Приоритет
+        seo_title: 'СЕО: Заголовок'
+        seo_description: 'СЕО: Описание'
+        seo_keywords: 'СЕО: Ключевые слова'
     models:
       apartment:
         one: Квартира

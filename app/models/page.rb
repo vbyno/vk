@@ -11,6 +11,7 @@
 #  content         :text             not null
 #  locale          :string(255)      not null
 #  active          :boolean          default(FALSE), not null
+#  priority        :integer          default(0), not null
 #  seo_title       :string(255)      not null
 #  seo_description :string(255)
 #  seo_keywords    :string(255)
@@ -27,7 +28,8 @@ class Page < ActiveRecord::Base
   TYPES = %w[ParentPage ChildPage].to_set
 
   validates_with PageValidator
-  validates :content, :seo_title, :intro, :permalink, :type, presence: true
+  validates :content, :seo_title, :intro, :permalink, :type, :priority,
+            presence: true
   validates :locale, presence: true, inclusion: { in: Locale::ALL }
   validates :type, presence: true, inclusion: { in: TYPES }
   validates :title, presence: true, length: { in: 2..60 }
