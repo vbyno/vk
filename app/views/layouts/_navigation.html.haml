@@ -1,12 +1,16 @@
 .navbar-header
+  .navbar-default
+    %button.navbar-toggle{type: 'button', data: { toggle: 'collapse', target: '#vk-navbar-collapse' }}
+      - 3.times do
+        %span.icon-bar
   = locale_link_to(t('.daily_apartments'), :root_path, class: 'navbar-brand') do |text|
     %span.navbar-brand= text
-%nav.collapse.navbar-collapse.bs-navbar-collapse{role: 'navigation'}
+
+%nav.collapse.navbar-collapse#vk-navbar-collapse{role: 'navigation'}
   %ul.nav.navbar-nav
     = list_of ParentPage.for_menu(@locale.to_s, 5) do |page|
       = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink) do |text|
         %p.navbar-text= text
-
   %ul.nav.navbar-nav.navbar-right
     %span.languages
       - Locale.all_except(@locale).each do |locale|

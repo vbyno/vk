@@ -2,7 +2,7 @@
 %html{lang: @locale}
   = render 'layouts/head'
   %body{class: [controller_name, action_name]}
-    %header.header.navbar.navbar-inverse.navbar-fixed-top
+    %header.navbar.navbar-static-top{role: 'bunner'}
       .container
         = render 'layouts/navigation'
     .container
