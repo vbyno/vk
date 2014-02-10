@@ -15,11 +15,14 @@
 require 'spec_helper'
 
 describe Picture do
+  let(:picture) { build :picture }
+
   it_behaves_like 'presence validator', %i[imageable image]
 
   it { expect(subject).to belong_to(:imageable) }
 
   it 'creates picture' do
-    create :picture
+    expect(picture).to be_valid
+    expect { picture.save! }.to_not raise_error
   end
 end
