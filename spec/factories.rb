@@ -34,9 +34,14 @@ FactoryGirl.define do
     end
   end
 
-  factory :photo do
+  factory :picture do
+    association :imageable, factory: :parent_page
     image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
+  end
+
+  factory :photo do
     association :apartment
+    image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
   end
 
   factory :photo_translation do

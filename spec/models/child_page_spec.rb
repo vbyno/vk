@@ -24,6 +24,7 @@ require 'spec_helper'
 describe ChildPage do
   it { expect(subject).to belong_to(:parent_page).
                           with_foreign_key(:parent_id) }
+  it { expect(subject).to have_many(:pictures) }
 
   it 'validates uniquness of permalink' do
     create :child_page, locale: Locale::RU, permalink: 'foo'

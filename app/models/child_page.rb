@@ -21,6 +21,7 @@
 
 class ChildPage < Page
   belongs_to :parent_page, foreign_key: :parent_id
+  has_many :pictures, as: :imageable
 
   validates :permalink, presence: true, uniqueness: { scope: :locale }
 

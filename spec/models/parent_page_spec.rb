@@ -22,6 +22,7 @@
 describe ParentPage do
   it { expect(subject).to have_many(:child_pages).
                           with_foreign_key(:parent_id) }
+  it { expect(subject).to have_many(:pictures) }
 
   it 'validates uniquness of permalink' do
     create :parent_page, locale: Locale::RU, permalink: 'foo'
