@@ -68,4 +68,37 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe '#human_attribute' do
+    let(:page) { build :page }
+    it 'works for instance' do
+      expect(human_attribute(page, :title)).
+        to eq I18n.t('activerecord.attributes.page.title')
+    end
+
+    it 'works for class' do
+      expect(human_attribute(Page, :title)).
+        to eq I18n.t('activerecord.attributes.page.title')
+    end
+  end
+
+  describe '#human_attributes' do
+    let(:page) { build :page }
+
+    it 'works for instance' do
+      expect(human_attributes(page, :title, :permalink)).
+        to eq [
+          I18n.t('activerecord.attributes.page.title'),
+          I18n.t('activerecord.attributes.page.permalink')
+        ]
+    end
+
+    it 'works for class' do
+      expect(human_attributes(Page, :title, :permalink)).
+        to eq [
+          I18n.t('activerecord.attributes.page.title'),
+          I18n.t('activerecord.attributes.page.permalink')
+        ]
+    end
+  end
 end

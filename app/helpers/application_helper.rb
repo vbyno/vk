@@ -8,4 +8,17 @@ module ApplicationHelper
            end
     link_to_unless_current(text, path, html_options, &block)
   end
+
+  def human_attribute(resource, attribute)
+    (resource.is_a?(Class) ? resource : resource.class).
+      human_attribute_name(attribute)
+  end
+
+  def human_attributes(resource, *attributes, &block)
+    if block_given?
+      attributes.each { |attr| yield human_attribute(resource, attr) }
+    else
+      attributes.map { |attr| human_attribute(resource, attr) }
+    end
+  end
 end

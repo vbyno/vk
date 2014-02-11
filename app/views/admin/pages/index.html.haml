@@ -2,13 +2,9 @@
 = link_to I18nUtil.action(:new), new_admin_page_path, class: 'btn btn-big btn-success pull-right'
 %table.table.table-striped
   %tr
-    %th= @pages.human_attribute_name :title
-    %th= @pages.human_attribute_name :permalink
-    %th= @pages.human_attribute_name :type
-    %th= @pages.human_attribute_name :locale
-    %th= @pages.human_attribute_name :parent_page
-    %th= @pages.human_attribute_name :active
-    %th= @pages.human_attribute_name :priority
+    - human_attributes(Page, :title, :permalink, :type, :locale, :parent_page,
+                        :active, :priority) do |attr|
+      %th= attr
     %th= t('actions.actions')
 
   - @pages.each do |page|
