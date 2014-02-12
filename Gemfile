@@ -7,6 +7,7 @@ gem 'carrierwave'
 gem 'figaro'
 
 gem 'haml-rails'
+gem 'simple-navigation'
 gem 'sanitize'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'formtastic', '2.3.0.rc2'

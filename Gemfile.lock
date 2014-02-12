@@ -184,6 +184,8 @@ GEM
       websocket (~> 1.0.4)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
+    simple-navigation (3.11.0)
+      activesupport (>= 2.3.2)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -265,6 +267,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   selenium-webdriver
   shoulda-matchers
+  simple-navigation
   simplecov
   therubyracer
   thin

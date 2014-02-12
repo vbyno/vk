@@ -8,6 +8,9 @@
     .container
       .row
         .col-md-12
-          = render 'layouts/flash_messages'
-          = yield
+          .col-md-9
+            = render 'layouts/flash_messages'
+            = yield
+          .col-md-3
+            = render_navigation(:context => :admin)
     %footer.bs-footer

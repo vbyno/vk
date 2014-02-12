@@ -31,4 +31,8 @@ class ParentPage < Page
   def parent?
     true
   end
+
+  def self.grouped_by_locale
+    includes(:child_pages).group_by { |p| p.locale.to_sym }
+  end
 end
