@@ -1,0 +1,9 @@
+%button#add-picture.btn.btn-big.btn-primary= I18nUtil.action('pictures.add')
+= semantic_form_for [:admin, picture] do |f|
+  .hide= f.input :image
+  = f.input :title
+  = f.input :alt
+  = f.input :imageable_id, as: :hidden
+  = f.input :imageable_type, as: :hidden
+  = f.action :submit, as: :button, label: I18nUtil.action(:create),
+      button_html: { class: 'btn btn-big btn-success pull-right' }

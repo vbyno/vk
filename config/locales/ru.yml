@@ -108,6 +108,8 @@ ru:
       edit: Изменить квартиру
     photos:
       add: Добавить фотографии
+    pictures:
+      add: Добавить изображение
   values:
     parent_page: Основная
     child_page: Вложенная

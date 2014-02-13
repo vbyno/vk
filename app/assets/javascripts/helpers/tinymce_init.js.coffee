@@ -11,9 +11,15 @@ Vk.Helpers.tinymceInit = ->
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft
               aligncenter alignright alignjustify | bullist numlist outdent
               indent | link image print preview media | forecolor backcolor
-              emoticons"
+              emoticons | add_photo"
     image_advtab: true
     templates: [
         {title: 'Test template 1', content: 'Test 1'},
         {title: 'Test template 2', content: 'Test 2'}
     ]
+    setup: (editor) ->
+      editor.addButton 'add_photo',
+        text: 'Add Photo',
+        icon: false,
+        onclick: ->
+          editor.insertContent 'Main button'
