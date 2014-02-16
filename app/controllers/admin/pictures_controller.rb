@@ -1,4 +1,6 @@
 class Admin::PicturesController < Admin::BaseController
+  respond_to :json
+
   def create
     @picture = Picture.create(picture_params)
   end

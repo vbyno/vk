@@ -22,4 +22,4 @@ Vk.Helpers.tinymceInit = ->
         text: 'Add Photo',
         icon: false,
         onclick: ->
-          editor.insertContent 'Main button'
+          $('#picture-modal').modal()

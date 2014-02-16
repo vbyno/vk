@@ -21,6 +21,12 @@ class Vk.Forms.PictureForm
         $submitBtn.click (event) ->
           data.submit()
           event.preventDefault()
+      done: (e, data) ->
+        # TODO make proxy: picture form should not know about tinymce
+        picture = data.result
+        $('#picture-modal').modal('hide')
+        tinyMCE.activeEditor.execCommand('mceInsertContent',
+                                         false, "<p>#{picture.title}</p>")
 
 jQuery ->
   new Vk.Forms.PictureForm() if Vk.Forms.PictureForm.shouldBeExecuted()
