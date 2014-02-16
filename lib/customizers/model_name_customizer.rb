@@ -9,10 +9,10 @@ module ModelNameCustomizer
     def model_name
       @_model_name ||=
         begin
-          namespace = self.parents.detect do |n|
+          namespace = self.parents.detect { |n|
             n.respond_to?(:use_relative_model_naming?) &&
               n.use_relative_model_naming?
-          end
+          }
 
           Name.new(self, namespace)
         end

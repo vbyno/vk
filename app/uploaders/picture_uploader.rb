@@ -1,5 +1,5 @@
 class PictureUploader < BasicImageUploader
-  version :to_show do
-    process resize_to_fit: [600, 600]
+  version :column_width do
+    process resize_to_limit: [825, 1167] # A4
   end
 end

@@ -22,4 +22,6 @@ Vk.Helpers.tinymceInit = ->
         text: 'Add Photo',
         icon: false,
         onclick: ->
-          $('#picture-modal').modal()
+          $.ajax
+            url: $('form').data('new-admin-picture-url')
+            dataType: 'script'

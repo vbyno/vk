@@ -5,7 +5,7 @@ class Admin::PagesController < Admin::BaseController
   def create
     @page = Page.new(page_params)
     if @page.save
-      redirect_to admin_pages_path, notice: t('.success')
+      redirect_to edit_admin_page_path(@page), notice: t('.success')
     else
       render :new
     end
@@ -15,7 +15,7 @@ class Admin::PagesController < Admin::BaseController
 
   def update
     if @page.update_attributes(page_params)
-      redirect_to admin_pages_path, notice: t('.success')
+      redirect_to edit_admin_page_path(@page), notice: t('.success')
     else
       render :edit
     end

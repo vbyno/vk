@@ -4,6 +4,19 @@ class Vk.Forms.PictureForm
   @shouldBeExecuted: ->
     $('body').hasClass('admin pages edit')
 
+  @newWith: (html) ->
+    $('#picture-form-wrapper').html(html)
+    new Vk.Forms.PictureForm()
+
+  @clean: ->
+    $('#picture-form-wrapper').empty()
+
+  @showModal: ->
+    $('#picture-modal').modal('show')
+
+  @hideModal: ->
+    $('#picture-modal').modal('hide')
+
   constructor: ->
     $submitBtn = $('#picture_submit_action')
 
@@ -14,20 +27,10 @@ class Vk.Forms.PictureForm
       false
 
     $("#new_picture").fileupload
-      dataType: 'json'
+      dataType: 'script'
       maxFileSize: 5000000
       acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
       add: (e, data) ->
         $submitBtn.click (event) ->
           data.submit()
           event.preventDefault()
-      done: (e, data) ->
-        # TODO make proxy: picture form should not know about tinymce
-        picture = data.result
-        $('#picture-modal').modal('hide')
-        tinyMCE.activeEditor.execCommand('mceInsertContent',
-                                         false, "<p>#{picture.title}</p>")
-
-jQuery ->
-  new Vk.Forms.PictureForm() if Vk.Forms.PictureForm.shouldBeExecuted()
-

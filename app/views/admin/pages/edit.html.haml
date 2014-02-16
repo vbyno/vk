@@ -1,3 +1,8 @@
-%h1= I18nUtil.action(action_name)
+%h1
+  = I18nUtil.action(action_name)
+  - if @page.parent?
+    = link_to nil, parent_page_path(@page.permalink)
+  - else
+    = link_to nil, child_page_path(@page.parent_page.permalink, @page.permalink)
 = render 'form'
-= render 'admin/pictures/modal_form', picture: @page.pictures.build
+= render 'admin/pictures/modal_form'

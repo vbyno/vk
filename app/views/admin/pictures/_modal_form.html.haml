@@ -4,4 +4,4 @@
       .modal-header
         %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { hidden: 'true' } } &times
         %h4.modal-title#picture-modal-label= I18nUtil.action('pictures.add')
-      = render 'admin/pictures/form', picture: picture
+      #picture-form-wrapper

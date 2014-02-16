@@ -21,4 +21,19 @@ module ApplicationHelper
       attributes.map { |attr| human_attribute(resource, attr) }
     end
   end
+
+  def new_admin_picture_url_params(resource)
+    return {} if resource.new_record?
+    # TODO: put it to basic model
+    resource_type = if resource.respond_to?(:param_key)
+                      resource.param_key.to_s.camelize
+                    else
+                      resource.class.to_s
+                    end
+    {
+      :'new-admin-picture-url' =>
+        new_admin_picture_url(imageable_id: resource.id,
+                              imageable_type: resource_type)
+    }
+  end
 end
