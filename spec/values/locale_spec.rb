@@ -5,8 +5,9 @@ describe Locale do
   let(:en_locale) { Locale.new(:en) }
 
   it 'has appropriate locales lists' do
-    expect(Locale::ALL_LOCALES).to eq Set.new [:ru, :ua, :en, :pl]
-    expect(Locale::SECONDARY_LOCALES).to eq Set.new [:ua, :en, :pl]
+    expect(Locale::ALL).to eq ['ru', 'uk', 'en', 'pl']
+    expect(Locale::ALL_S).to eq [:ru, :uk, :en, :pl]
+    expect(Locale::SECONDARY).to eq ['uk', 'en', 'pl']
   end
 
   describe '.new!' do
@@ -28,9 +29,8 @@ describe Locale do
     end
 
     it 'raises exception if locale not from the list' do
-      expect {
-        Locale.new(:fr)
-      }.to raise_error(Exception, "locale 'fr' is not appropriate")
+      expect { Locale.new(:fr) }.
+        to raise_error(Exception, "locale 'fr' is not appropriate")
     end
 
     it 'set defauld :ru locale' do
@@ -80,10 +80,11 @@ describe Locale do
     end
   end
 
-  describe '#change_current_to' do
+  describe '#make_current!' do
     it 'changes current locale' do
       I18n.locale = :ru
-      expect { en_locale.change_current! }.to change { I18n.locale }.from(:ru).to(:en)
+      expect { en_locale.make_current! }.
+        to change { I18n.locale }.from(:ru).to(:en)
     end
   end
 end

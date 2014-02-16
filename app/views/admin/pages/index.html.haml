@@ -1,0 +1,23 @@
+%h1= Page.model_name.human(:count => Float::INFINITY)
+= link_to I18nUtil.action(:new), new_admin_page_path, class: 'btn btn-big btn-success pull-right'
+%table.table.table-striped
+  %tr
+    - human_attributes(Page, :title, :permalink, :type, :locale, :parent_page,
+                        :active, :priority) do |attr|
+      %th= attr
+    %th= t('actions.actions')
+
+  - @pages.each do |page|
+    %tr
+      %td= page.title
+      %td= page.permalink
+      %td= I18nUtil.value(page.type)
+      %td= page.locale
+      %td= page.parent_page.title if page.child?
+      %td
+        - if page.active?
+          %i.fa.fa-check
+      %td= page.priority
+      %td
+        = link_to edit_admin_page_path(page) do
+          %i.fa.fa-pencil

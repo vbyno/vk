@@ -17,5 +17,5 @@ class Photo < ActiveRecord::Base
 
   validates :image, :apartment, presence: true
 
-  mount_uploader :image, GalleryImageUploader
+  mount_uploader :image, PhotoUploader
 end

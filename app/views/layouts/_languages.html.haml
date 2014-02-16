@@ -1,4 +1,0 @@
-%span.languages
-  - (Locale::ALL_LOCALES - [@locale.to_sym]).map { |l| Locale.new(l) }.each do |locale|
-    %a{href: locale.root_page_path}
-      %div{class: "flag flag-#{locale}"}

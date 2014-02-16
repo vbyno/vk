@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201123419) do
+ActiveRecord::Schema.define(version: 20140210212121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(version: 20140201123419) do
     t.string   "short_description",                         default: "",    null: false
   end
 
+  create_table "pages", force: true do |t|
+    t.string   "type",                            null: false
+    t.integer  "parent_id"
+    t.string   "permalink",                       null: false
+    t.string   "title",                           null: false
+    t.string   "intro",                           null: false
+    t.text     "content",                         null: false
+    t.string   "locale",                          null: false
+    t.boolean  "active",          default: false, null: false
+    t.integer  "priority",        default: 0,     null: false
+    t.string   "seo_title",                       null: false
+    t.string   "seo_description"
+    t.string   "seo_keywords"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photo_translations", force: true do |t|
     t.integer "apartment_translation_id", null: false
     t.integer "photo_id",                 null: false
@@ -76,6 +93,16 @@ ActiveRecord::Schema.define(version: 20140201123419) do
   end
 
   add_index "photos", ["apartment_id"], name: "index_photos_on_apartment_id", using: :btree
+
+  create_table "pictures", force: true do |t|
+    t.integer  "imageable_id",   null: false
+    t.string   "imageable_type", null: false
+    t.string   "image",          null: false
+    t.string   "alt"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reservations", force: true do |t|
     t.integer  "apartment_id",   null: false

@@ -6,6 +6,9 @@ module Vk
   class Application < Rails::Application
     config.i18n.enforce_available_locales = false
     config.i18n.default_locale = :ru
+    config.show_i18n_errors = true
+
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     config.generators do |g|
       g.test_framework :rspec,

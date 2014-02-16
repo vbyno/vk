@@ -1,0 +1,7 @@
+.modal.fade#picture-modal{ tabindex: -1, role: 'dialog', aria: { labelledby: 'picture-modal-label', hidden: true } }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ type: 'button', data: { dismiss: 'modal' }, aria: { hidden: 'true' } } &times
+        %h4.modal-title#picture-modal-label= I18nUtil.action('pictures.add')
+      #picture-form-wrapper

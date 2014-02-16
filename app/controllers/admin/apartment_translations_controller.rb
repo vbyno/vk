@@ -1,6 +1,4 @@
 class Admin::ApartmentTranslationsController < Admin::BaseController
-  load_and_authorize_resource except: :create
-
   def new; end
 
   def create

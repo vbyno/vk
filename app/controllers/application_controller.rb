@@ -5,11 +5,15 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     set_locale unless @locale
-    options.merge(@locale.url_options)
+    options.reverse_merge(@locale.url_options)
   end
 
 private
   def set_locale
     @locale = Locale.new!(params[:locale])
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 end

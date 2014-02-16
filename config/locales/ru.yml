@@ -16,14 +16,11 @@ ru:
   layouts:
     navigation:
       daily_apartments: Квартиры посуточно
-      how_it_works: Как это работает
-      feedback: Отзывы
-      about_lviv: Львов. Что к чему
-      contacts: Контакты
     admin:
       title: Панель администратора
       navigation:
         apartments: Квартиры
+        pages: Страницы
         sign_out: Выйти
   activerecord:
     attributes:
@@ -42,6 +39,20 @@ ru:
         email: Почта
         password: Пароль
         remember_me: Запомнить меня
+      page:
+        type: Тип страницы
+        title: Название
+        intro: Вводной текст
+        permalink: URL-ссылка
+        locale: Язык перевода
+        content: Содержание
+        active: Активная?
+        parent_page: &parent_page Родительская страница
+        parent_id: *parent_page
+        priority: Приоритет
+        seo_title: 'СЕО: Заголовок'
+        seo_description: 'СЕО: Описание'
+        seo_keywords: 'СЕО: Ключевые слова'
     models:
       apartment:
         one: Квартира
@@ -49,6 +60,12 @@ ru:
       apartment_translation:
         one: Перевод
         other: Переводы
+    errors:
+      models:
+        page:
+          parent_id:
+            should_exist: Родительская страница должна присутствовать
+            should_not_exist: Не должно быть ссылки на родительскую страницу
   apartments:
     index:
       headline: Квартиры
@@ -65,26 +82,34 @@ ru:
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение
-    actions:
-      reservation:
-        create: Забронировать!
-      apartment:
-        update: Обновить
   admin:
     apartment_translations:
       create:
         success: Перевод успешно создан
     apartments:
-      index:
-        actions: Действия
       edit:
         headline: Изменить
-      form:
+    pages:
+      create:
+        success: Страница успешно создана
+      update:
+        success: Страница успешно обновлена
   actions:
+    actions: Действия
+    new: &new Создать
+    create: *new
+    edit: Изменить
+    update: Обновить
     delete: Удалить
     sign_in: Войти
+    book_it: Забронировать!
     apartment:
       new: Добавить квартиру
       edit: Изменить квартиру
     photos:
       add: Добавить фотографии
+    pictures:
+      add: Добавить изображение
+  values:
+    parent_page: Основная
+    child_page: Вложенная

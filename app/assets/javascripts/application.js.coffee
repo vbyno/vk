@@ -5,6 +5,9 @@
 
 #= require bootstrap/alert
 #= require bootstrap/button
+#= require bootstrap/collapse
+#= require bootstrap/modal
+#= require bootstrap/tab
 
 # Gems
 #= require jquery-fileupload/basic

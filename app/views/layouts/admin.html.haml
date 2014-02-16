@@ -1,15 +1,16 @@
 !!!
-%html{lang: @locale.to_i18n}
+%html{lang: @locale}
   = render 'layouts/head'
   %body{class: ['admin', controller_name, action_name]}
     %header.header.navbar.navbar-default.navbar-fixed-top
       .container
         = render 'layouts/admin/navigation'
-    #main{role: 'main'}
-      .container
-        .content
-          .row
-            .col-md-12
-              = render 'layouts/flash_messages'
-              = yield
-          %footer
+    .container
+      .row
+        .col-md-12
+          .col-md-9
+            = render 'layouts/flash_messages'
+            = yield
+          .col-md-3
+            = render_navigation(:context => :admin)
+    %footer.bs-footer

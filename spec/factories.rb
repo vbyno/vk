@@ -20,7 +20,7 @@ FactoryGirl.define do
 
     trait :with_translations do
       after :build do |apartment|
-        apartment.translations = ApartmentTranslation::LOCALES.map { |locale|
+        apartment.translations = Locale::SECONDARY.map { |locale|
           build(:apartment_translation, locale: locale, apartment: apartment)
         }
       end
@@ -29,11 +29,19 @@ FactoryGirl.define do
         apartment.translations.each(&:save!)
       end
     end
+
+    trait :pure do
+    end
+  end
+
+  factory :picture do
+    association :imageable, factory: :parent_page
+    image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
   end
 
   factory :photo do
-    image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
     association :apartment
+    image { File.new("#{Rails.root}/spec/support/images/main_photo.jpg") }
   end
 
   factory :photo_translation do
@@ -53,7 +61,9 @@ FactoryGirl.define do
     association :apartment
     title 'Translated Title'
     description 'Translated Description'
-    sequence(:short_description) { |n| "Translated Apartment #{n} Short Description" }
+    sequence(:short_description) { |n|
+      "Translated Apartment #{n} Short Description"
+    }
     locale 'en'
 
     trait :pure do
@@ -80,5 +90,27 @@ FactoryGirl.define do
     email 'user@example.com'
     password 'password'
     password_confirmation 'password'
+  end
+
+  factory :page, class: Page do
+    sequence(:permalink) { |n| "page_#{n}" }
+    sequence(:title) { |n| "Page #{n} Title" }
+    intro 'Short intro for page'
+    locale 'ru'
+    content { "<p>#{Faker::Lorem.paragraph}</p>" }
+    seo_title 'Seo Title'
+    priority 0
+    active true
+
+    factory :parent_page, class: ParentPage do
+      sequence(:title) { |n| "Parent Page #{n} Title" }
+      sequence(:permalink) { |n| "parent_#{n}" }
+    end
+
+    factory :child_page, class: ChildPage do
+      association :parent_page
+      sequence(:title) { |n| "Child Page #{n} Title" }
+      sequence(:permalink) { |n| "child_#{n}" }
+    end
   end
 end

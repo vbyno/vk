@@ -1,0 +1,10 @@
+- if @picture.errors.empty?
+  :plain
+    Vk.Forms.PictureForm.hideModal();
+    Vk.Forms.PictureForm.clean();
+    tinyMCE.activeEditor.execCommand(
+      'mceInsertContent', false, "#{escape_javascript(render 'image_tag')}"
+    );
+- else
+  :plain
+    Vk.Forms.PictureForm.newWith("#{escape_javascript(render 'form')}");

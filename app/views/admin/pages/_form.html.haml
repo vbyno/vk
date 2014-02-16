@@ -1,0 +1,27 @@
+= semantic_form_for [:admin, @page], html: { role: 'form', data: new_admin_picture_url_params(@page) } do |f|
+  = f.semantic_errors *f.object.errors.keys
+  %ul.nav.nav-tabs
+    %li= link_to 'Main Info', '#main-info', data: { toggle: 'tab' }
+    %li.active= link_to 'Description', '#description-info', data: { toggle: 'tab' }
+  .tab-content
+    .tab-pane.fade#main-info
+      %br
+      = f.inputs class: 'col-md-9' do
+        = f.input :title
+        = f.input :permalink
+        = f.input :type, as: :select, collection: Page::TYPES.map { |pt| [I18nUtil.value(pt), pt] }
+        = f.input :parent_id, as: :select, collection: ParentPage.all.map { |p| [p.title, p.id] }
+      = f.inputs class: 'col-md-3' do
+        = f.input :locale, as: :select, collection: Locale::ALL
+        = f.input :active
+        = f.input :priority
+      = f.inputs class: 'col-md-12' do
+        = f.input :seo_title
+        = f.input :seo_description
+        = f.input :seo_keywords
+    .tab-pane.fade.in.active#description-info
+      %br
+      = f.input :intro
+      = f.input :content, input_html: { class: 'tinymce' }
+  = f.actions class: 'col-md-12' do
+    = f.action :submit, as: :button, button_html: { class: 'btn btn-big btn-success pull-right' }, label: I18nUtil.action(action_name)

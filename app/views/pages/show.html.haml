@@ -1,0 +1,6 @@
+- page = @child_page || @parent_page
+
+.col-md-9
+  = page.content.html_safe
+.col-md-3
+  = render 'sidebar'

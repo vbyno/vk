@@ -36,9 +36,9 @@ class Apartment < ActiveRecord::Base
   end
 
   def locales_with_translations
-    values = Locale::SECONDARY_LOCALES.map { |locale|
-      translations.detect {|t| t.locale.to_sym == locale }
+    values = Locale::SECONDARY.map { |locale|
+      translations.detect {|t| t.locale == locale }
     }
-    Hash[Locale::SECONDARY_LOCALES.zip values]
+    Hash[Locale::SECONDARY.zip values]
   end
 end

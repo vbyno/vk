@@ -3,5 +3,6 @@
 %nav.collapse.navbar-collapse.bs-navbar-collapse{role: 'navigation'}
   %ul.nav.navbar-nav
     %li= link_to t('.apartments'), admin_apartments_path
+    %li= link_to t('.pages'), admin_pages_path
   %ul.nav.navbar-nav.navbar-right
     %li= link_to t('.sign_out'), destroy_admin_session_path, method: :delete

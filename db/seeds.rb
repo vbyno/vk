@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'ffaker'
+require 'factory_girl_rails'
+
+namespace :db do
+  Page.destroy_all
+
+  Locale::ALL.each do |locale|
+    6.times do
+      parent_page = FactoryGirl.create :parent_page, locale: locale
+      4.times do
+        FactoryGirl.create :child_page, locale: locale, parent_page: parent_page
+      end
+    end
+  end
+end

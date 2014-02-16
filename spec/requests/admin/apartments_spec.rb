@@ -17,7 +17,7 @@ describe 'admin/apartments' do
     Locale.change_to_default!
   end
 
-  it 'CRUD apartment', js: true do
+  xit 'CRUD apartment', js: true do
     index_page = Admin::IndexPage.new(Apartment)
     expect(index_page.visit!).to have_instances(apartment, apartment_attributes_hash)
     index_page.new_button.click!

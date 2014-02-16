@@ -1,15 +1,13 @@
 !!!
-%html{lang: @locale.to_i18n}
+%html{lang: @locale}
   = render 'layouts/head'
   %body{class: [controller_name, action_name]}
-    %header.header.navbar.navbar-inverse.navbar-fixed-top
+    %header.navbar.navbar-static-top{role: 'bunner'}
       .container
         = render 'layouts/navigation'
-    #main{role: 'main'}
-      .container
-        .content
-          .row
-            .col-md-12
-              = render 'layouts/flash_messages'
-              = yield
-          %footer
+    .container
+      .row
+        .col-md-12
+          = render 'layouts/flash_messages'
+          = yield
+    %footer
