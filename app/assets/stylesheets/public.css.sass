@@ -5,23 +5,22 @@ $header_height: 50px
 .gallery-images-list
   margin: 20px auto
 
-span.languages
-  line-height: $header_height
-  .flag
-    width: 25px
-    height: 15px
-    background-image: url(flags.png)
-    display: inline-block
-    vertical-align: middle
-    @include opacity(0.5)
+span.flag
+  width: 25px
+  height: 15px
+  background-image: url(flags.png)
+  display: inline-block
+  vertical-align: middle
 
-    &:hover
-      @include opacity(1)
-    &.flag-en
-      background-position: -25px 0
-    &.flag-pl
-      background-position: -50px 0
-    &.flag-ru
-      background-position: 0 -15px
-    &.flag-uk
-      background-position: -25px -15px
+  &.flag-en
+    background-position: -25px 0
+  &.flag-pl
+    background-position: -50px 0
+  &.flag-ru
+    background-position: 0 -15px
+  &.flag-uk
+    background-position: -25px -15px
+  &.transparent
+    @include opacity(0.4)
+  &:hover
+    @include opacity(1)

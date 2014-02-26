@@ -1,4 +1,5 @@
 ru:
+  language: Русский
   shared_fields:
     apartment_fields: &apartment_fields
       title: Заголовок
@@ -16,6 +17,8 @@ ru:
   layouts:
     navigation:
       daily_apartments: Квартиры посуточно
+      language: Язык
+      phone: "+38 (067) 4-505-505"
     admin:
       title: Панель администратора
       navigation:

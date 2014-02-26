@@ -1,4 +1,5 @@
 pl:
+  language: Polska
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
@@ -9,3 +10,6 @@ pl:
   reservations:
     create:
       thank_you: Thank You PL!!!
+  layouts:
+    navigation:
+      language: Mova

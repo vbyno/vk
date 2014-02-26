@@ -8,6 +8,7 @@
 #= require bootstrap/collapse
 #= require bootstrap/modal
 #= require bootstrap/tab
+#= require bootstrap/dropdown
 
 # Gems
 #= require jquery-fileupload/basic
