@@ -1,11 +1,17 @@
-= semantic_form_for @reservation, remote: true do |f|
-  = f.semantic_errors *f.object.errors.keys
-  = f.inputs do
-    = f.input :apartment_id, as: :hidden
-    = f.input :customer_name
-    = f.input :customer_email
-    = f.input :check_in, as: :string, input_html: { class: 'datepicker' }
-    = f.input :check_out, as: :string, input_html: { class: 'datepicker' }
-    = f.input :body, input_html: { rows: 10, cols: 10, maxlength: 2000 }
-  = f.actions do
-    = f.action :submit, as: :button, label: t('actions.book_it'), button_html: { class: 'btn btn-big btn-success pull-right', data: { 'loading-text' => t('.submit_loading') } }
+.col-md-9.well
+  = semantic_form_for @reservation, remote: true, html: { role: 'form' } do |f|
+    %legend= t('.reservation_blank')
+    = f.semantic_errors *f.object.errors.keys
+    = f.inputs class: 'col-md-6' do
+      = f.input :apartment_id, as: :hidden
+      = f.input :customer_name
+      = f.input :customer_email
+      .row
+        .col-md-6
+          = f.input :check_in, as: :string, input_html: { class: 'datepicker' }
+        .col-md-6
+          = f.input :check_out, as: :string, input_html: { class: 'datepicker' }
+    = f.inputs class: 'col-md-6' do
+      = f.input :body, input_html: { rows: 6, cols: 10, maxlength: 2000 }
+    = f.actions class: 'col-md-6' do
+      = f.action :submit, as: :button, label: t('actions.book_it'), button_html: { class: 'btn btn-big btn-success pull-right', data: { 'loading-text' => t('.submit_loading') } }
