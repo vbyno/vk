@@ -14,12 +14,6 @@ en:
       sign_in: Register
       language: Language
       phone: "+38 (067) 4-505-505"
-  activerecord:
-    attributes:
-      apartment:
-        title: Title
-        price: Price
-        description: Description
   active_admin:
     devise:
       email:
@@ -32,3 +26,6 @@ en:
   reservations:
     create:
       thank_you: Thank You!!!
+    form:
+      submit_loading: Отправляется заявка...
+      reservation_blank: Заявка на бронирование

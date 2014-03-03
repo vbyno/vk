@@ -10,6 +10,9 @@ pl:
   reservations:
     create:
       thank_you: Thank You PL!!!
+    form:
+      submit_loading: Отправляется заявка...
+      reservation_blank: Заявка на бронирование
   layouts:
     navigation:
       language: Mova

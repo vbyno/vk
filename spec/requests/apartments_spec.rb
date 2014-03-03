@@ -16,8 +16,9 @@ describe 'Apartment LP' do
 
   Locale::SECONDARY.map do |locale|
     it "shows apartment in #{locale.upcase} translation" do
+      title = apartment.translations.find_by!(locale: locale).title
       locale_apartment_page = BasicPage.new("/#{locale}/apartments/#{apartment.id}",
-                                            main_content: apartment.translated_title(locale))
+                                            main_content: title)
       expect(locale_apartment_page.visit!).to be_loaded
     end
   end

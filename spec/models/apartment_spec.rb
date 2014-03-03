@@ -48,22 +48,6 @@ describe Apartment do
     end
   end
 
-  describe '#translated_title & #translated_description' do
-    let(:apartment) { create :apartment }
-    let!(:uk_translation) { create :apartment_translation,
-                                  apartment: apartment,
-                                  title: 'UA Title',
-                                  description: 'UA description',
-                                  locale: Locale::UK }
-
-    %w[title description].each do |attribute|
-      it "returns translated #{attribute}" do
-        expect(apartment.public_send("translated_#{attribute}", Locale::UK.to_sym)).
-          to eq uk_translation.public_send(attribute)
-      end
-    end
-  end
-
   describe '#locales_with_translations' do
     let(:apartment) { build :apartment }
     let(:en_translation) {

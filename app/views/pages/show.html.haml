@@ -4,3 +4,6 @@
   = page.content.html_safe
 .col-md-3
   = render 'sidebar'
+
+- content_for :admin_edit_link do
+  = edit_admin_page_path(page)

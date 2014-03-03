@@ -21,7 +21,6 @@ class ApartmentTranslation < ActiveRecord::Base
                                 allow_destroy: true,
                                 reject_if: proc { |pt| pt[:title].blank? &&
                                                          pt[:alt].blank? }
-
   validates :locale,
             presence: true,
             inclusion: { in: Locale::SECONDARY },

@@ -16,18 +16,15 @@ uk:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
     keywords: 'квартиры посуточно, квартиры во Львове'
-  activerecord:
-    attributes:
-      apartment:
-        title: Заголовок
-        price: Цена
-        description: Описание
   apartments:
     index:
       headline: Квартиры
   reservations:
     create:
       thank_you: Дякую Тобі!
+    form:
+      submit_loading: Отправляется заявка...
+      reservation_blank: Заявка на бронирование
   formtastic:
     labels:
       reservation:

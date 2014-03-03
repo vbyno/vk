@@ -16,3 +16,6 @@
   = render 'reservations/form'
 
 = render 'blueimp_gallery'
+
+- content_for :admin_edit_link do
+  = @apartment.edit_path

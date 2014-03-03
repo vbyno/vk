@@ -1,0 +1,55 @@
+uk:
+  shared_fields:
+    apartment_fields: &apartment_fields
+      title: Заголовок
+      price: Цена
+      description: Описание
+      short_description: Краткое описание
+    photo_fields: &photo_fields
+      alt: Описание
+      title: Заголовок
+      image: Изображение
+  activerecord:
+    attributes:
+      apartment_translation:
+        <<: *apartment_fields
+        locale: Язык перевода
+      apartment:
+        <<: *apartment_fields
+        main_photo: Главное фото
+        active: Активная
+      photo:
+        <<: *photo_fields
+      photo_translation:
+        <<: *photo_fields
+      admin:
+        email: Почта
+        password: Пароль
+        remember_me: Запомнить меня
+      page:
+        type: Тип страницы
+        title: Название
+        intro: Вводной текст
+        permalink: URL-ссылка
+        locale: Язык перевода
+        content: Содержание
+        active: Активная?
+        parent_page: &parent_page Родительская страница
+        parent_id: *parent_page
+        priority: Приоритет
+        seo_title: 'СЕО: Заголовок'
+        seo_description: 'СЕО: Описание'
+        seo_keywords: 'СЕО: Ключевые слова'
+    models:
+      apartment:
+        one: Квартира
+        other: Квартиры
+      apartment_translation:
+        one: Перевод
+        other: Переводы
+    errors:
+      models:
+        page:
+          parent_id:
+            should_exist: Родительская страница должна присутствовать
+            should_not_exist: Не должно быть ссылки на родительскую страницу
