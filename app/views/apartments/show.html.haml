@@ -10,10 +10,11 @@
     %ul.bxslider
       = render(@apartment.photos)
 
-= @apartment.description.html_safe
-
-#reservation-form
-  = render 'reservations/form'
+.col-md-9
+  = @apartment.description.html_safe
+.col-md-3.well
+  #reservation-form
+    = render 'reservations/form'
 
 = render 'blueimp_gallery'
 
