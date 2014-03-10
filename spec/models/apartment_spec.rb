@@ -26,9 +26,8 @@ describe Apartment do
   it { expect(subject).to accept_nested_attributes_for(:photos).
                             allow_destroy(true) }
 
-  %i[title price description short_description].each do |attribute|
-    it { expect(subject).to validate_presence_of attribute }
-  end
+  it_behaves_like 'presence validator',
+    %i[title price description short_description]
 
   context 'main image' do
     let(:active) { build :apartment, active: true, main_photo: nil }

@@ -21,9 +21,8 @@ describe ApartmentTranslation do
   it { expect(subject).to have_many(:photos).through(:apartment) }
   it { expect(subject).to have_many(:photo_translations).dependent(:destroy) }
 
-  %i[locale title description short_description apartment].each do |attribute|
-    it { expect(subject).to validate_presence_of attribute }
-  end
+  it_behaves_like 'presence validator',
+    %i[locale title description short_description apartment]
 
   it { expect(subject).to ensure_inclusion_of(:locale).
                           in_array Locale::SECONDARY }

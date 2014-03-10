@@ -19,11 +19,9 @@ require 'spec_helper'
 describe Reservation do
   it { expect(subject).to belong_to :apartment }
 
-  it { expect(subject).to validate_presence_of :apartment }
-  it { expect(subject).to validate_presence_of :customer_name }
-  it { expect(subject).to validate_presence_of :customer_email }
-  it { expect(subject).to validate_presence_of :check_in }
-  it { expect(subject).to validate_presence_of :check_out }
+  it_behaves_like 'presence validator',
+    [:apartment, :customer_name, :customer_email,
+     :check_in, :check_out, :customer_phone_number]
 
   it { expect(subject).to ensure_inclusion_of(:status).in_array Reservation::STATUSES }
 

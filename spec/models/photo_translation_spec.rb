@@ -14,8 +14,7 @@ require 'spec_helper'
 describe PhotoTranslation do
   it { expect(subject).to belong_to :photo }
   it { expect(subject).to belong_to :apartment_translation }
-  it { expect(subject).to validate_presence_of :photo }
-  it { expect(subject).to validate_presence_of :apartment_translation }
+  it_behaves_like 'presence validator', [:photo, :apartment_translation]
 
   describe '#image' do
     let(:photo) { build :photo }

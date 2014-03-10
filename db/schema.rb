@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210212121) do
+ActiveRecord::Schema.define(version: 20140322140234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,15 +105,16 @@ ActiveRecord::Schema.define(version: 20140210212121) do
   end
 
   create_table "reservations", force: true do |t|
-    t.integer  "apartment_id",   null: false
-    t.string   "customer_name",  null: false
-    t.string   "customer_email", null: false
-    t.datetime "check_in",       null: false
-    t.datetime "check_out",      null: false
-    t.string   "status",         null: false
+    t.integer  "apartment_id",          null: false
+    t.string   "customer_name",         null: false
+    t.string   "customer_email",        null: false
+    t.datetime "check_in",              null: false
+    t.datetime "check_out",             null: false
+    t.string   "status",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body"
+    t.string   "customer_phone_number", null: false
   end
 
   add_index "reservations", ["apartment_id"], name: "index_reservations_on_apartment_id", using: :btree

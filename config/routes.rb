@@ -13,7 +13,6 @@ Vk::Application.routes.draw do
   concerns :apartment_presenter
   resources :reservations, only: :create
 
-  devise_for :users
   devise_for :admins
 
   namespace :admin do
