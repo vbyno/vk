@@ -32,6 +32,7 @@ uk:
         customer_email: Ваш email
         check_in: Дата заселення
         check_out: Дата виселення
+        customer_phone: Ваш телефон
         body: Повідомлення
     actions:
       reservation:

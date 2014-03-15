@@ -20,6 +20,9 @@
 #= require bootstrap-image-gallery.min
 #= require jquery.blueimp-gallery.min
 
+# Everything else from /vendor folder
+#= require jquery.masked-input
+
 #= require vk
 #= require_tree ./helpers
 #= require_tree ./forms

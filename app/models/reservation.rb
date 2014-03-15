@@ -12,6 +12,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  body           :text
+#  customer_phone :string(255)      not null
 #
 
 class Reservation < ActiveRecord::Base
@@ -24,15 +25,21 @@ class Reservation < ActiveRecord::Base
   belongs_to :apartment
 
   before_validation :set_default_status, on: :create
+  before_validation :format_phone
 
   validates :apartment, :check_in, :check_out, :status,
-            :customer_name, :customer_email, :customer_phone_number,
+            :customer_name, :customer_email, :customer_phone,
             presence: true
   validates :status, inclusion: { in: STATUSES }
   validates :customer_email, format: { with: Devise.email_regexp }
+  validates :customer_phone, phone: true
 
 private
   def set_default_status
     self.status = PENDING unless status
+  end
+
+  def format_phone
+    self.customer_phone = Phone.new(customer_phone).to_s
   end
 end

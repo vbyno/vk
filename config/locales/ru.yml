@@ -29,6 +29,7 @@ ru:
       reservation:
         customer_name: Ваше имя
         customer_email: Ваш email
+        customer_phone: Ваш телефон
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение

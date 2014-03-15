@@ -105,16 +105,16 @@ ActiveRecord::Schema.define(version: 20140322140234) do
   end
 
   create_table "reservations", force: true do |t|
-    t.integer  "apartment_id",          null: false
-    t.string   "customer_name",         null: false
-    t.string   "customer_email",        null: false
-    t.datetime "check_in",              null: false
-    t.datetime "check_out",             null: false
-    t.string   "status",                null: false
+    t.integer  "apartment_id",   null: false
+    t.string   "customer_name",  null: false
+    t.string   "customer_email", null: false
+    t.datetime "check_in",       null: false
+    t.datetime "check_out",      null: false
+    t.string   "status",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body"
-    t.string   "customer_phone_number", null: false
+    t.string   "customer_phone", null: false
   end
 
   add_index "reservations", ["apartment_id"], name: "index_reservations_on_apartment_id", using: :btree

@@ -5,10 +5,11 @@
     = f.input :apartment_id, as: :hidden
     .row
       .col-md-6
-        = f.input :check_in, as: :string, input_html: { class: 'datepicker' }
+        = f.input :check_in, as: :string, input_html: { class: 'datepicker date-mask' }
       .col-md-6
-        = f.input :check_out, as: :string, input_html: { class: 'datepicker' }
+        = f.input :check_out, as: :string, input_html: { class: 'datepicker date-mask' }
     = f.input :customer_name
+    = f.input :customer_phone, input_html: { class: 'phone-mask'}
     = f.input :customer_email
   = f.inputs class: 'col-md-12' do
     = f.input :body, input_html: { rows: 6, cols: 10, maxlength: 2000 }

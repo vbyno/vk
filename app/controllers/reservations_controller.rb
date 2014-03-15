@@ -6,8 +6,8 @@ class ReservationsController < ApplicationController
 private
   def reservation_params
     params.require(:reservation).permit(
-      :apartment_id, :customer_name, :customer_email,
-      :check_in, :check_out, :body
+      :apartment_id, :check_in, :check_out, :body,
+      :customer_name, :customer_email, :customer_phone
     )
   end
 end
