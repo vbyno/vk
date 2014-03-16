@@ -1,14 +1,5 @@
 ru:
-  shared_fields:
-    apartment_fields: &apartment_fields
-      title: Заголовок
-      price: Цена
-      description: Описание
-      short_description: Краткое описание
-    photo_fields: &photo_fields
-      alt: Описание
-      title: Заголовок
-      image: Изображение
+  language: Русский
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
@@ -16,56 +7,14 @@ ru:
   layouts:
     navigation:
       daily_apartments: Квартиры посуточно
+      language: Язык
+      phone: "+38 (067) 4-505-505"
     admin:
       title: Панель администратора
       navigation:
         apartments: Квартиры
         pages: Страницы
         sign_out: Выйти
-  activerecord:
-    attributes:
-      apartment_translation:
-        <<: *apartment_fields
-        locale: Язык перевода
-      apartment:
-        <<: *apartment_fields
-        main_photo: Главное фото
-        active: Активная
-      photo:
-        <<: *photo_fields
-      photo_translation:
-        <<: *photo_fields
-      admin:
-        email: Почта
-        password: Пароль
-        remember_me: Запомнить меня
-      page:
-        type: Тип страницы
-        title: Название
-        intro: Вводной текст
-        permalink: URL-ссылка
-        locale: Язык перевода
-        content: Содержание
-        active: Активная?
-        parent_page: &parent_page Родительская страница
-        parent_id: *parent_page
-        priority: Приоритет
-        seo_title: 'СЕО: Заголовок'
-        seo_description: 'СЕО: Описание'
-        seo_keywords: 'СЕО: Ключевые слова'
-    models:
-      apartment:
-        one: Квартира
-        other: Квартиры
-      apartment_translation:
-        one: Перевод
-        other: Переводы
-    errors:
-      models:
-        page:
-          parent_id:
-            should_exist: Родительская страница должна присутствовать
-            should_not_exist: Не должно быть ссылки на родительскую страницу
   apartments:
     index:
       headline: Квартиры
@@ -74,11 +23,13 @@ ru:
       thank_you: Спасибо!
     form:
       submit_loading: Отправляется заявка...
+      reservation_blank: Заявка на бронирование
   formtastic:
     labels:
       reservation:
         customer_name: Ваше имя
         customer_email: Ваш email
+        customer_phone: Ваш телефон
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение

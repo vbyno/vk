@@ -12,6 +12,7 @@ describe 'reservation' do
     apartment_page.reservation_form.fill_with(
       I18n.t('formtastic.labels.reservation.customer_name') => 'Name Ru',
       I18n.t('formtastic.labels.reservation.customer_email') => 'Email Ru',
+      I18n.t('formtastic.labels.reservation.customer_phone') => '380673030330',
       I18n.t('formtastic.labels.reservation.check_in') => '11/12/2012',
       I18n.t('formtastic.labels.reservation.check_out') => '12/12/2012'
     ).submit_button.click!

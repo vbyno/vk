@@ -12,6 +12,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  body           :text
+#  customer_phone :string(255)      not null
 #
 
 require 'spec_helper'
@@ -19,11 +20,9 @@ require 'spec_helper'
 describe Reservation do
   it { expect(subject).to belong_to :apartment }
 
-  it { expect(subject).to validate_presence_of :apartment }
-  it { expect(subject).to validate_presence_of :customer_name }
-  it { expect(subject).to validate_presence_of :customer_email }
-  it { expect(subject).to validate_presence_of :check_in }
-  it { expect(subject).to validate_presence_of :check_out }
+  it_behaves_like 'presence validator',
+    [:apartment, :check_in, :check_out,
+     :customer_name, :customer_email, :customer_phone]
 
   it { expect(subject).to ensure_inclusion_of(:status).in_array Reservation::STATUSES }
 
@@ -36,5 +35,11 @@ describe Reservation do
     reservation = build :reservation, status: nil
     expect(reservation).to be_valid
     expect(reservation.status).to eq Reservation::PENDING
+  end
+
+  it 'validates customer_phone' do
+    expect(subject).to allow_value('123456789012').for(:customer_phone)
+    expect(subject).not_to allow_value('12345678901').for(:customer_phone)
+    expect(subject).not_to allow_value('12345678901a').for(:customer_phone)
   end
 end

@@ -14,7 +14,7 @@ class Locale
   end
 
   def self.new!(locale_param = nil)
-    self.new(locale_param).tap(&:make_current!)
+    new(locale_param).tap(&:make_current!)
   end
 
   def root_page_path
@@ -35,11 +35,15 @@ class Locale
   end
 
   def self.change_to_default!
-    self.new(DEFAULT).make_current!
+    default.make_current!
   end
 
   def self.all_except(locale)
     (ALL_S - [locale.to_sym]).map { |l| new(l) }
+  end
+
+  def self.default
+    new(DEFAULT)
   end
 
   def to_s

@@ -1,48 +1,60 @@
 class ApartmentPresenter
   include Rails.application.routes.url_helpers
 
-  attr_reader :title, :description, :short_description
+  attr_reader :apartment, :translation
+  delegate :title, :description, :short_description, to: :responder
 
-  def initialize(apartment, params = {locale: nil, translation: nil})
+  def initialize(apartment, translation = nil)
     @apartment = apartment
-    translation = params[:translation]
-    @locale = params[:locale] || Locale.new(translation.try(:locale))
-
-    @title, @description, @short_description = translated_attributes(
-      translation, :title, :description, :short_description
-    )
+    @translation = translation
   end
 
   def path
-    @locale.default? ? apartment_path(id) : locale_apartment_path(@locale, id)
+    translated? ? locale_apartment_path(locale, apartment) : apartment_path(apartment)
+  end
+
+  def edit_path
+    if translated?
+      edit_admin_apartment_translation_path(translation)
+    else
+      edit_admin_apartment_path(apartment)
+    end
   end
 
   def self.all(locale)
     active_apartments = Apartment.active
     return active_apartments.map { |a| ApartmentPresenter.new(a) } if locale.default?
 
-    apartment_ids = active_apartments.translated_to(locale.to_sym).pluck(:id)
+    apartments = active_apartments.translated_to(locale.to_sym)
     # TODO make include with param :locale
-    translations = ApartmentTranslation.where(apartment_id: apartment_ids,
+    translations = ApartmentTranslation.where(apartment_id: apartments.map(&:id),
                                               locale: locale.to_sym)
-    active_apartments.find(apartment_ids).map { |apartment|
-      ApartmentPresenter.new(apartment,
-                             translation: translations.detect { |t|
-                               t.apartment_id == apartment.id
-                             })
-    }
+    apartments.map do |apartment|
+      translation = translations.detect { |t| t.apartment_id == apartment.id }
+      ApartmentPresenter.new(apartment, translation)
+    end
+  end
+
+  def self.create_by_locale(apartment, locale)
+    translation =
+      apartment.translations.find_by!(locale: locale.to_sym) unless locale.default?
+    new(apartment, translation)
   end
 
   def method_missing(*args)
-    @apartment.public_send(*args)
+    apartment.public_send(*args)
   end
 
 private
-  def translated_attributes(translation, *attributes)
-    return attributes.map { |a| @apartment.public_send(a) } if @locale.default?
+  def responder
+    translated? ? translation : apartment
+  end
 
-    translation ||= @apartment.translations.find_by(locale: @locale.to_s)
-    return attributes.map { |a| translation.public_send(a) } if translation
-    raise ActiveRecord::RecordNotFound.new("No #{@locale} translation for #{@apartment}")
+  def locale
+    Locale.new(translation.try(:locale))
+  end
+
+  def translated?
+    translation.present?
   end
 end

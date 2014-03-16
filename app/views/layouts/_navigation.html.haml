@@ -8,11 +8,20 @@
 
 %nav.collapse.navbar-collapse#vk-navbar-collapse{role: 'navigation'}
   %ul.nav.navbar-nav
-    = list_of ParentPage.for_menu(@locale.to_s, 5) do |page|
+    = list_of ParentPage.for_menu(@locale.to_s, 4) do |page|
       = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink) do |text|
         %p.navbar-text= text
   %ul.nav.navbar-nav.navbar-right
-    %span.languages
-      - Locale.all_except(@locale).each do |locale|
-        = link_to locale.root_page_path do
-          %div{class: "flag flag-#{locale}"}
+    %span.navbar-brand
+      %i.fa.fa-phone
+      = t('.phone')
+    %li.dropdown
+      %a.dropdown-toggle{data: {toggle: 'dropdown'}, href: @locale.root_page_path}
+        %span{class: "flag flag-#{@locale} transparent"}
+        %span.caret
+      %ul.dropdown-menu
+        - Locale.all_except(@locale).each do |locale|
+          %li
+            %a{href: locale.root_page_path}
+              %span{class: "flag flag-#{locale}"}
+              = t(:language, locale: locale.to_sym)

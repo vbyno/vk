@@ -26,9 +26,8 @@ describe Apartment do
   it { expect(subject).to accept_nested_attributes_for(:photos).
                             allow_destroy(true) }
 
-  %i[title price description short_description].each do |attribute|
-    it { expect(subject).to validate_presence_of attribute }
-  end
+  it_behaves_like 'presence validator',
+    %i[title price description short_description]
 
   context 'main image' do
     let(:active) { build :apartment, active: true, main_photo: nil }
@@ -45,22 +44,6 @@ describe Apartment do
 
     it 'is valid if apartment active' do
       expect(active_with_main_photo).to be_valid
-    end
-  end
-
-  describe '#translated_title & #translated_description' do
-    let(:apartment) { create :apartment }
-    let!(:uk_translation) { create :apartment_translation,
-                                  apartment: apartment,
-                                  title: 'UA Title',
-                                  description: 'UA description',
-                                  locale: Locale::UK }
-
-    %w[title description].each do |attribute|
-      it "returns translated #{attribute}" do
-        expect(apartment.public_send("translated_#{attribute}", Locale::UK.to_sym)).
-          to eq uk_translation.public_send(attribute)
-      end
     end
   end
 

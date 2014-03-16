@@ -6,7 +6,7 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    @apartment = ApartmentPresenter.new(@apartment, locale: @locale)
+    @apartment = ApartmentPresenter.create_by_locale(@apartment, @locale)
     @reservation = @apartment.reservations.build
   end
 end

@@ -29,12 +29,6 @@ class Apartment < ActiveRecord::Base
     joins(:translations).where(apartment_translations: { locale: locale })
   }
 
-  %w[title description].each do |attribute|
-    define_method "translated_#{attribute}", ->(locale) do
-      translations.find_by(locale: locale).try(attribute)
-    end
-  end
-
   def locales_with_translations
     values = Locale::SECONDARY.map { |locale|
       translations.detect {|t| t.locale == locale }

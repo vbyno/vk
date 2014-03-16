@@ -1,0 +1,12 @@
+%nav
+  %ul.nav.navbar-nav
+    - if content_for?(:admin_edit_link) && current_admin
+      %li
+        %a{href: "#{yield(:admin_edit_link)}"}
+          %i.fa.fa-pencil-square-o
+    %li
+      %a{href: 'https://plus.google.com/108369022058258511554?rel=author'}
+        %i.fa.fa-google-plus
+  %ul.nav.navbar-nav.navbar-right
+    %p.navbar-text
+      &copy; VK-Lviv, 2014

@@ -75,6 +75,7 @@ FactoryGirl.define do
     association :apartment
     customer_name 'Customer Name'
     customer_email 'customer@email.comx'
+    customer_phone '380673003030'
     check_in { DateTime.tomorrow + 12.hours }
     check_out { DateTime.tomorrow + 1.day + 11.hours }
     status Reservation::PENDING

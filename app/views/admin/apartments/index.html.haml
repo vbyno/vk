@@ -2,11 +2,8 @@
 = link_to I18nUtil.action(:new), new_admin_apartment_path, class: 'btn btn-big btn-success pull-right'
 %table.table.table-striped
   %tr
-    %th= @apartments.human_attribute_name :title
-    %th= @apartments.human_attribute_name :price
-    %th= @apartments.human_attribute_name :active
-    %th= @apartments.human_attribute_name :short_description
-    %th= @apartments.human_attribute_name :description
+    - human_attributes(Apartment, :title, :price, :active, :short_description, :description) do |attribute|
+      %th= attribute
     %th= ApartmentTranslation.model_name.human(:count => Float::INFINITY)
     %th= t('.actions')
 

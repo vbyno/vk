@@ -2,7 +2,7 @@
 %html{lang: @locale}
   = render 'layouts/head'
   %body{class: [controller_name, action_name]}
-    %header.navbar.navbar-static-top{role: 'bunner'}
+    %header.navbar.navbar-inverse.navbar-static-top{role: 'bunner'}
       .container
         = render 'layouts/navigation'
     .container
@@ -10,4 +10,7 @@
         .col-md-12
           = render 'layouts/flash_messages'
           = yield
-    %footer
+    %br
+    %footer.navbar-default
+      .container
+        = render 'layouts/footer'
