@@ -2,9 +2,9 @@ class Locale
   include Rails.application.routes.url_helpers
 
   DEFAULT = :ru
-  ALL = [RU = 'ru', UK = 'uk', EN = 'en', PL = 'pl'].freeze
+  ALL = [RU = 'ru', UA = 'ua', EN = 'en', PL = 'pl'].freeze
   ALL_S = ALL.map(&:to_sym).freeze
-  SECONDARY = [UK, EN, PL].freeze
+  SECONDARY = [UA, EN, PL].freeze
 
   def initialize(locale_param = nil)
     if locale_param && ALL_S.exclude?(locale_param.to_sym)

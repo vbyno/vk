@@ -59,7 +59,7 @@ describe Apartment do
 
     it 'returns empty set if no translations' do
       expect(locales_with_translations).
-        to eq({ Locale::UK => nil, Locale::EN => nil, Locale::PL => nil })
+        to eq({ Locale::UA => nil, Locale::EN => nil, Locale::PL => nil })
     end
 
     it 'returns set of locales' do
@@ -68,7 +68,7 @@ describe Apartment do
       ]
 
       expect(locales_with_translations).to eq({
-        Locale::UK => nil,
+        Locale::UA => nil,
         Locale::EN => en_translation,
         Locale::PL => pl_translation
       })
