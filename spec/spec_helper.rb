@@ -41,7 +41,7 @@ RSpec.configure do |config|
       next if klass.anonymous?
       klass.class_eval do
         def cache_dir
-          "#{Rails.root}/spec/support/uploads}/tmp"
+          "#{Rails.root}/spec/support/uploads/tmp"
         end
 
         def store_dir

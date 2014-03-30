@@ -6,6 +6,9 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
 
+gem 'resque'
+gem 'resque-scheduler'
+
 gem 'haml-rails'
 gem 'simple-navigation'
 gem 'sanitize'
