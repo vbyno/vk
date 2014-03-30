@@ -3,6 +3,7 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = ApartmentPresenter.all(@locale)
+    @main_page = MainPage.available(@locale)
   end
 
   def show

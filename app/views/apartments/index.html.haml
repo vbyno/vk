@@ -3,10 +3,9 @@
 
 %table
   %tr
-    %th.col-md-4= Apartment.human_attribute_name :main_photo
-    %th= Apartment.human_attribute_name :title
-    %th= Apartment.human_attribute_name :price
-    %th= Apartment.human_attribute_name :description
+    %th.col-md-4= human_attribute(Apartment, :main_photo)
+    - human_attributes(Apartment, :title, :price, :description) do |attr|
+      %th= attr
 
   - @apartments.each do |apartment|
     %tr
@@ -16,3 +15,8 @@
       %td= link_to apartment.title, apartment.path
       %td= apartment.price.ceil
       %td= apartment.short_description
+
+%hr
+%article
+  != @main_page.try(:content)
+

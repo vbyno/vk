@@ -2,7 +2,9 @@
   = I18nUtil.action(action_name)
   - if @page.parent?
     = link_to nil, parent_page_path(@page.permalink)
-  - else
+  - elsif @page.child?
     = link_to nil, child_page_path(@page.parent_page.permalink, @page.permalink)
+  - elsif @page.main?
+    = locale_link_to nil, :root_path, locale: Locale.new(@page.locale)
 = render 'form'
 = render 'admin/pictures/modal_form'

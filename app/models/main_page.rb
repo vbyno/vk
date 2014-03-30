@@ -19,36 +19,8 @@
 #  updated_at      :datetime
 #
 
-class Page < ActiveRecord::Base
-  include ActiveModel::Validations
-  include ::ModelNameCustomizer
-  self.param_key = :page
-  self.route_key = :pages
-
-  TYPES = %w[MainPage ParentPage ChildPage].to_set
-
-  scope :active, -> { where(active: true) }
-
-  validates_with PageValidator
-  validates :content, :seo_title, :intro, :permalink, :type, :priority,
-            presence: true
-  validates :locale, presence: true, inclusion: { in: Locale::ALL }
-  validates :type, presence: true, inclusion: { in: TYPES }
-  validates :title, presence: true, length: { in: 2..60 }
-
-  def parent?
-    false
-  end
-
-  def child?
-    false
-  end
-
+class MainPage < Page
   def main?
-    false
-  end
-
-  def self.available(permalink)
-    active.find_by(permalink: permalink.to_s)
+    true
   end
 end
