@@ -6,8 +6,9 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
 
-gem 'resque'
-gem 'resque-scheduler'
+gem 'resque', '~> 1.25.2'
+gem 'resque-scheduler', '~> 2.5.5'
+gem 'resque_mailer', '~> 2.2.6'
 
 gem 'haml-rails'
 gem 'simple-navigation'
@@ -36,8 +37,11 @@ group :development do
   gem 'quiet_assets'
   gem 'annotate'
   gem 'newrelic_rpm'
-  gem 'factory_girl_rails', require: false
+  gem 'mailcatcher', '~> 0.2.4'
+
+  # we need ffaker and factory for seeds
   gem 'ffaker', require: false
+  gem 'factory_girl_rails', require: false
 end
 
 group :development, :test do

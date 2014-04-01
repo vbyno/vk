@@ -4,6 +4,6 @@ class UserMailer < ActionMailer::Base
   def reservation_created(reservation_id)
     @reservation = Reservation.find(reservation_id)
 
-    mail(to: @reservation.customer_mail, subject: 'Reservation Left')
+    mail(to: @reservation.customer_email, subject: 'Reservation Left')
   end
 end

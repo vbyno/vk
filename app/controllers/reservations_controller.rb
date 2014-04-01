@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      Resque.fail_safe_enqueue(
+      Resque.enqueue(
         MailerWorker, 'UserMailer', :reservation_created, @reservation.id
       )
     end
