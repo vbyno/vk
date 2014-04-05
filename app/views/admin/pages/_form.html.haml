@@ -7,7 +7,6 @@
     .tab-pane.fade#main-info
       %br
       = f.inputs class: 'col-md-9' do
-        = f.input :title
         = f.input :permalink
         = f.input :type, as: :select, collection: Page::TYPES.map { |pt| [I18nUtil.value(pt), pt] }
         = f.input :parent_id, as: :select, collection: ParentPage.all.map { |p| [p.title, p.id] }
@@ -21,6 +20,7 @@
         = f.input :seo_keywords
     .tab-pane.fade.in.active#description-info
       %br
+      = f.input :title
       = f.input :intro
       = f.input :content, input_html: { class: 'tinymce' }
   = f.actions class: 'col-md-12' do

@@ -1,9 +1,5 @@
 en:
   language: English
-  head:
-    title: Apartments for rent in Lviv
-    description: Rent apartments in Lviv
-    keywords: 'apartments, apartments in Lviv'
   layouts:
     navigation:
       daily_apartments: Apartments for rent1

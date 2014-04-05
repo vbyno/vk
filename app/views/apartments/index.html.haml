@@ -1,5 +1,6 @@
+// TODO place this code in static#home partial
 .page-header
-  %h1= t('.headline')
+  %h1= @main_page.try(:title)
 
 %table
   %tr
@@ -20,3 +21,5 @@
 %article
   != @main_page.try(:content)
 
+- content_for :admin_edit_link do
+  = edit_admin_page_path(@main_page)
