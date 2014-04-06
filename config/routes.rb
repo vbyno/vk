@@ -1,6 +1,6 @@
 Vk::Application.routes.draw do
   concern :apartment_presenter do
-    root 'apartments#index'
+    root 'main_pages#show'
     resources :apartments, only: :show
   end
 
@@ -26,7 +26,7 @@ Vk::Application.routes.draw do
     resources :pictures, only: [:new, :create]
   end
 
-  scope ':locale', locale: /uk|en|pl/, as: :locale do
+  scope ':locale', locale: /ua|en|pl/, as: :locale do
     concerns :apartment_presenter, :seo_hierarchical
   end
   concerns :seo_hierarchical

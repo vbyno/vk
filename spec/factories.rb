@@ -113,5 +113,10 @@ FactoryGirl.define do
       sequence(:title) { |n| "Child Page #{n} Title" }
       sequence(:permalink) { |n| "child_#{n}" }
     end
+
+    factory :main_page, class: MainPage do
+      title 'Main Page'
+      permalink 'ru'
+    end
   end
 end

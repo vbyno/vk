@@ -1,9 +1,5 @@
-uk:
+ua:
   language: Українська
-  head:
-    title: Квартиры посуточно во Львове
-    description: Аренда квартир посуточно во Львове
-    keywords: 'квартиры посуточно, квартиры во Львове'
   layouts:
     navigation:
       daily_apartments: Квартири подобово
@@ -12,6 +8,7 @@ uk:
       about_lviv: Про Львів
       contacts: Контакти
       language: Мова
+      phone: "+38 (067) 4-505-505"
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове

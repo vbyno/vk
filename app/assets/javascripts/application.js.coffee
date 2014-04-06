@@ -12,8 +12,11 @@
 
 # Gems
 #= require jquery-fileupload/basic
-#= require bootstrap-datepicker
 #= require tinymce
+#= require bootstrap-datepicker/core
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.ua.js
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.pl.js
 
 # From /vendor - for gallery widget
 #= require bxslider

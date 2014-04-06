@@ -25,8 +25,9 @@ class ParentPage < Page
 
   validates :permalink, presence: true, uniqueness: { scope: :locale }
 
-  scope :for_menu, ->(locale, limit) { where(locale: locale, active: true).
-                                         order(priority: :desc).limit(limit) }
+  scope :for_menu, ->(locale, limit) { active.where(locale: locale).
+                                              order(priority: :desc).
+                                              limit(limit) }
 
   def parent?
     true

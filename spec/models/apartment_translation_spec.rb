@@ -33,7 +33,7 @@ describe ApartmentTranslation do
     create :apartment_translation, apartment: apartment
     expect { create :apartment_translation, apartment: apartment }.to raise_error
     expect { create :apartment_translation,
-                    locale: Locale::UK,
+                    locale: Locale::UA,
                     apartment: apartment }.to_not raise_error
     expect { create :apartment_translation, locale: Locale::EN }
       .to_not raise_error

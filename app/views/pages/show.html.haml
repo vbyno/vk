@@ -1,9 +1,9 @@
 - page = @child_page || @parent_page
 
-.col-md-9
-  = page.content.html_safe
-.col-md-3
-  = render 'sidebar'
+.col-md-9!= page.content
+.col-md-3= render 'sidebar'
 
 - content_for :admin_edit_link do
   = edit_admin_page_path(page)
+
+= render 'shared/seo_tags', page: page

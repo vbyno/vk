@@ -1,8 +1,8 @@
 class BasicButton
   include Capybara::DSL
 
-  def initialize(options = { value: nil })
-    @value = options[:value]
+  def initialize(value: nil)
+    @value = value
   end
 
   def click!

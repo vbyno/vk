@@ -15,7 +15,7 @@ describe Admin::PagesController do
 
     it 'assigns pages' do
       get :index
-      expect(assigns(:pages)).to eq [page]
+      expect(assigns :pages).to eq [page]
     end
   end
 

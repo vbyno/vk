@@ -25,7 +25,9 @@ class Page < ActiveRecord::Base
   self.param_key = :page
   self.route_key = :pages
 
-  TYPES = %w[ParentPage ChildPage].to_set
+  TYPES = %w[MainPage ParentPage ChildPage].to_set
+
+  scope :active, -> { where(active: true) }
 
   validates_with PageValidator
   validates :content, :seo_title, :intro, :permalink, :type, :priority,
@@ -40,5 +42,13 @@ class Page < ActiveRecord::Base
 
   def child?
     false
+  end
+
+  def main?
+    false
+  end
+
+  def self.available(permalink)
+    active.find_by(permalink: permalink.to_s)
   end
 end

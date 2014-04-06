@@ -1,9 +1,5 @@
 ru:
   language: Русский
-  head:
-    title: Квартиры посуточно во Львове
-    description: Аренда квартир посуточно во Львове
-    keywords: квартиры посуточно, квартиры во Львове
   layouts:
     navigation:
       daily_apartments: Квартиры посуточно
@@ -64,3 +60,4 @@ ru:
   values:
     parent_page: Основная
     child_page: Вложенная
+    main_page: Главная

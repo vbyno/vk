@@ -1,14 +1,10 @@
-.page-header
-  %h1= t('.headline')
-
 %table
   %tr
-    %th.col-md-4= Apartment.human_attribute_name :main_photo
-    %th= Apartment.human_attribute_name :title
-    %th= Apartment.human_attribute_name :price
-    %th= Apartment.human_attribute_name :description
+    %th.col-md-4= human_attribute(Apartment, :main_photo)
+    - human_attributes(Apartment, :title, :price, :description) do |attr|
+      %th= attr
 
-  - @apartments.each do |apartment|
+  - apartments.each do |apartment|
     %tr
       %td= image_tag(apartment.main_photo.image.small.url.to_s,
                       class: 'img-thumbnail',

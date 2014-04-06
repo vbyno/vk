@@ -24,8 +24,8 @@ class Admin::PagesController < Admin::BaseController
 private
   def page_params
     params.require(:page).permit(
-      :id, :type, :parent_id, :permalink, :locale, :content, :active,
-      :priority, :seo_title, :seo_description, :seo_keywords
+      :id, :type, :parent_id, :permalink, :locale, :content, :active, :title,
+      :priority, :intro, :seo_title, :seo_description, :seo_keywords
     )
   end
 end

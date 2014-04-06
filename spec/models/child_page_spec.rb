@@ -33,7 +33,7 @@ describe ChildPage do
       not_to be_valid
     expect(build :parent_page, locale: Locale::RU, permalink: 'foo').to be_valid
     expect(build :child_page, locale: Locale::RU, permalink: 'bar').to be_valid
-    expect(build :child_page, locale: Locale::UK, permalink: 'foo').to be_valid
+    expect(build :child_page, locale: Locale::UA, permalink: 'foo').to be_valid
   end
 
   describe '#child?' do

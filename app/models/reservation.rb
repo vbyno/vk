@@ -24,6 +24,8 @@ class Reservation < ActiveRecord::Base
 
   belongs_to :apartment
 
+  scope :yesterdays, ->(time = Time.now) { where(created_at: time.yesterday..time) }
+
   before_validation :set_default_status, on: :create
   before_validation :format_phone
 

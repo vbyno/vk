@@ -1,4 +1,4 @@
-uk:
+ua:
   shared_fields:
     apartment_fields: &apartment_fields
       title: Заголовок
@@ -28,7 +28,7 @@ uk:
         remember_me: Запомнить меня
       page:
         type: Тип страницы
-        title: Название
+        title: Заголовок
         intro: Вводной текст
         permalink: URL-ссылка
         locale: Язык перевода
