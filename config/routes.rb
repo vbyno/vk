@@ -1,6 +1,6 @@
 Vk::Application.routes.draw do
   concern :apartment_presenter do
-    root 'apartments#index'
+    root 'main_pages#show'
     resources :apartments, only: :show
   end
 

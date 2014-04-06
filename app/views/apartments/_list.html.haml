@@ -1,14 +1,10 @@
-// TODO place this code in static#home partial
-.page-header
-  %h1= @main_page.try(:title)
-
 %table
   %tr
     %th.col-md-4= human_attribute(Apartment, :main_photo)
     - human_attributes(Apartment, :title, :price, :description) do |attr|
       %th= attr
 
-  - @apartments.each do |apartment|
+  - apartments.each do |apartment|
     %tr
       %td= image_tag(apartment.main_photo.image.small.url.to_s,
                       class: 'img-thumbnail',
@@ -16,10 +12,3 @@
       %td= link_to apartment.title, apartment.path
       %td= apartment.price.ceil
       %td= apartment.short_description
-
-%hr
-%article
-  != @main_page.try(:content)
-
-- content_for :admin_edit_link do
-  = edit_admin_page_path(@main_page)

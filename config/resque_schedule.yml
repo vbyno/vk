@@ -1,6 +1,6 @@
 default: &default
   notify_admin_about_reservations:
-   cron: '0 10 * * * Ukraine/Kiev'
+   cron: '0 10 * * *'
    class: AdminReservationsWorker
    queue: notifiers
    description: Sends email to site owner with last day reservations

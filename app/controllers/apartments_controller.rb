@@ -1,10 +1,5 @@
 class ApartmentsController < ApplicationController
-  load_resource only: :show
-
-  def index
-    @apartments = ApartmentPresenter.all(@locale)
-    @main_page = MainPage.available(@locale)
-  end
+  load_resource
 
   def show
     @apartment = ApartmentPresenter.create_by_locale(@apartment, @locale)

@@ -3,7 +3,7 @@ require 'resque-scheduler'
 
 redis_config = YAML.load_file(File.join(Rails.root, '/config/redis.yml'))
 Resque.redis = "#{redis_config[Rails.env]['host']}:#{redis_config[Rails.env]['port']}"
-
+Resque::Scheduler.dynamic = true
 Resque.schedule =
   if Rails.env.test?
     Resque.inline = true

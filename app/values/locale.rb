@@ -38,6 +38,10 @@ class Locale
     default.make_current!
   end
 
+  def self.all
+    ALL_S.map { |l| new(l) }
+  end
+
   def self.all_except(locale)
     (ALL_S - [locale.to_sym]).map { |l| new(l) }
   end
