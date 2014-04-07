@@ -48,7 +48,7 @@ class Page < ActiveRecord::Base
     false
   end
 
-  def self.available(permalink)
-    active.find_by(permalink: permalink.to_s)
+  def self.available!(permalink)
+    active.find_by!(permalink: permalink.to_s)
   end
 end

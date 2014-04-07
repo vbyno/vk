@@ -12,8 +12,4 @@ private
   def set_locale
     @locale = Locale.new!(params[:locale])
   end
-
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
 end

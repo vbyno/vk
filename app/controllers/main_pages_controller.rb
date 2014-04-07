@@ -5,6 +5,6 @@ class MainPagesController < PagesController
 
 private
   def find_page
-    @main_page = MainPage.available(@locale) || not_found
+    @main_page = MainPage.available!(@locale)
   end
 end
