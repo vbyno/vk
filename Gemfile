@@ -32,7 +32,9 @@ gem 'uglifier', '~> 1.3.0'
 gem 'pg'
 gem 'rails', '~> 4.1.0'
 gem 'rails-i18n'
+
 gem 'capistrano-rails'
+gem 'unicorn'
 
 group :development do
   gem 'quiet_assets'
