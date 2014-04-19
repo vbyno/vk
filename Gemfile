@@ -30,8 +30,9 @@ gem 'jbuilder', '~> 1.2.0'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 1.3.0'
 gem 'pg'
-gem 'rails-i18n', '~> 4.0.0'
-gem 'rails', '~> 4.0.2'
+gem 'rails', '~> 4.1.0'
+gem 'rails-i18n'
+gem 'capistrano-rails'
 
 group :development do
   gem 'quiet_assets'
