@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:vbyno/vk.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/var/www/vk'
+set :deploy_to, '/home/vk'
 
 # Default value for :scm is :git
 # set :scm, :git

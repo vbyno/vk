@@ -33,7 +33,9 @@ gem 'pg'
 gem 'rails', '~> 4.1.0'
 gem 'rails-i18n'
 
+gem 'capistrano'
 gem 'capistrano-rails'
+gem 'capistrano-rvm'
 gem 'unicorn'
 
 group :development do
