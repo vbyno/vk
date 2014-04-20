@@ -1,9 +1,10 @@
 ru:
   language: Русский
   layouts:
-    navigation:
+    header:
       daily_apartments: Квартиры посуточно
       language: Язык
+      toggle_navigation: Показать/скрыть меню
     admin:
       title: Панель администратора
       navigation:
