@@ -28,6 +28,9 @@ class Page < ActiveRecord::Base
   TYPES = %w[MainPage ParentPage ChildPage].to_set
 
   scope :active, -> { where(active: true) }
+  scope :recent, ->(count, locale) { active.where(locale: locale.to_s).
+                                            order(created_at: :desc).
+                                            limit(count) }
 
   validates_with PageValidator
   validates :content, :seo_title, :intro, :permalink, :type, :priority,

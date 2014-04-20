@@ -14,7 +14,7 @@
   %ul.nav.navbar-nav.navbar-right
     %span.navbar-brand
       %i.fa.fa-phone
-      = t('.phone')
+      = SiteInfo.get(:contact, :phone_kyivstar_str)
     %li.dropdown
       %a.dropdown-toggle{data: {toggle: 'dropdown'}, href: @locale.root_page_path}
         %span{class: "flag flag-#{@locale} transparent"}

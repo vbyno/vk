@@ -10,6 +10,20 @@ module ApplicationHelper
     link_to_unless_current(text, path, html_options, &block)
   end
 
+  # TODO Perhabs, make some page-value object
+  def polymorphic_page_path(page)
+    locale = Locale.new(page.locale)
+    return (locale.default? ? root_path : locale_root_path(locale)) if page.main?
+
+    prefix = 'locale_' unless locale.default?
+    path = "#{prefix}#{page.type.underscore}_path"
+
+    params = [page.permalink]
+    params.unshift(page.parent_page.permalink) if page.child?
+    params.unshift(locale) unless locale.default?
+    public_send(path, *params)
+  end
+
   def human_attribute(resource, attribute)
     (resource.is_a?(Class) ? resource : resource.class).
       human_attribute_name(attribute)
