@@ -3,10 +3,12 @@
   = render 'layouts/head'
   %body{class: [controller_name, action_name]}
     = render 'layouts/header'
-    .container
-      .row
-        .col-md-12
-          = render 'layouts/flash_messages'
-          = yield
+    .wrapper
+      = render 'layouts/breadcrumbs'
+      .container
+        .row
+          .col-md-12
+            = render 'layouts/flash_messages'
+            = yield
     %br
     = render 'layouts/footer'
