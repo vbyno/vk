@@ -33,6 +33,14 @@ class ParentPage < Page
     true
   end
 
+  def parent
+    MainPage.available!(locale)
+  end
+
+  def presenter
+    ParentPagePresenter.new(self)
+  end
+
   def self.grouped_by_locale
     includes(:child_pages).group_by { |p| p.locale.to_sym }
   end

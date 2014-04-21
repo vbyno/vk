@@ -23,9 +23,17 @@ class ChildPage < Page
   belongs_to :parent_page, foreign_key: :parent_id
   has_many :pictures, as: :imageable
 
+  delegate :permalink, to: :parent, prefix: true
+
   validates :permalink, presence: true, uniqueness: { scope: :locale }
 
   def child?
     true
+  end
+
+  alias_method :parent, :parent_page
+
+  def presenter
+    ChildPagePresenter.new(self)
   end
 end

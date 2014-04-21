@@ -51,4 +51,13 @@ module ApplicationHelper
                               imageable_type: resource_type)
     }
   end
+
+  def breadcrumb_pages(page)
+    pages = [page]
+    while page.respond_to?(:parent) do
+      page = page.parent
+      pages.unshift(page)
+    end
+    pages
+  end
 end

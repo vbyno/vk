@@ -31,6 +31,7 @@ class Page < ActiveRecord::Base
   scope :recent, ->(count, locale) { active.where(locale: locale.to_s).
                                             order(created_at: :desc).
                                             limit(count) }
+  delegate :path, to: :presenter
 
   validates_with PageValidator
   validates :content, :seo_title, :intro, :permalink, :type, :priority,
@@ -49,6 +50,14 @@ class Page < ActiveRecord::Base
 
   def main?
     false
+  end
+
+  def locale_object
+    Locale.new(locale)
+  end
+
+  def hierarchy
+    raise NotImplementedError
   end
 
   def self.available!(permalink)

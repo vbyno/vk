@@ -1,6 +1,4 @@
-class ApartmentPresenter
-  include Rails.application.routes.url_helpers
-
+class ApartmentPresenter < BasicPresenter
   attr_reader :apartment, :translation
   delegate :title, :description, :short_description, to: :responder
 

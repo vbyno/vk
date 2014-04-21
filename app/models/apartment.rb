@@ -35,4 +35,8 @@ class Apartment < ActiveRecord::Base
     }
     Hash[Locale::SECONDARY.zip values]
   end
+
+  def parent
+    MainPage.available!(Locale::DEFAULT)
+  end
 end
