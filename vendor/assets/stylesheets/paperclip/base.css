@@ -6143,7 +6143,7 @@ hr.arrow-down:after {
 }
 /*** Navbar Links ***/
 .navbar-default .navbar-nav > li > a {
-  text-transform: uppercase;
+  text-transform: none;
 }
 @media (min-width: 768px) {
   .navbar-default .navbar-nav > li > a:before {

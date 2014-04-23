@@ -364,7 +364,7 @@ $navbar-default-brand-hover-color: $navbar-default-link-hover-color;
 /*** Navbar Links ***/
 
 .navbar-default .navbar-nav > li > a {
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 @media (min-width: 768px) {

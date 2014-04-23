@@ -12,7 +12,8 @@
       //%button.navbar-btn.btn.btn-red.pull-right.hidden-sm.hidden-xs Sign In
       %ul.nav.navbar-nav.navbar-right
         = list_of ParentPage.for_menu(@locale, 4) do |page|
-          = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink)
+          = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink) do |text|
+            %p.navbar-text= text
         %li.dropdown
           %a.dropdown-toggle{data: {toggle: 'dropdown'}, href: @locale.root_page_path}
             = t('.language')
