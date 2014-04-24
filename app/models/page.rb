@@ -65,6 +65,8 @@ class Page < ActiveRecord::Base
   end
 
   def seo_tags
-    {seo_title: seo_title, seo_description: seo_description, seo_keywords: seo_keywords}
+    SeoTagsFactory.build(title: seo_title,
+                         description: seo_description,
+                         keywords: seo_keywords)
   end
 end

@@ -10,4 +10,4 @@
 - content_for :admin_edit_link do
   = edit_admin_page_path(@main_page)
 
-= render 'shared/seo_tags', page: @main_page
+= render partial: 'seo_tags/seo_tag', collection: @main_page.seo_tags
