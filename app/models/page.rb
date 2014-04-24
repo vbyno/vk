@@ -40,6 +40,10 @@ class Page < ActiveRecord::Base
   validates :type, presence: true, inclusion: { in: TYPES }
   validates :title, presence: true, length: { in: 2..60 }
 
+  def self.available!(permalink)
+    active.find_by!(permalink: permalink.to_s)
+  end
+
   def parent?
     false
   end
@@ -60,7 +64,7 @@ class Page < ActiveRecord::Base
     raise NotImplementedError
   end
 
-  def self.available!(permalink)
-    active.find_by!(permalink: permalink.to_s)
+  def seo_tags
+    {seo_title: seo_title, seo_description: seo_description, seo_keywords: seo_keywords}
   end
 end

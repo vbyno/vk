@@ -69,31 +69,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe '#polymorphic_page_path' do
-    it 'returns child page path' do
-      page = create :child_page
-
-      expect(path(page)).to eq child_page_path(page.parent_page.permalink,
-                                               page.permalink)
-    end
-
-    it 'returns locale child page path' do
-      page = create :child_page, locale: Locale::EN
-      expect(path(page)).to eq locale_child_page_path(Locale::EN,
-                                                      page.parent_page.permalink,
-                                                      page.permalink)
-    end
-
-    it 'returns locale root' do
-      page = create :main_page, locale: Locale::EN
-      expect(path(page)).to eq locale_root_path(Locale::EN)
-    end
-
-    def path(page)
-      polymorphic_page_path(page)
-    end
-  end
-
   describe '#human_attribute' do
     let(:page) { build :page }
     it 'works for instance' do
@@ -135,7 +110,6 @@ describe ApplicationHelper do
     subject { breadcrumb_pages(child_page) }
 
     it 'works correct' do
-      # binding.pry
       expect(subject).to eq [main_page, parent_page, child_page]
     end
   end
