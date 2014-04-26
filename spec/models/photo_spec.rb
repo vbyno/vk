@@ -19,5 +19,11 @@ describe Photo do
                           class_name(PhotoTranslation).
                           dependent(:destroy) }
   it { expect(subject).to validate_presence_of :apartment }
-  it { expect(subject).to validate_presence_of :image }
+
+  # Because of this issue we can't do this with uploaders
+  # https://github.com/thoughtbot/shoulda-matchers/issues/479
+  specify 'image field validation' do
+    expect(build :photo, image: nil).to_not be_valid
+    expect(build :photo).to be_valid
+  end
 end
