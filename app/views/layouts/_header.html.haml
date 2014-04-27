@@ -3,11 +3,10 @@
     .navbar-header
       %button.navbar-toggle{'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button'}
         %span.sr-only= t('.toggle_navigation')
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{href: root_path}
-        %img{alt: '...', src: '/img/logo.png'}
+        - 3.times do
+          %span.icon-bar
+      = locale_link_to(t('.daily_apartments'), :root_path, class: 'navbar-brand') do |text|
+        %span.navbar-brand= text
     .collapse.navbar-collapse
       //%button.navbar-btn.btn.btn-red.pull-right.hidden-sm.hidden-xs Sign In
       %ul.nav.navbar-nav.navbar-right
