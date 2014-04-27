@@ -1,7 +1,7 @@
 - page = @child_page || @parent_page
 
-.col-md-9!= page.content
-.col-md-3= render 'sidebar'
+.col-md-8!= page.content
+.col-md-4= render 'sidebar'
 
 - content_for :admin_edit_link do
   = edit_admin_page_path(page)

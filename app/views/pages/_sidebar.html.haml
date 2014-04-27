@@ -1,10 +1,7 @@
-#help-nav.panel-group
-  .panel.panel-default
-    .panel-heading
-      %a{data: { parent: "#help-nav", toggle: "collapse" }, href: "#help-nav-in"}
-        = @parent_page.title
-    .panel-collapse.collapse.in{id: "help-nav-in"}
-      .panel-body
-        %ul
-          = list_of(@parent_page.child_pages.active) do |child_page|
-            = link_to_unless_current child_page.title, child_page.path
+.panel.panel-default
+  .panel-heading
+    = @parent_page.title
+  .panel-body
+    %ul
+      = list_of(@parent_page.child_pages.active) do |child_page|
+        = link_to_unless_current child_page.title, child_page.path

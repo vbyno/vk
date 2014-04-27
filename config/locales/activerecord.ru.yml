@@ -53,5 +53,8 @@ ru:
           parent_id:
             should_exist: Родительская страница должна присутствовать
             should_not_exist: Не должно быть ссылки на родительскую страницу
+        main_page:
+          permalink:
+            does_not_eq_locale: URL главной страницы должен совпадать с ее локалью
   error_messages:
     invalid_phone_format: "Номер телефона должен быть в формате '+38 (067) 450-55-05' (12 цифр)"
