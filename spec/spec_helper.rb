@@ -13,6 +13,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rubygems'
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'ffaker'
+require 'factory_girl_rails'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 

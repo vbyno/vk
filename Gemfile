@@ -43,23 +43,21 @@ group :development do
   gem 'annotate'
   gem 'newrelic_rpm'
   gem 'mailcatcher', '~> 0.2.4'
-
-  # we need ffaker and factory for seeds
-  gem 'ffaker', require: false
-  gem 'factory_girl_rails', require: false
 end
 
 group :development, :test do
   gem 'thin'
   gem 'database_cleaner'
   gem 'pry-rails'
+
+  # we need ffaker and factory for seeds
+  gem 'ffaker', require: false
+  gem 'factory_girl_rails', require: false
 end
 
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-  gem 'ffaker'
 
   gem 'selenium-webdriver'
   gem 'launchy'

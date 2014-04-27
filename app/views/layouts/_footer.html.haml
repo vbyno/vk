@@ -22,7 +22,7 @@
         %h4
           %i.fa.fa-list-alt.text-red
           = t('.last_articles')
-        - Page.recent(3, @locale).each do |page|
+        - Page.by_locale(@locale).recent(3).each do |page|
           .tweet
             %i.fa.fa-file-text.fa-2x
             %p

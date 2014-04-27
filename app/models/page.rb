@@ -28,9 +28,11 @@ class Page < ActiveRecord::Base
   TYPES = %w[MainPage ParentPage ChildPage].to_set
 
   scope :active, -> { where(active: true) }
-  scope :recent, ->(count, locale) { active.where(locale: locale.to_s).
-                                            order(created_at: :desc).
-                                            limit(count) }
+  scope :by_locale, ->(locale) { active.where(locale: locale.to_s) }
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+  scope :for_menu, ->(locale, limit) { by_locale(locale).order(priority: :desc).
+                                                         limit(limit) }
+
   delegate :path, to: :presenter
 
   validates_with PageValidator
