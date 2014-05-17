@@ -103,7 +103,7 @@ describe ApplicationHelper do
   end
 
   describe '#breadcrumb_pages' do
-    let!(:main_page) { create :main_page, permalink: Locale::EN }
+    let!(:main_page) { create :main_page, permalink: Locale::EN, locale: Locale::EN }
     let(:parent_page) { create :parent_page, locale: Locale::EN }
     let(:child_page) { create :child_page, parent_page: parent_page,
                                            locale: Locale::EN }

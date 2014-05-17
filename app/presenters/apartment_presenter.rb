@@ -7,6 +7,10 @@ class ApartmentPresenter < BasicPresenter
     @translation = translation
   end
 
+  def to_partial_path
+    '/apartments/apartment'
+  end
+
   def path
     translated? ? locale_apartment_path(locale, apartment) : apartment_path(apartment)
   end

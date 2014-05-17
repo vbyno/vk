@@ -21,6 +21,8 @@ ru:
   apartments:
     index:
       headline: Квартиры
+    list:
+      daily_apartments_lviv: Квартиры посуточно во Львове
   reservations:
     create:
       thank_you: Спасибо!

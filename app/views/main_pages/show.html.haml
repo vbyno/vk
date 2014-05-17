@@ -1,9 +1,10 @@
-.page-header
-  %h1= @main_page.title
-
-= render 'apartments/list', apartments: @apartments
+.row
+  .page-header
+    %h1.text-center= t('apartments.list.daily_apartments_lviv')
+  = render @apartments
 
 %hr
+  %h2.text-center= @main_page.title
 %article
   != @main_page.content
 

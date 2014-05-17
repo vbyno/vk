@@ -11,6 +11,8 @@ ua:
   apartments:
     index:
       headline: Квартиры
+    list:
+      daily_apartments_lviv: Квартири подобово у Львові
   reservations:
     create:
       thank_you: Дякую Тобі!
