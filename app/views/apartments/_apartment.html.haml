@@ -1,8 +1,8 @@
 .col-sm-6
-  = apartment.price.ceil
-  %h3
-    %a{href: "blog-post.html"} Sed lacinia suscipit lacus non sodales. Pellentesque lacinia ornare justo eu tincidunt.
-  %hr/
-  %p.text-muted by John Doe
-  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nisi lorem, elementum sed feugiat ac, pharetra lacinia mi. Integer iaculis risus sed quam vehicula, sit amet lacinia sem rutrum. Integer ligula orci.
+  %h3= link_to apartment.title, apartment.path
+  %a{href: apartment.path}
+    = image_tag apartment.main_photo.image.small.url, title: apartment.title,
+      alt: apartment.short_description, size: '350x200'
+  %p.text-muted= apartment.price.ceil
+  %p= apartment.short_description
   %a.btn.btn-lg.btn-red{href: "blog-post.html"} Read More...
