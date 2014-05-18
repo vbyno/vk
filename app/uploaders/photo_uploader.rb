@@ -4,7 +4,7 @@ class PhotoUploader < BasicImageUploader
   end
 
   version :small do
-    process resize_to_fill: [350, 200]
+    process resize_to_fill: [485, 273]
   end
 
   version :thumb do

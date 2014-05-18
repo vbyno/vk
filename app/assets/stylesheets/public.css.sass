@@ -1,4 +1,4 @@
-$header_height: 50px
+$link-color: $new-blue
 
 .gallery-images-list
   margin: 20px auto
@@ -22,3 +22,23 @@ span.flag
     @include opacity(0.4)
   &:hover
     @include opacity(1)
+
+.apartment-item
+  margin-bottom: 15px
+  margin-top: 15px
+  .apartment-item-info
+    padding: 5px
+    background: #f6f6f6
+    border-radius: 0 0 5px 5px
+    -webkit-transition: background 300ms
+    -moz-transition: background 300ms
+    transition: background 300ms
+    .price-amount
+      color: $link-color
+      display: inline-block
+      line-height: 24px
+      font-size: 24px
+      text-rendering: optimizelegibility
+      font-weight: bold
+      margin: 0
+

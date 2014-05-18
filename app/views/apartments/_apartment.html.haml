@@ -1,8 +1,14 @@
-.col-sm-6
-  %h3= link_to apartment.title, apartment.path
+.col-sm-6.apartment-item
   %a{href: apartment.path}
     = image_tag apartment.main_photo.image.small.url, title: apartment.title,
-      alt: apartment.short_description, size: '350x200'
-  %p.text-muted= apartment.price.ceil
-  %p= apartment.short_description
-  %a.btn.btn-lg.btn-red{href: "blog-post.html"} Read More...
+      alt: apartment.short_description, size: '485x273'
+  .apartment-item-info
+    %table.col-sm-12
+      %tr
+        %td
+          = link_to apartment.title, apartment.path
+          %span= apartment.short_description
+        %td.pull-right
+          %span.currency= t('.currency_before')
+          %span.price-amount= apartment.price.ceil
+          %span.currency= t('.currency_after')
