@@ -21,7 +21,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-  config.color_enabled = true
+  # config.color_enabled = true
   # Use color not only in STDOUT but also in pagers and files
   config.tty = true
 

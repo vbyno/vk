@@ -2,18 +2,16 @@ require 'ffaker'
 require 'factory_girl_rails'
 
 def create_admin_if_needed!
-	return if Admin.any?
-	Admin.create!(email: 'admin@example.com',
-			 					password: 'password',
-								password_confirmation: 'password')
+  Admin.first_or_create(email: Figaro.env.admin_email) do |admin|
+    admin.password = 'password'
+    admin.password_confirmation = 'password'
+  end
 end
 
 def create_pages!
   Page.destroy_all
 
   Locale::ALL.each do |locale|
-  	FactoryGirl.create :main_page, locale: locale
-
     6.times do
       parent_page = FactoryGirl.create :parent_page, locale: locale
       4.times do
@@ -22,11 +20,6 @@ def create_pages!
     end
 
     FactoryGirl.create :main_page, locale: locale, permalink: locale
-  end
-
-  Admin.first_or_create(email: Figaro.env.admin_email) do |admin|
-    admin.password = 'password'
-    admin.password_confirmation = 'password'
   end
 end
 
