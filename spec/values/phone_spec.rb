@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Phone do
   describe '.valid?' do
     it 'is true if phone has 12 dights' do
-      expect(described_class.valid?('1234567')).to be_false
-      expect(described_class.valid?('12345678901a')).to be_false
-      expect(described_class.valid?('123456789012')).to be_true
+      expect(described_class.valid?('1234567')).to be_falsey
+      expect(described_class.valid?('12345678901a')).to be_falsey
+      expect(described_class.valid?('123456789012')).to be_truthy
     end
   end
 

@@ -37,4 +37,8 @@ class ApartmentTranslation < ActiveRecord::Base
     end
     photo_translations
   end
+
+  def parent
+    MainPage.available!(locale)
+  end
 end

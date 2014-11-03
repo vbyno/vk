@@ -16,7 +16,9 @@ describe ParentPagesController do
 
     it 'throws exception if record was not found' do
       expect { get :show, parent_permalink: 'bla-bla-bla' }.
-        to raise_error(ActionController::RoutingError)
+        to raise_error(ActiveRecord::RecordNotFound)
+        # in previous implementation ActionController::RoutingError was expected
+        # but in production mode RecordNotFound returns 404 page anyway
     end
   end
 end

@@ -2,15 +2,13 @@
 %html{lang: @locale}
   = render 'layouts/head'
   %body{class: [controller_name, action_name]}
-    %header.navbar.navbar-inverse.navbar-static-top{role: 'bunner'}
+    = render 'layouts/header'
+    .wrapper
+      = render 'layouts/breadcrumbs'
       .container
-        = render 'layouts/navigation'
-    .container
-      .row
-        .col-md-12
-          = render 'layouts/flash_messages'
-          = yield
+        .row
+          .col-md-12
+            = render 'layouts/flash_messages'
+            = yield
     %br
-    %footer.navbar-default
-      .container
-        = render 'layouts/footer'
+    = render 'layouts/footer'

@@ -18,3 +18,5 @@ rerun.txt
 pickle-email-*.html
 /config/application.yml
 /config/redis.yml
+/config/database.yml
+

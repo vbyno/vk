@@ -24,7 +24,7 @@ describe Reservation do
     [:apartment, :check_in, :check_out,
      :customer_name, :customer_email, :customer_phone]
 
-  it { expect(subject).to ensure_inclusion_of(:status).in_array Reservation::STATUSES }
+  it { expect(subject).to validate_inclusion_of(:status).in_array Reservation::STATUSES }
 
   context 'customer_email format' do
     it { expect(subject).to allow_value('some_email@gmail.comx').for :customer_email }

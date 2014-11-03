@@ -1,0 +1,33 @@
+ru:
+  admin:
+    apartment_translations:
+      create:
+        success: Перевод успешно создан
+    apartments:
+      edit:
+        headline: Изменить
+    pages:
+      create:
+        success: Страница успешно создана
+      update:
+        success: Страница успешно обновлена
+  actions:
+    actions: Действия
+    new: &new Создать
+    create: *new
+    edit: Изменить
+    update: Обновить
+    delete: Удалить
+    sign_in: Войти
+    book_it: Забронировать!
+    apartment:
+      new: Добавить квартиру
+      edit: Изменить квартиру
+    photos:
+      add: Добавить фотографии
+    pictures:
+      add: Добавить изображение
+  values:
+    parent_page: Основная
+    child_page: Вложенная
+    main_page: Главная

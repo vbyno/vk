@@ -31,10 +31,15 @@ module ApplicationHelper
                     else
                       resource.class.to_s
                     end
-    {
-      :'new-admin-picture-url' =>
-        new_admin_picture_url(imageable_id: resource.id,
-                              imageable_type: resource_type)
-    }
+    { :'new-admin-picture-url' => new_admin_picture_url(imageable_id: resource.id,
+                                                        imageable_type: resource_type) }
+  end
+
+  def breadcrumb_pages(page)
+    [page].tap do |pages|
+      while page.respond_to?(:parent) do
+        pages.unshift(page = page.parent)
+      end
+    end
   end
 end

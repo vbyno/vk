@@ -1,13 +1,47 @@
-%nav
-  %ul.nav.navbar-nav
-    - if content_for?(:admin_edit_link) && current_admin
-      %li
-        %a{href: "#{yield(:admin_edit_link)}"}
-          %i.fa.fa-pencil-square-o
-    %li
-      %a{href: 'https://plus.google.com/108369022058258511554?rel=author'}
-        %i.fa.fa-google-plus
-  %ul.nav.navbar-nav.navbar-right
-    %p.navbar-text
-      // TODO move to SiteInfo
-      &copy; VK-Lviv, 2014
+%footer
+  .container
+    .row
+      .col-sm-4
+        %h4
+          %i.fa.fa-map-marker.text-red
+          = t('.contact_info')
+        %p= t('.call_us')
+        .tweet
+          %i.fa.fa-phone.fa-2x
+          %p
+            - SiteInfo.use(:contact) do |contact|
+              %a{class: "value", href: "tel:+#{contact[:phone_kyivstar]}"}
+                = contact[:phone_kyivstar_str]
+              %a{class: "value", href: "tel:+#{contact[:phone_life]}"}
+                = contact[:phone_life_str]
+        %p= t('.mail_us')
+        .tweet
+          %i.fa.fa-envelope.fa-2x
+          %p= mail_to SiteInfo.get(:contact, :email)
+      .col-sm-4
+        %h4
+          %i.fa.fa-list-alt.text-red
+          = t('.last_articles')
+        - Page.by_locale(@locale).recent(3).each do |page|
+          .tweet
+            %i.fa.fa-file-text.fa-2x
+            %p
+              = page.intro
+              = link_to '1 day ago', page.path
+      .col-sm-4
+        %h4
+          %i.fa.fa-group.text-red
+          = t('.social')
+        - if content_for?(:admin_edit_link) && current_admin
+          .tweet
+            %a{href: "#{yield(:admin_edit_link)}"}
+              %i.fa.fa-pencil-square-o.fa-2x
+        .tweet
+          %a{href: 'https://plus.google.com/108369022058258511554?rel=author'}
+            %i.fa.fa-google-plus.fa-2x
+
+.container
+  .row
+    .col-sm-12
+      .copyright
+        &copy; #{t('.copyright')}

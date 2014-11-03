@@ -27,8 +27,8 @@ describe Page do
   it_behaves_like 'presence validator',
     %i[permalink locale content seo_title title intro type priority]
 
-  it { expect(subject).to ensure_inclusion_of(:locale).in_array(Locale::ALL) }
-  it { expect(subject).to ensure_inclusion_of(:type).in_array(Page::TYPES) }
+  it { expect(subject).to validate_inclusion_of(:locale).in_array(Locale::ALL) }
+  it { expect(subject).to validate_inclusion_of(:type).in_array(Page::TYPES) }
   it { expect(subject).to ensure_length_of(:title).is_at_least(2).
                                                   is_at_most(60) }
 
@@ -55,13 +55,13 @@ describe Page do
 
   describe '#child?' do
     it 'returns false' do
-      expect(page.child?).to be_false
+      expect(page).not_to be_child
     end
   end
 
   describe '#parent?' do
     it 'returns false' do
-      expect(page.parent?).to be_false
+      expect(page).not_to be_parent
     end
   end
 end

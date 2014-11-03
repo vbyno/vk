@@ -1,12 +1,14 @@
-class ApartmentPresenter
-  include Rails.application.routes.url_helpers
-
+class ApartmentPresenter < BasicPresenter
   attr_reader :apartment, :translation
   delegate :title, :description, :short_description, to: :responder
 
   def initialize(apartment, translation = nil)
     @apartment = apartment
     @translation = translation
+  end
+
+  def to_partial_path
+    '/apartments/apartment'
   end
 
   def path

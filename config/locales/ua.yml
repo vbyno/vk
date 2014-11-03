@@ -1,14 +1,9 @@
 ua:
   language: Українська
   layouts:
-    navigation:
+    header:
       daily_apartments: Квартири подобово
-      how_it_works: Як це працює
-      places: Де відпочити
-      about_lviv: Про Львів
-      contacts: Контакти
       language: Мова
-      phone: "+38 (067) 4-505-505"
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове
@@ -16,6 +11,8 @@ ua:
   apartments:
     index:
       headline: Квартиры
+    list:
+      daily_apartments_lviv: Квартири подобово у Львові
   reservations:
     create:
       thank_you: Дякую Тобі!

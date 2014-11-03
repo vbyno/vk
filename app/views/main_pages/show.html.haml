@@ -1,13 +1,14 @@
-.page-header
-  %h1= @main_page.title
-
-= render 'apartments/list', apartments: @apartments
+.row
+  .page-header
+    %h1.text-center= t('apartments.list.daily_apartments_lviv')
+  = render @apartments
 
 %hr
+  %h2.text-center= @main_page.title
 %article
   != @main_page.content
 
 - content_for :admin_edit_link do
   = edit_admin_page_path(@main_page)
 
-= render 'shared/seo_tags', page: @main_page
+= render partial: 'seo_tags/seo_tag', collection: @main_page.seo_tags

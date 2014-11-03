@@ -1,19 +1,28 @@
 ru:
   language: Русский
   layouts:
-    navigation:
+    header:
       daily_apartments: Квартиры посуточно
       language: Язык
-      phone: "+38 (067) 4-505-505"
+      toggle_navigation: Показать/скрыть меню
     admin:
       title: Панель администратора
       navigation:
         apartments: Квартиры
         pages: Страницы
         sign_out: Выйти
+    footer:
+      contact_info: Как с нами связаться
+      call_us: "Звоните по этим телефонах:"
+      mail_us: "Или, напишыте письмо:"
+      last_articles: Последние статьи
+      copyright: "VK-Lviv, 2014 | Любое копирование материалов запрещено."
+      social: Мы в соцсетях
   apartments:
     index:
       headline: Квартиры
+    list:
+      daily_apartments_lviv: Квартиры посуточно во Львове
   reservations:
     create:
       thank_you: Спасибо!
@@ -29,35 +38,3 @@ ru:
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение
-  admin:
-    apartment_translations:
-      create:
-        success: Перевод успешно создан
-    apartments:
-      edit:
-        headline: Изменить
-    pages:
-      create:
-        success: Страница успешно создана
-      update:
-        success: Страница успешно обновлена
-  actions:
-    actions: Действия
-    new: &new Создать
-    create: *new
-    edit: Изменить
-    update: Обновить
-    delete: Удалить
-    sign_in: Войти
-    book_it: Забронировать!
-    apartment:
-      new: Добавить квартиру
-      edit: Изменить квартиру
-    photos:
-      add: Добавить фотографии
-    pictures:
-      add: Добавить изображение
-  values:
-    parent_page: Основная
-    child_page: Вложенная
-    main_page: Главная

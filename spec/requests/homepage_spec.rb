@@ -5,7 +5,7 @@ describe 'homepage' do
     Apartment.destroy_all
 
     Locale.all.each do |locale|
-      main_page = create(:main_page, permalink: locale.to_s)
+      main_page = create(:main_page, permalink: locale.to_s, locale: locale.to_s)
       page = BasicPage.new(locale.root_page_path, main_content: main_page.title)
       expect(page.visit!).to be_loaded
 

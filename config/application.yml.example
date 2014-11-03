@@ -1,0 +1,4 @@
+admin_email: 'admin@gmail.comx'
+site_email: 'vk@gmail.comx'
+devise_secret_key: 'changeme'
+new_relic_license_key: 'changeme'

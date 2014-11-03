@@ -28,6 +28,12 @@ class Page < ActiveRecord::Base
   TYPES = %w[MainPage ParentPage ChildPage].to_set
 
   scope :active, -> { where(active: true) }
+  scope :by_locale, ->(locale) { active.where(locale: locale.to_s) }
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+  scope :for_menu, ->(locale, limit) { by_locale(locale).order(priority: :desc).
+                                                         limit(limit) }
+
+  delegate :path, to: :presenter
 
   validates_with PageValidator
   validates :content, :seo_title, :intro, :permalink, :type, :priority,
@@ -35,6 +41,10 @@ class Page < ActiveRecord::Base
   validates :locale, presence: true, inclusion: { in: Locale::ALL }
   validates :type, presence: true, inclusion: { in: TYPES }
   validates :title, presence: true, length: { in: 2..60 }
+
+  def self.available!(permalink)
+    active.find_by!(permalink: permalink.to_s)
+  end
 
   def parent?
     false
@@ -48,7 +58,17 @@ class Page < ActiveRecord::Base
     false
   end
 
-  def self.available!(permalink)
-    active.find_by!(permalink: permalink.to_s)
+  def locale_object
+    Locale.new(locale)
+  end
+
+  def hierarchy
+    raise NotImplementedError
+  end
+
+  def seo_tags
+    SeoTagsFactory.build(title: seo_title,
+                         description: seo_description,
+                         keywords: seo_keywords)
   end
 end

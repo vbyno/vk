@@ -1,2 +1,7 @@
-= list_of(@parent_page.child_pages.active) do |child_page|
-  = locale_link_to child_page.title, :child_page_path, identifiers: [@parent_page.permalink, child_page.permalink]
+.panel.panel-default
+  .panel-heading
+    = @parent_page.title
+  .panel-body
+    %ul
+      = list_of(@parent_page.child_pages.active) do |child_page|
+        = link_to_unless_current child_page.title, child_page.path

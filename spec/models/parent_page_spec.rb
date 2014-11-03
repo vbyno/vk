@@ -38,7 +38,7 @@ describe ParentPage do
     let(:parent_page) { build :parent_page }
 
     it 'returns true' do
-      expect(parent_page.parent?).to be_true
+      expect(parent_page.parent?).to be_truthy
     end
   end
 end

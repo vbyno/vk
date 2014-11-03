@@ -9,13 +9,6 @@ en:
       contacts: Contacts
       sign_in: Register
       language: Language
-      phone: "+38 (067) 4-505-505"
-  active_admin:
-    devise:
-      email:
-        title: Email
-      password:
-        title: Password
   apartments:
     index:
       headline: Apartments
@@ -25,3 +18,5 @@ en:
     form:
       submit_loading: Отправляется заявка...
       reservation_blank: Заявка на бронирование
+  footer:
+    call_us: Do not hesitate to contact us if you have any questions or feature requests
