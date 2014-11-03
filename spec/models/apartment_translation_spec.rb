@@ -24,7 +24,7 @@ describe ApartmentTranslation do
   it_behaves_like 'presence validator',
     %i[locale title description short_description apartment]
 
-  it { expect(subject).to ensure_inclusion_of(:locale).
+  it { expect(subject).to validate_inclusion_of(:locale).
                           in_array Locale::SECONDARY }
   it { expect(subject).to accept_nested_attributes_for(:photo_translations).
                           allow_destroy(true) }

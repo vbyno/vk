@@ -40,7 +40,7 @@ describe ChildPage do
     let(:child_page) { build :child_page }
 
     it 'returns true' do
-      expect(child_page.child?).to be_true
+      expect(child_page.child?).to be_truthy
     end
   end
 end

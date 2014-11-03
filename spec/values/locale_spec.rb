@@ -40,11 +40,11 @@ describe Locale do
 
   describe '#default?' do
     it 'is true for russian locale' do
-      expect(ru_locale.default?).to be_true
+      expect(ru_locale).to be_default
     end
 
     it 'is false for others' do
-      expect(en_locale.default?).to be_false
+      expect(en_locale).not_to be_default
     end
   end
 
