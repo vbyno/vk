@@ -6,9 +6,10 @@
 %p= @apartment.short_description
 
 - if @apartment.photos.any?
-  .gallery-images-list
-    %ul.bxslider
-      = render(@apartment.photos)
+  .col-md-12
+    .gallery-images-list
+      %ul.bxslider
+        = render(@apartment.photos)
 
 .col-md-9
   = @apartment.description.html_safe

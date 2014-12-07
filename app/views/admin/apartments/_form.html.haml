@@ -10,14 +10,15 @@
   .col-md-9
     = f.input :short_description
     = f.input :description, input_html: { class: 'tinymce' }
+
   = f.actions class: 'col-md-12' do
     - if show_photos
       = f.button t('actions.photos.add'), id: 'add-photos', class: 'btn btn-big btn-primary'
     = f.action :submit, as: :button, label: t("actions.apartment.#{action_name}"),
       button_html: { class: 'btn btn-big btn-success pull-right' }
-
-  - if show_photos
-    = render('fields_for_photos', photos: @apartment.photos.where.not(id: nil), form: f)
+  .col-md-12
+    - if show_photos
+      = render('fields_for_photos', photos: @apartment.photos.where.not(id: nil), form: f)
 
 - if show_photos
   .hide

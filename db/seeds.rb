@@ -3,8 +3,8 @@ require 'factory_girl_rails'
 
 def create_admin_if_needed!
   Admin.first_or_create(email: Figaro.env.admin_email) do |admin|
-    admin.password = 'password'
-    admin.password_confirmation = 'password'
+    admin.password = Figaro.env.admin_password
+    admin.password_confirmation = Figaro.env.admin_password
   end
 end
 
