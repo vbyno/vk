@@ -8,7 +8,7 @@
       = locale_link_to(t('.daily_apartments'), :root_path, class: 'navbar-brand') do |text|
         %span.navbar-brand= text
     .collapse.navbar-collapse
-      //%button.navbar-btn.btn.btn-red.pull-right.hidden-sm.hidden-xs Sign In
+      //TODO fix it! %button.navbar-btn.btn.btn-red.pull-right.hidden-sm.hidden-xs Sign In
       %ul.nav.navbar-nav.navbar-right
         = list_of ParentPage.for_menu(@locale, 4) do |page|
           = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink) do |text|

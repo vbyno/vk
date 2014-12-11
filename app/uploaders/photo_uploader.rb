@@ -7,6 +7,10 @@ class PhotoUploader < BasicImageUploader
     process resize_to_fill: [485, 273]
   end
 
+  version :medium do
+    process resize_to_fill: [768, 432]
+  end
+
   version :thumb do
     process resize_to_fill: [80, 40]
   end

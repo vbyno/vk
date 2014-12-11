@@ -5,6 +5,7 @@
 
 #= require bootstrap/alert
 #= require bootstrap/button
+#= require bootstrap/carousel
 #= require bootstrap/collapse
 #= require bootstrap/modal
 #= require bootstrap/tab
@@ -19,7 +20,6 @@
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.pl.js
 
 # From /vendor - for gallery widget
-#= require bxslider
 #= require bootstrap-image-gallery.min
 #= require jquery.blueimp-gallery.min
 
