@@ -66,9 +66,14 @@ class Page < ActiveRecord::Base
     raise NotImplementedError
   end
 
+  def presenter
+    raise NotImplementedError
+  end
+
   def seo_tags
     SeoTagsFactory.build(title: seo_title,
                          description: seo_description,
                          keywords: seo_keywords)
   end
 end
+

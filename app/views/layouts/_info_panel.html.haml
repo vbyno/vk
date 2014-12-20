@@ -1,0 +1,26 @@
+.topic{:class => ('margin-bottom-0' if @main_page)}
+  .home-services.margin-0
+    .container
+      .row
+        .col-md-5.visible-lg-block
+          %ul
+            %li
+              %i.fa.fa-gears
+              %p
+                %span Built with
+                Bootstrap 3
+            %li
+              %i.fa.fa-picture-o
+              %p
+                Isotope
+                %span Portfolio
+            %li
+              %i.fa.fa-envelope-o
+              %p
+                24/7 Support
+                %span by e-mail
+        .col-md-7
+          - if @main_page
+            %p.lead Ready-to-go Solution Built
+          - else
+            = render 'layouts/breadcrumbs'

@@ -1,6 +1,8 @@
 - page = @child_page || @parent_page
 
-.col-md-8!= page.content
+.col-md-8
+  %h1= page.title
+  != page.content
 .col-md-4= render 'sidebar'
 
 - content_for :admin_edit_link do

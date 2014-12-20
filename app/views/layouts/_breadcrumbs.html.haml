@@ -1,13 +1,15 @@
 //TODO do it via presenters
 - if (page = @child_page || @parent_page || @apartment) &&
 -   (breadcrumbs = breadcrumb_pages(page)).count > 1
-  .topic
-    .container
-      .row
-        .col-sm-4
-          %h3= page.title
-        .col-sm-8
-          %ol.breadcrumb.pull-right.hidden-xs
-            - (breadcrumbs[0...-1]).each do |page|
-              %li= link_to(page.title, page.path)
-            %li.active= breadcrumbs.last.title
+  .lead
+    .breadcrumbs
+      - (breadcrumbs[0...-1]).each do |page|
+        .pull-left{itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb"}
+          = succeed ' ' do
+            %a{href: page.path, itemprop: 'url'}
+              %span{itemprop: 'title'}
+                = page.title
+            = '›› '
+      .pull-left
+        %span= breadcrumbs.last.title
+
