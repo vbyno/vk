@@ -19,8 +19,13 @@
               %p
                 24/7 Support
                 %span by e-mail
-        .col-md-7
+        .col-md-7.info-panel
           - if @main_page
-            %p.lead Ready-to-go Solution Built
+            .lead.phones
+              - SiteInfo.use(:contact) do |contact|
+                - %i[phone_kyivstar phone_life].each do |phone_operator|
+                  %div
+                    %a{class: "value", href: "tel:+#{contact[phone_operator]}"}
+                      = contact[:"#{phone_operator}_str"]
           - else
             = render 'layouts/breadcrumbs'

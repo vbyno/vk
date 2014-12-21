@@ -45,10 +45,23 @@ span.flag
   margin: 0
 .margin-bottom-0
   margin-bottom: 0
-.breadcrumbs
-  font-size: 16px
+.info-panel
   a
     color: white
   div
-    margin-right: 5px
+    float: left
+    &:last-child
+      margin-right: 0
+  .breadcrumbs
+    font-size: 16px
+    div
+      margin-right: 5px
+  .phones
+    font-size: 20pt
+    @media(min-width: @screen-sm-min)
+      font-size: 8pt
+    a
+      text-decoration: none
+    div
+      margin-right: 20px
 
