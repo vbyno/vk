@@ -22,10 +22,6 @@
         .col-md-7.info-panel
           - if @main_page
             .lead.phones
-              - SiteInfo.use(:contact) do |contact|
-                - %i[phone_kyivstar phone_life].each do |phone_operator|
-                  %div
-                    %a{class: "value", href: "tel:+#{contact[phone_operator]}"}
-                      = contact[:"#{phone_operator}_str"]
+              = render @main_page.phones
           - else
             = render 'layouts/breadcrumbs'

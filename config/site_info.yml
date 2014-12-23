@@ -1,6 +1,9 @@
 contact:
-  phone_kyivstar: 380674505505
-  phone_kyivstar_str: '+38 (067) 4-505-505'
-  phone_life: 38093­7720373
-  phone_life_str: '+38 (093) ­772-03-73'
+  phones:
+    kyivstar:
+      number: 380674505505
+      human_number: '+38 (067) 4-505-505'
+    life:
+      number: 38093­7720373
+      human_number: '+38 (093) 772-03-73'
   email: 'vk.lviv.ua@gmail.com'
