@@ -22,6 +22,6 @@
         .col-md-7.info-panel
           - if @main_page
             .lead.phones
-              = render @main_page.phones
+              = render @main_page.phones, wrapper: :div
           - else
             = render 'layouts/breadcrumbs'

@@ -21,6 +21,11 @@ class Phone
     'phones/phone'
   end
 
+  def ==(other)
+    human_number == other.human_number &&
+      number == other.number
+  end
+
 private
 
   def to_number(value)

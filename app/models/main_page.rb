@@ -29,8 +29,7 @@ class MainPage < Page
   end
 
   def phones
-    # TODO rewrite SiteInfo for fetch(:contact, :phones) ability
-    PhonesFactory.build(SiteInfo.fetch(:contact)[:phones])
+    Contact.instance.phones
   end
 end
 
