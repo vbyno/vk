@@ -11,6 +11,11 @@ ru:
         success: Страница успешно создана
       update:
         success: Страница успешно обновлена
+      index:
+        confirm_msg: Вы уверены, что хотите удалить страницу?
+      destroy:
+        destroyed: Страница успешно удалена
+        not_destroyed: Ошибка при удалении страницы
   actions:
     actions: Действия
     new: &new Создать

@@ -1,5 +1,3 @@
 - flash.each do |type, message|
-  - if type == :notice
-    .alert.alert-info= message
-  - else
-    .alert.alert-danger= message
+  .alert{class: (type.to_s == 'notice' ? 'alert-info' : 'alert-danger')}= message
+
