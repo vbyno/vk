@@ -22,9 +22,10 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def destroy
-    if @page.destroy
+    begin
+      @page.destroy
       flash[:notice] = t('.destroyed')
-    else
+    rescue
       flash[:error] = t('.not_destroyed')
     end
     redirect_to :back
