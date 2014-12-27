@@ -20,8 +20,8 @@
                 24/7 Support
                 %span by e-mail
         .col-md-7.info-panel
-          - if @main_page
+          - if @main_page || @apartment
             .lead.phones
-              = render @main_page.phones, wrapper: :div
+              = render Contact.instance.phones, wrapper: :div
           - else
             = render 'layouts/breadcrumbs'

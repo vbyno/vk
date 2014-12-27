@@ -9,7 +9,6 @@ span.flag
   background-image: url(flags.png)
   display: inline-block
   vertical-align: middle
-
   &.flag-en
     background-position: -25px 0
   &.flag-pl
@@ -39,11 +38,17 @@ span.flag
     &:last-child
       margin-right: 0
   .breadcrumbs
-    font-size: 16px
+    @media all and (min-width: $screen-md-min)
+      font-size: 13pt
+    @media all and (max-width: $screen-sm-min)
+      font-size: 11pt
     div
       margin-right: 5px
   .phones
-    font-size: 20pt
+    @media all and (min-width: $screen-md-min)
+      font-size: 20pt
+    @media all and (max-width: $screen-sm-min)
+      font-size: 11pt
     a
       text-decoration: none
     div

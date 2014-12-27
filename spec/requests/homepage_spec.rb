@@ -6,7 +6,7 @@ describe 'homepage' do
 
     Locale.all.each do |locale|
       main_page = create(:main_page, permalink: locale.to_s, locale: locale.to_s)
-      page = BasicPage.new(locale.root_page_path, main_content: main_page.title)
+      page = BasicPage.new(locale.root_page_path, main_content: main_page.content)
       expect(page.visit!).to be_loaded
 
       create :apartment, :active_with_main_photo

@@ -27,9 +27,5 @@ class MainPage < Page
   def presenter
     MainPagePresenter.new(self)
   end
-
-  def phones
-    Contact.instance.phones
-  end
 end
 
