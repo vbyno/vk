@@ -13,6 +13,9 @@ ua:
       headline: Квартиры
     list:
       daily_apartments_lviv: Квартири подобово у Львові
+    apartment:
+      currency_before: ''
+      currency_after: грн.
   reservations:
     create:
       thank_you: Дякую Тобі!

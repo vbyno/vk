@@ -1,23 +1,43 @@
-%p#notice= notice
-%h1= @apartment.title
-%p
-  %b Price:
-  = @apartment.price.ceil
-%p= @apartment.short_description
-
-- if @apartment.photos.any?
-  .col-md-12
-    .gallery-images-list
-      %ul.bxslider
-        = render(@apartment.photos)
-
-.col-md-9
-  = @apartment.description.html_safe
-.col-md-3.well
-  #reservation-form
-    = render 'reservations/form'
+.container
+  .row
+    .col-sm-6
+      .portfolio-slideshow
+        #portfolio-slideshow.carousel.slide{data: { ride: 'carousel', interval: false }}
+          %ol.carousel-indicators
+            - 0.upto @apartment.photos.count - 1 do |i|
+              %li{data: { :'slide-to' => i, :target => '#portfolio-slideshow' }}
+          .carousel-inner
+            = render @apartment.photos
+          %a.carousel-arrow.carousel-arrow-prev{"data-slide" => "prev", :href => "#portfolio-slideshow"}
+            %i.fa.fa-angle-left
+          %a.carousel-arrow.carousel-arrow-next{"data-slide" => "next", :href => "#portfolio-slideshow"}
+            %i.fa.fa-angle-right
+    .col-sm-6
+      %h3.headline.second-child
+        %span= @apartment.title
+      %p= @apartment.short_description
+      %br
+        %h4.headline
+          %span Apartment Info
+        %table.table
+          %tbody
+            %tr
+              %td Rooms
+              %td
+              / TODO : add rooms and other options to database
+              %td 1
+            %tr
+              %td= human_attribute(Apartment, :price)
+              %td
+              %td= @apartment.price.ceil
+  .row
+    .col-md-9
+      = @apartment.description.html_safe
+    .col-md-3.well
+      #reservation-form
+        = render 'reservations/form'
 
 = render 'blueimp_gallery'
-
 - content_for :admin_edit_link do
   = @apartment.edit_path
+

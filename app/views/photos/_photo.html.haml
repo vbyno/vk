@@ -1,3 +1,3 @@
-%li
+.item
   %a{href: photo.image.full_screen.url, data: { gallery: true }}
-    = image_tag photo.image.small_fixed_height.url, title: photo.title, alt: photo.alt, heigth: 180
+    %img.img-responsive{src: photo.image.medium.url, title: photo.title, alt: photo.alt}

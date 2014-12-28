@@ -12,6 +12,9 @@ en:
   apartments:
     index:
       headline: Apartments
+    apartment:
+      currency_before: ''
+      currency_after: UAH
   reservations:
     create:
       thank_you: Thank You!!!

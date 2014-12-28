@@ -28,3 +28,4 @@ class MainPage < Page
     MainPagePresenter.new(self)
   end
 end
+

@@ -22,7 +22,7 @@ Vk::Application.routes.draw do
                 as: :translations, path: :translations
     end
     resources :apartment_translations, :reservations, only: [:edit, :update]
-    resources :pages, only: [:index, :new, :create, :edit, :update]
+    resources :pages, except: :show
     resources :pictures, only: [:new, :create]
   end
 

@@ -9,7 +9,6 @@ span.flag
   background-image: url(flags.png)
   display: inline-block
   vertical-align: middle
-
   &.flag-en
     background-position: -25px 0
   &.flag-pl
@@ -23,22 +22,35 @@ span.flag
   &:hover
     @include opacity(1)
 
-.apartment-item
-  margin-bottom: 15px
-  margin-top: 15px
-  .apartment-item-info
-    padding: 5px
-    background: #f6f6f6
-    border-radius: 0 0 5px 5px
-    -webkit-transition: background 300ms
-    -moz-transition: background 300ms
-    transition: background 300ms
-    .price-amount
-      color: $link-color
-      display: inline-block
-      line-height: 24px
-      font-size: 24px
-      text-rendering: optimizelegibility
-      font-weight: bold
-      margin: 0
+.customed-shop-product
+  img
+    max-height: 300px
+
+.margin-0
+  margin: 0
+.margin-bottom-0
+  margin-bottom: 0
+.info-panel
+  a
+    color: white
+  div
+    float: left
+    &:last-child
+      margin-right: 0
+  .breadcrumbs
+    @media all and (min-width: $screen-md-min)
+      font-size: 13pt
+    @media all and (max-width: $screen-sm-min)
+      font-size: 11pt
+    div
+      margin-right: 5px
+  .phones
+    @media all and (min-width: $screen-md-min)
+      font-size: 20pt
+    @media all and (max-width: $screen-sm-min)
+      font-size: 11pt
+    a
+      text-decoration: none
+    div
+      margin-right: 20px
 

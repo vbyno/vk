@@ -19,6 +19,8 @@
 #  updated_at      :datetime
 #
 
+require 'spec_helper'
+
 describe ParentPage do
   it { expect(subject).to have_many(:child_pages).
                           with_foreign_key(:parent_id) }
@@ -32,6 +34,19 @@ describe ParentPage do
     expect(build :child_page, locale: Locale::RU, permalink: 'foo').to be_valid
     expect(build :parent_page, locale: Locale::RU, permalink: 'bar').to be_valid
     expect(build :parent_page, locale: Locale::UA, permalink: 'foo').to be_valid
+  end
+
+  describe 'before destroy validation' do
+    let(:parent_page) { create :parent_page }
+    let(:child_page) { create :child_page }
+
+    it 'destroys parent page without children' do
+      expect { parent_page.destroy! }.to_not raise_error
+    end
+
+    it 'does not destroy parent page with children' do
+      expect { child_page.parent.destroy! }.to raise_error
+    end
   end
 
   describe '#parent?' do

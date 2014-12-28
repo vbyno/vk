@@ -6,6 +6,7 @@ class NoSelectorError < ArgumentError; end
 class BasicPage
   include Capybara::DSL
   include Rails.application.routes.url_helpers
+  include ActionView::Helpers::SanitizeHelper
 
   attr_reader :url
 
@@ -20,7 +21,7 @@ class BasicPage
   end
 
   def loaded?
-    return true if has_content? @main_content
+    return true if has_content? strip_tags(@main_content)
     raise NoSelectorError, "Expected #{self.class} to have content "\
                            "'#{@main_content}', but it was not found"
   end

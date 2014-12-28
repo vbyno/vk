@@ -1,0 +1,4 @@
+- haml_tag_if(defined?(wrapper), (wrapper if defined?(wrapper))) do
+  %a{class: "value", href: "tel:+#{phone.number}"}
+    = phone.human_number
+

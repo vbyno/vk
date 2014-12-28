@@ -3,9 +3,7 @@
   = f.semantic_errors *f.object.errors.keys
   .col-md-3
     = f.input :title
-    .checkbox
-      = f.label :active
-      = f.check_box :active
+    = f.input :active
     = f.input :price
   .col-md-9
     = f.input :short_description

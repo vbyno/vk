@@ -8,16 +8,11 @@
         %p= t('.call_us')
         .tweet
           %i.fa.fa-phone.fa-2x
-          %p
-            - SiteInfo.use(:contact) do |contact|
-              %a{class: "value", href: "tel:+#{contact[:phone_kyivstar]}"}
-                = contact[:phone_kyivstar_str]
-              %a{class: "value", href: "tel:+#{contact[:phone_life]}"}
-                = contact[:phone_life_str]
+          %p= render Contact.instance.phones
         %p= t('.mail_us')
         .tweet
           %i.fa.fa-envelope.fa-2x
-          %p= mail_to SiteInfo.get(:contact, :email)
+          %p= mail_to Contact.instance.email
       .col-sm-4
         %h4
           %i.fa.fa-list-alt.text-red

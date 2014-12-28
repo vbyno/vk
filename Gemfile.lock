@@ -100,6 +100,8 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    foreigner (1.7.1)
+      activerecord (>= 3.0.0)
     formtastic (2.3.1)
       actionpack (>= 3.0)
     formtastic-bootstrap (3.0.0)
@@ -331,6 +333,7 @@ DEPENDENCIES
   ffaker
   figaro
   font-awesome-rails
+  foreigner
   formtastic (~> 2.3.0.rc2)
   formtastic-bootstrap
   haml-rails

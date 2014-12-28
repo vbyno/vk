@@ -21,6 +21,16 @@ class Admin::PagesController < Admin::BaseController
     end
   end
 
+  def destroy
+    begin
+      @page.destroy
+      flash[:notice] = t('.destroyed')
+    rescue
+      flash[:error] = t('.not_destroyed')
+    end
+    redirect_to :back
+  end
+
 private
   def page_params
     params.require(:page).permit(

@@ -4,11 +4,10 @@
   %body{class: [controller_name, action_name]}
     = render 'layouts/header'
     .wrapper
-      = render 'layouts/breadcrumbs'
+      = render 'layouts/info_panel'
       .container
         .row
-          .col-md-12
-            = render 'layouts/flash_messages'
-            = yield
-    %br
-    = render 'layouts/footer'
+          = render 'layouts/flash_messages'
+          = yield
+          = yield :javascript
+  = render 'layouts/footer'

@@ -4,9 +4,9 @@
   = render @apartments
 
 %hr
-  %h2.text-center= @main_page.title
-%article
-  != @main_page.content
+.col-md-2.col-md-visible.col-lg-visible
+.col-md-8
+  %article!= @main_page.content
 
 - content_for :admin_edit_link do
   = edit_admin_page_path(@main_page)

@@ -8,14 +8,15 @@
       = locale_link_to(t('.daily_apartments'), :root_path, class: 'navbar-brand') do |text|
         %span.navbar-brand= text
     .collapse.navbar-collapse
-      //%button.navbar-btn.btn.btn-red.pull-right.hidden-sm.hidden-xs Sign In
+      //TODO add sign in ability! %button.navbar-btn.btn.btn-red.pull-right.hidden-sm.hidden-xs Sign In
       %ul.nav.navbar-nav.navbar-right
-        = list_of ParentPage.for_menu(@locale, 4) do |page|
+        = list_of ParentPage.for_menu(@locale, 3) do |page|
           = locale_link_to(page.title, :parent_page_path, identifiers: page.permalink) do |text|
             %p.navbar-text= text
         %li.dropdown
           %a.dropdown-toggle{data: {toggle: 'dropdown'}, href: @locale.root_page_path}
-            = t('.language')
+            %span{class: "flag flag-#{@locale}"}
+            = @locale.to_s
             %span.caret
           %ul.dropdown-menu
             - Locale.all_except(@locale).each do |locale|
@@ -23,3 +24,4 @@
                 %a{href: locale.root_page_path}
                   %span{class: "flag flag-#{locale}"}
                   = t(:language, locale: locale.to_sym)
+
