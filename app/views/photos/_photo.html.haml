@@ -1,3 +1,7 @@
-.item
+- active ||= false
+
+.item{class: ('active' if active)}
   %a{href: photo.image.full_screen.url, data: { gallery: true }}
-    %img.img-responsive{src: photo.image.medium.url, title: photo.title, alt: photo.alt}
+    - src_key = (active ? :src : :'lazy-src') # using lazy-bootstrap-carousel
+    %img.img-responsive{src_key => photo.image.medium.url, title: photo.title, alt: photo.alt}
+

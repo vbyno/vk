@@ -47,6 +47,19 @@ describe Apartment do
     end
   end
 
+  describe '#secondary_photos' do
+    let(:apartment) { build :apartment }
+    let(:photo) { create :photo, apartment: apartment }
+    let(:secondary_photo) { create :photo, apartment: apartment}
+    subject(:secondary_photos) { apartment.secondary_photos }
+
+    it 'does not include main photo' do
+      apartment.main_photo = photo
+
+      expect(secondary_photos).to eq [secondary_photo]
+    end
+  end
+
   describe '#locales_with_translations' do
     let(:apartment) { build :apartment }
     let(:en_translation) {

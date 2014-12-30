@@ -15,7 +15,10 @@ class Photo < ActiveRecord::Base
   belongs_to :apartment
   has_many :translations, class_name: PhotoTranslation, dependent: :destroy
 
+  scope :excluding, ->(ids) { where.not(id: ids) }
+
   validates :image, :apartment, presence: true
 
   mount_uploader :image, PhotoUploader
 end
+

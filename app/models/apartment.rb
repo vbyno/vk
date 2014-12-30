@@ -29,6 +29,10 @@ class Apartment < ActiveRecord::Base
     joins(:translations).where(apartment_translations: { locale: locale })
   }
 
+  def secondary_photos
+    photos.excluding(main_photo_id)
+  end
+
   def locales_with_translations
     values = Locale::SECONDARY.map { |locale|
       translations.detect {|t| t.locale == locale }
