@@ -120,6 +120,11 @@
   // LAZY LOAD START
   Carousel.prototype.load = function (img) {
     this.sliding = false
+
+    // dirty fix for not disappear space behind the image
+    var cl_height = this.$element[0].clientHeight
+    this.$element.parents('.carousel-inner').height(cl_height)
+
     this.loading.removeClass('hide')
 
     img.attr('src', img.attr('lazy-src'))
