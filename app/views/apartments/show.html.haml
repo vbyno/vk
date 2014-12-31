@@ -7,7 +7,7 @@
             - 0.upto @apartment.photos.count - 1 do |i|
               %li{data: { :'slide-to' => i, :target => '#portfolio-slideshow' }}
           .carousel-inner
-            = render @apartment.main_photo, active: true
+            = render(@apartment.main_photo, active: true) if @apartment.active?
             = render @apartment.secondary_photos
           .loading.hide
             %img{src: "../img/black.png"}
