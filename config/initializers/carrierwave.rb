@@ -7,5 +7,14 @@ module CarrierWave
         img
       end
     end
+
+    def watermarking(watermark_image, position)
+      manipulate! do |img|
+        img = img.composite(watermark_image, 'jpg') do |c|
+          c.gravity(position.to_s)
+        end
+      end
+    end
   end
 end
+
