@@ -23,3 +23,6 @@ en:
       reservation_blank: Заявка на бронирование
   footer:
     call_us: Do not hesitate to contact us if you have any questions or feature requests
+  static_pages:
+    sitemap:
+      header: Sitemap

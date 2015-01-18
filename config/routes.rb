@@ -14,7 +14,6 @@ Vk::Application.routes.draw do
   resources :reservations, only: :create
 
   devise_for :admins
-
   namespace :admin do
     resources :apartments, except: :show do
       resources :photos, only: :create
@@ -26,8 +25,11 @@ Vk::Application.routes.draw do
     resources :pictures, only: [:new, :create]
   end
 
+  get '/sitemap', to: 'static_pages#sitemap', as: :sitemap
+
   scope ':locale', locale: /ua|en|pl/, as: :locale do
     concerns :apartment_presenter, :seo_hierarchical
   end
   concerns :seo_hierarchical
 end
+
