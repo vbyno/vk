@@ -13,4 +13,3 @@ private
     @contact_hash ||= SiteInfo.fetch(:contact)
   end
 end
-

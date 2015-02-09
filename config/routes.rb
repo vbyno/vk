@@ -1,16 +1,39 @@
+module Redirect
+  extend self
+  delegate :each, to: :redirects
+
+  def node
+    @file ||=
+      YAML.load_file(Rails.root.join('config', 'redirects.yml')).with_indifferent_access
+  end
+
+  def redirects
+    (node[:children]).inject({}) do |result, (parent_key, children)|
+      result.merge(condition_hash(parent_key, children))
+    end
+    .merge(node[:parents])
+  end
+
+private
+  def condition_hash(parent_key, children)
+    prefix = "#{parent_key}/" if parent_key.in?(['ua', 'en'])
+    Hash[children.map { |key, value| ["#{parent_key}/#{key}", "#{prefix}#{value}"] }]
+  end
+end
+
 Vk::Application.routes.draw do
-  concern :apartment_presenter do
+  concern :apartments_concern do
     root 'main_pages#show'
     resources :apartments, only: :show
   end
 
-  concern :seo_hierarchical do
+  concern :pages_concern do
     get '/:parent_permalink' => 'parent_pages#show', as: :parent_page
     get '/:parent_permalink/:child_permalink' => 'child_pages#show',
                                                  as: :child_page
   end
 
-  concerns :apartment_presenter
+  concerns :apartments_concern
   resources :reservations, only: :create
 
   devise_for :admins
@@ -27,9 +50,12 @@ Vk::Application.routes.draw do
 
   get '/sitemap', to: 'static_pages#sitemap', as: :sitemap
 
-  scope ':locale', locale: /ua|en|pl/, as: :locale do
-    concerns :apartment_presenter, :seo_hierarchical
+  Redirect.each do |old_path, new_path|
+    get "#{old_path}.html", to: redirect(new_path)
   end
-  concerns :seo_hierarchical
-end
 
+  scope ':locale', locale: /ua|en|pl/, as: :locale do
+    concerns :apartments_concern, :pages_concern
+  end
+  concerns :pages_concern
+end
