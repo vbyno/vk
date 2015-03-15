@@ -15,7 +15,7 @@ gem 'haml-rails'
 gem 'simple-navigation'
 gem 'sanitize'
 gem 'bootstrap-sass'
-gem 'formtastic', '~> 2.3.0.rc2'
+gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'bootstrap-datepicker-rails'
 gem 'tinymce-rails'
@@ -31,7 +31,7 @@ gem 'jbuilder'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier'
 gem 'pg'
-gem 'rails', '~> 4.1.6'
+gem 'rails'
 gem 'rails-i18n'
 
 gem 'capistrano'
@@ -66,3 +66,4 @@ group :test do
 
   gem 'simplecov', require: false
 end
+

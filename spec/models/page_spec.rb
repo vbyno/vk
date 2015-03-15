@@ -29,8 +29,7 @@ describe Page do
 
   it { expect(subject).to validate_inclusion_of(:locale).in_array(Locale::ALL) }
   it { expect(subject).to validate_inclusion_of(:type).in_array(Page::TYPES) }
-  it { expect(subject).to ensure_length_of(:title).is_at_least(2).
-                                                  is_at_most(60) }
+  it { expect(subject).to validate_length_of(:title).is_at_least(2).is_at_most(60) }
 
   describe 'parent page validation' do
     let(:parent_page) { build :page, type: ParentPage.to_s, parent_id: 1 }
