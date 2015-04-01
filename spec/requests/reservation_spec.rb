@@ -1,14 +1,17 @@
 require 'acceptance_helper'
 
 describe 'reservation' do
-  let(:apartment) { create :apartment, :with_translations }
+  let(:apartment) { create :apartment,
+                           :active_with_main_photo,
+                           :with_translations }
+  delegate :permalink, to: :apartment
 
   before do
     Locale.change_to_default!
   end
 
   it 'can be created', js: true do
-    apartment_page = Apartment::ShowPage.new(apartment_path(apartment)).visit!
+    apartment_page = Apartment::ShowPage.new(apartment_path(permalink)).visit!
     apartment_page.reservation_form.fill_with(
       I18n.t('formtastic.labels.reservation.customer_name') => 'Name Ru',
       I18n.t('formtastic.labels.reservation.customer_email') => 'Email Ru',
