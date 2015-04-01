@@ -15,4 +15,6 @@ pl:
   layouts:
     navigation:
       language: Mova
-
+  static_pages:
+    sitemap:
+      header: Sitemap

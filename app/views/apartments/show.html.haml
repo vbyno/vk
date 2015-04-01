@@ -2,12 +2,15 @@
   .row
     .col-sm-6
       .portfolio-slideshow
-        #portfolio-slideshow.carousel.slide{data: { ride: 'carousel', interval: false }}
+        #portfolio-slideshow.carousel.slide{data: { ride: 'carousel', interval: 'false' }}
           %ol.carousel-indicators
             - 0.upto @apartment.photos.count - 1 do |i|
               %li{data: { :'slide-to' => i, :target => '#portfolio-slideshow' }}
           .carousel-inner
-            = render @apartment.photos
+            = render(@apartment.main_photo, active: true) if @apartment.active?
+            = render @apartment.secondary_photos
+          .loading.hide
+            %img{src: "../img/black.png"}
           %a.carousel-arrow.carousel-arrow-prev{"data-slide" => "prev", :href => "#portfolio-slideshow"}
             %i.fa.fa-angle-left
           %a.carousel-arrow.carousel-arrow-next{"data-slide" => "next", :href => "#portfolio-slideshow"}

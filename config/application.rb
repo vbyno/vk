@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails/all'
+# https://github.com/magnusvk/counter_culture/issues/87
+ActiveRecord::Base.raise_in_transactional_callbacks = true
 Bundler.require(:default, Rails.env)
 
 module Vk

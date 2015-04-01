@@ -1,4 +1,7 @@
 .page-header
-  %h3= t('.headline')
+  %h3
+    = t('.headline')
+    = link_to nil, apartment_path(@apartment)
 #apartment-form
   = render 'form'
+

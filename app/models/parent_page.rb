@@ -38,6 +38,7 @@ class ParentPage < Page
   end
 
   def self.grouped_by_locale
+    #TODO what for :includes? doesn't foreign key fix the problem?
     includes(:child_pages).group_by { |p| p.locale.to_sym }
   end
 end

@@ -5,7 +5,7 @@ class MailerWorker
     approved_classes = %w[AdminMailer UserMailer]
 
     if class_name.in? approved_classes
-      class_name.constantize.public_send(method, *args).deliver
+      class_name.constantize.public_send(method, *args).deliver_now
     else
       Rails.logger.error("Unauthorized class (#{class_name}) was queued up to perform a method.")
     end

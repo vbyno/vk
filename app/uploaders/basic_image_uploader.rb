@@ -3,10 +3,10 @@ class BasicImageUploader < CarrierWave::Uploader::Base
 
   storage :file
   after :remove, :delete_empty_upstream_dir
-  process :watermarking
 
-  version :full_screen do
-    process resize_to_fit: [1920, 1080]
+  def self.watermark_logo
+    @watermark_logo ||=
+      MiniMagick::Image.open("#{Rails.root}/app/assets/images/watermark.png")
   end
 
   def store_dir
@@ -15,16 +15,6 @@ class BasicImageUploader < CarrierWave::Uploader::Base
 
   def filename
     "#{model.class.to_s.underscore}.jpg" if original_filename
-  end
-
-  def watermarking
-    manipulate! do |img|
-      logo = MiniMagick::Image.open("#{Rails.root}/app/assets/images/watermark.png")
-      # img = img.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
-      img = img.composite(logo, 'jpg') do |c|
-        c.gravity 'center'
-      end
-    end
   end
 
   def extension_white_list

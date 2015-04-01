@@ -16,7 +16,7 @@ class BasicPage
   end
 
   def visit!
-    visit @url
+    visit url
     self
   end
 

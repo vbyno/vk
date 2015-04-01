@@ -11,6 +11,7 @@
 #  main_photo_id     :integer
 #  active            :boolean          default(FALSE), not null
 #  short_description :string(255)      default(""), not null
+#  permalink         :string           not null
 #
 
 class Apartment < ActiveRecord::Base
@@ -21,13 +22,23 @@ class Apartment < ActiveRecord::Base
 
   accepts_nested_attributes_for :photos, allow_destroy: true
 
-  validates :title, :price, :description, :short_description, presence: true
+  validates :title, :price, :description, :short_description, :permalink,
+            presence: true
   validates :main_photo, presence: true, if: :active?
+  validates :permalink, uniqueness: true, permalink: true
 
   scope :active, -> { where(active: true) }
   scope :translated_to, ->(locale) {
     joins(:translations).where(apartment_translations: { locale: locale })
   }
+
+  def self.available!(permalink)
+    active.find_by!(permalink: permalink.to_s)
+  end
+
+  def secondary_photos
+    photos.excluding(main_photo_id)
+  end
 
   def locales_with_translations
     values = Locale::SECONDARY.map { |locale|

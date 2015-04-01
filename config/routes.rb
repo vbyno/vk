@@ -1,20 +1,19 @@
 Vk::Application.routes.draw do
-  concern :apartment_presenter do
+  concern :apartments_concern do
     root 'main_pages#show'
-    resources :apartments, only: :show
+    get 'apartments/:permalink' => 'apartments#show', as: :apartment
   end
 
-  concern :seo_hierarchical do
+  concern :pages_concern do
     get '/:parent_permalink' => 'parent_pages#show', as: :parent_page
     get '/:parent_permalink/:child_permalink' => 'child_pages#show',
                                                  as: :child_page
   end
 
-  concerns :apartment_presenter
+  concerns :apartments_concern
   resources :reservations, only: :create
 
   devise_for :admins
-
   namespace :admin do
     resources :apartments, except: :show do
       resources :photos, only: :create
@@ -26,8 +25,14 @@ Vk::Application.routes.draw do
     resources :pictures, only: [:new, :create]
   end
 
-  scope ':locale', locale: /ua|en|pl/, as: :locale do
-    concerns :apartment_presenter, :seo_hierarchical
+  get '/sitemap', to: 'static_pages#sitemap', as: :sitemap
+
+  Redirect.each do |old_path, new_path|
+    get "#{old_path}.html", to: redirect(new_path)
   end
-  concerns :seo_hierarchical
+
+  scope ':locale', locale: /ua|en|pl/, as: :locale do
+    concerns :apartments_concern, :pages_concern
+  end
+  concerns :pages_concern
 end

@@ -1,0 +1,44 @@
+parents:
+  arenda-kvartir-vo-lvove: ''
+  kak-snyat-kvartiru:         &guide          guide
+  gde-otdohnut:               &city_places    city/places
+  kontakty:                   &contacts       contacts
+children:
+  kak-snyat-kvartiru:
+    pravila-prozhivaniya:     &guide_rules    guide/rules
+    new-year-prices:          &guide_new-year guide/new-year
+    ceny-na-majskiye:         &guide_may      guide/may
+  gde-otdohnut:
+    transport-lvova-taxi:     &city_transport city/transport
+  kontakty:
+    sitemap:                  &sitemap        sitemap
+  arenda-kvartir-vo-lvove:
+    akademika-lulki:          &lulky          apartments/lulky
+    filareta-kolessy:         &kolessy        apartments/kolessy
+    pr-svobody-22:            &svobody        apartments/svobody
+    pr-shevchenko:            &shevchenka     apartments/shevchenka
+    prospekt-shevchenko-10-2: &shevchenka2    apartments/shevchenka2
+    kocubinskogo:             &kotsubynskogo  apartments/kotsubynskogo
+    yaroslava-stecko:         &stetska        apartments/stetska
+    ivana-franko:             &franka         apartments/franka
+  en:
+    how:                                      *guide
+    rules:                                    *guide_rules
+    transport:                                *city_transport
+    rest:                                     *city_places
+    contacts:                                 *contacts
+    shevchenko-av:                            *shevchenka
+    kotsyubinskogo:                           *kotsubynskogo
+    stetsko:                                  *stetska
+    franko:                                   *franka
+  ua:
+    pravyla:                                  *guide_rules
+    yak:                                      *guide
+    kontakty:                                 *contacts
+    pr-shevchenka:                            *shevchenka
+    pr-svobody-22:                            *svobody
+    filareta-kolessy:                         *kolessy
+    kocubynskogo:                             *kotsubynskogo
+    yaroslava-stecka:                         *stetska
+    ivana-franka:                             *franka
+    akademika-lylki:                          *lulky

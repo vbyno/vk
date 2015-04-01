@@ -41,3 +41,6 @@ ru:
         check_in: Дата заселения
         check_out: Дата выселения
         body: Сообщение
+  static_pages:
+    sitemap:
+      header: Карта сайта

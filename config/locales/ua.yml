@@ -34,3 +34,6 @@ ua:
     actions:
       reservation:
         create: Забронювати!
+  static_pages:
+    sitemap:
+      header: Мапа сайтy
