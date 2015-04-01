@@ -1,7 +1,7 @@
 Vk::Application.routes.draw do
   concern :apartments_concern do
     root 'main_pages#show'
-    resources :apartments, only: :show
+    get 'apartments/:permalink' => 'apartments#show', as: :apartment
   end
 
   concern :pages_concern do

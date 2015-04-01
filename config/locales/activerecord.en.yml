@@ -63,3 +63,4 @@ en:
           <<: *page_default_errors
   error_messages:
     invalid_phone_format: "Номер телефона должен быть в формате '+38 (067) 450-55-05' (12 цифр)"
+    invalid_permalink_format: "Ccылка должна состоять из латинских букв, цифр или знаков '_' и '-'"

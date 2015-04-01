@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227164022) do
+ActiveRecord::Schema.define(version: 20150319220540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,102 +34,103 @@ ActiveRecord::Schema.define(version: 20141227164022) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
-  create_table "apartment_translations", force: true do |t|
-    t.string   "locale",                         null: false
-    t.string   "title",                          null: false
-    t.text     "description",                    null: false
-    t.integer  "apartment_id",                   null: false
+  create_table "apartment_translations", force: :cascade do |t|
+    t.string   "locale",            limit: 255,              null: false
+    t.string   "title",             limit: 255,              null: false
+    t.text     "description",                                null: false
+    t.integer  "apartment_id",                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "short_description", default: "", null: false
+    t.string   "short_description", limit: 255, default: "", null: false
   end
 
   add_index "apartment_translations", ["apartment_id"], name: "index_apartment_translations_on_apartment_id", using: :btree
 
-  create_table "apartments", force: true do |t|
-    t.string   "title",                                                     null: false
-    t.decimal  "price",             precision: 6, scale: 2,                 null: false
-    t.text     "description",                                               null: false
+  create_table "apartments", force: :cascade do |t|
+    t.string   "title",             limit: 255,                                         null: false
+    t.decimal  "price",                         precision: 6, scale: 2,                 null: false
+    t.text     "description",                                                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "main_photo_id"
-    t.boolean  "active",                                    default: false, null: false
-    t.string   "short_description",                         default: "",    null: false
+    t.boolean  "active",                                                default: false, null: false
+    t.string   "short_description", limit: 255,                         default: "",    null: false
+    t.string   "permalink",                                                             null: false
   end
 
-  create_table "pages", force: true do |t|
-    t.string   "type",                            null: false
+  create_table "pages", force: :cascade do |t|
+    t.string   "type",            limit: 255,                 null: false
     t.integer  "parent_id"
-    t.string   "permalink",                       null: false
-    t.string   "title",                           null: false
-    t.string   "intro",                           null: false
-    t.text     "content",                         null: false
-    t.string   "locale",                          null: false
-    t.boolean  "active",          default: false, null: false
-    t.integer  "priority",        default: 0,     null: false
-    t.string   "seo_title",                       null: false
-    t.string   "seo_description"
-    t.string   "seo_keywords"
+    t.string   "permalink",       limit: 255,                 null: false
+    t.string   "title",           limit: 255,                 null: false
+    t.string   "intro",           limit: 255,                 null: false
+    t.text     "content",                                     null: false
+    t.string   "locale",          limit: 255,                 null: false
+    t.boolean  "active",                      default: false, null: false
+    t.integer  "priority",                    default: 0,     null: false
+    t.string   "seo_title",       limit: 255,                 null: false
+    t.string   "seo_description", limit: 255
+    t.string   "seo_keywords",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "photo_translations", force: true do |t|
-    t.integer "apartment_translation_id", null: false
-    t.integer "photo_id",                 null: false
-    t.string  "alt"
-    t.string  "title"
+  create_table "photo_translations", force: :cascade do |t|
+    t.integer "apartment_translation_id",             null: false
+    t.integer "photo_id",                             null: false
+    t.string  "alt",                      limit: 255
+    t.string  "title",                    limit: 255
   end
 
   add_index "photo_translations", ["apartment_translation_id"], name: "index_photo_translations_on_apartment_translation_id", using: :btree
 
-  create_table "photos", force: true do |t|
-    t.integer  "apartment_id", null: false
-    t.string   "image",        null: false
-    t.string   "title"
-    t.string   "alt"
+  create_table "photos", force: :cascade do |t|
+    t.integer  "apartment_id",             null: false
+    t.string   "image",        limit: 255, null: false
+    t.string   "title",        limit: 255
+    t.string   "alt",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "photos", ["apartment_id"], name: "index_photos_on_apartment_id", using: :btree
 
-  create_table "pictures", force: true do |t|
-    t.integer  "imageable_id",   null: false
-    t.string   "imageable_type", null: false
-    t.string   "image",          null: false
-    t.string   "alt"
-    t.string   "title"
+  create_table "pictures", force: :cascade do |t|
+    t.integer  "imageable_id",               null: false
+    t.string   "imageable_type", limit: 255, null: false
+    t.string   "image",          limit: 255, null: false
+    t.string   "alt",            limit: 255
+    t.string   "title",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "reservations", force: true do |t|
-    t.integer  "apartment_id",   null: false
-    t.string   "customer_name",  null: false
-    t.string   "customer_email", null: false
-    t.datetime "check_in",       null: false
-    t.datetime "check_out",      null: false
-    t.string   "status",         null: false
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "apartment_id",               null: false
+    t.string   "customer_name",  limit: 255, null: false
+    t.string   "customer_email", limit: 255, null: false
+    t.datetime "check_in",                   null: false
+    t.datetime "check_out",                  null: false
+    t.string   "status",         limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "body"
-    t.string   "customer_phone", null: false
+    t.string   "customer_phone", limit: 255, null: false
   end
 
   add_index "reservations", ["apartment_id"], name: "index_reservations_on_apartment_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,6 +138,5 @@ ActiveRecord::Schema.define(version: 20141227164022) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "pages", "pages", name: "parent_page_foreign_key", column: "parent_id"
-
+  add_foreign_key "pages", "pages", column: "parent_id", name: "parent_page_foreign_key"
 end

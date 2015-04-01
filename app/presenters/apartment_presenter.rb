@@ -1,10 +1,16 @@
 class ApartmentPresenter < BasicPresenter
   attr_reader :apartment, :translation
   delegate :title, :description, :short_description, to: :responder
+  delegate :permalink, to: :apartment
 
   def initialize(apartment, translation = nil)
     @apartment = apartment
+    # TODO write Locale::DEFAULT translation, not nil
     @translation = translation
+  end
+
+  def ==(other)
+    apartment == other.apartment && translation == other.translation
   end
 
   def to_partial_path
@@ -12,7 +18,8 @@ class ApartmentPresenter < BasicPresenter
   end
 
   def path
-    translated? ? locale_apartment_path(locale, apartment) : apartment_path(apartment)
+    translated? ? locale_apartment_path(locale, apartment.permalink) :
+                  apartment_path(apartment.permalink)
   end
 
   def edit_path

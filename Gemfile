@@ -5,7 +5,6 @@ gem 'cancan'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'figaro'
-gem 'foreigner'
 
 gem 'resque'
 gem 'resque-scheduler'

@@ -11,6 +11,7 @@
 #  main_photo_id     :integer
 #  active            :boolean          default(FALSE), not null
 #  short_description :string(255)      default(""), not null
+#  permalink         :string           not null
 #
 
 require 'spec_helper'
@@ -27,7 +28,18 @@ describe Apartment do
                             allow_destroy(true) }
 
   it_behaves_like 'presence validator',
-    %i[title price description short_description]
+    %i[title price description short_description permalink]
+
+  describe '.available!' do
+    let(:apartment) { create :apartment,
+                             :active_with_main_photo,
+                             permalink: 'foobar' }
+    subject { described_class.available!(apartment.permalink) }
+
+    it 'finds apartment' do
+      expect(subject).to eq apartment
+    end
+  end
 
   context 'main image' do
     let(:active) { build :apartment, active: true, main_photo: nil }
