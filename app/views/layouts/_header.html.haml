@@ -15,7 +15,6 @@
             %p.navbar-text= text
         %li.dropdown
           %a.dropdown-toggle{data: {toggle: 'dropdown'}, href: @locale.root_page_path}
-            %span{class: "flag flag-#{@locale}"}
             = @locale.to_s
             %span.caret
           %ul.dropdown-menu

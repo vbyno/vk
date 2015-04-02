@@ -15,6 +15,10 @@ pl:
   layouts:
     navigation:
       language: Mova
+    info_panel:
+      center: centrum <span>miasta</span>
+      owners: <span>bez</span> pośrednika
+      money_starts: <span>Od</span> 200 UAH
   static_pages:
     sitemap:
       header: Sitemap

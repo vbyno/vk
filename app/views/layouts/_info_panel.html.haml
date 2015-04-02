@@ -2,26 +2,22 @@
   .home-services.margin-0
     .container
       .row
-        .col-md-5.visible-lg-block
-          %ul
-            %li
-              %i.fa.fa-gears
-              %p
-                %span Built with
-                Bootstrap 3
-            %li
-              %i.fa.fa-picture-o
-              %p
-                Isotope
-                %span Portfolio
-            %li
-              %i.fa.fa-envelope-o
-              %p
-                24/7 Support
-                %span by e-mail
-        .col-md-7.info-panel
-          - if @main_page || @apartment
+        - if @main_page || @apartment
+          .col-md-5.visible-lg-block.default-cursor
+            %ul
+              %li
+                %i.fa.fa-compass
+                %p!= t('.center')
+              %li
+                %i.fa.fa-male
+                %p!= t('.owners')
+              %li
+                %i.fa.fa-money
+                %p!= t('.money_starts')
+          .col-md-7.info-panel
             .lead.phones
               = render Contact.instance.phones, wrapper: :div
-          - else
-            = render 'layouts/breadcrumbs'
+        - else
+          .com-md-12.info-panel
+            .pull-right
+              = render 'layouts/breadcrumbs'

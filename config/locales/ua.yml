@@ -4,6 +4,10 @@ ua:
     header:
       daily_apartments: Квартири подобово
       language: Мова
+    info_panel:
+      center: Центр <span>Львова</span>
+      owners: <span>Лише</span> Власники
+      money_starts: <span>Від</span> 200 грн
   head:
     title: Квартиры посуточно во Львове
     description: Аренда квартир посуточно во Львове

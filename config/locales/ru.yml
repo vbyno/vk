@@ -5,6 +5,10 @@ ru:
       daily_apartments: Квартиры посуточно
       language: Язык
       toggle_navigation: Показать/скрыть меню
+    info_panel:
+      center: Центр <span>Львова</span>
+      owners: <span>Только</span> Владельцы
+      money_starts: <span>От</span> 200 грн
     admin:
       title: Панель администратора
       navigation:

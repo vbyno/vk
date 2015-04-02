@@ -9,6 +9,10 @@ en:
       contacts: Contacts
       sign_in: Register
       language: Language
+    info_panel:
+      center: Center <span>of Lviv</span>
+      owners: Owners <span>Only</span>
+      money_starts: <span>From</span> 200 UAH
   apartments:
     index:
       headline: Apartments

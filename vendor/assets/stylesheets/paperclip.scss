@@ -195,7 +195,7 @@ html, body {
     padding: 20px 3px;
     border-right: 1px solid $new-red-dark;
     text-align: center;
-    cursor: pointer;
+    cursor: default;
     overflow: hidden;
     white-space: nowrap; /* to avoid cell breaking during expanding on hover */
     @include transition-new(width);

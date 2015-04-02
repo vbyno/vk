@@ -49,8 +49,7 @@ group :development, :test do
   gem 'thin'
   gem 'database_cleaner'
   gem 'pry-rails'
-  gem 'fuubar'
-  
+ 
   # we need ffaker and factory for seeds
   gem 'ffaker', require: false
   gem 'factory_girl_rails', require: false
@@ -65,5 +64,6 @@ group :test do
   gem 'capybara'
 
   gem 'simplecov', require: false
+  gem 'fuubar'
 end
 
