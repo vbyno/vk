@@ -19,4 +19,7 @@ pickle-email-*.html
 /config/application.yml
 /config/redis.yml
 /config/database.yml
+/config/deploy/
+/shared/
+/Procfile
 
