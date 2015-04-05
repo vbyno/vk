@@ -1,6 +1,3 @@
-require 'ffaker'
-require 'factory_girl_rails'
-
 def create_admin_if_needed!
   Admin.first_or_create(email: Figaro.env.admin_email) do |admin|
     admin.password = Figaro.env.admin_password
@@ -9,6 +6,9 @@ def create_admin_if_needed!
 end
 
 def create_pages!
+  require 'ffaker'
+  require 'factory_girl_rails'
+
   Page.destroy_all
 
   Locale::ALL.each do |locale|
@@ -25,5 +25,5 @@ end
 
 namespace :db do
   create_admin_if_needed!
-  create_pages!
+  create_pages! unless Rails.env.production?
 end
