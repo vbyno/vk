@@ -9,10 +9,11 @@ module Redirect
   end
 
   def redirects
-    @redirects ||= (node[:children]).inject({}) do |result, (parent_key, children)|
-                     result.merge(condition_hash(parent_key, children))
-                   end
-                   .merge(node[:parents])
+    @redirects ||=
+      (node[:children]).inject({}) do |result, (parent_key, children)|
+        result.merge(condition_hash(parent_key, children))
+      end
+      .merge(node[:parents])
   end
 
 private

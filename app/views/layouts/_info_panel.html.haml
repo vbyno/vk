@@ -16,7 +16,7 @@
                 %p!= t('.money_starts')
           .col-md-7.info-panel
             .lead.phones
-              = render Contact.instance.phones, wrapper: :div
+              = render collection: Contact.instance.phones, partial: Phone.to_partial_path, wrapper: :div
         - else
           .com-md-12.info-panel
             .pull-right

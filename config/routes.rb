@@ -13,7 +13,6 @@ Vk::Application.routes.draw do
   concerns :apartments_concern
   resources :reservations, only: :create
 
-  devise_for :admins
   namespace :admin do
     resources :apartments, except: :show do
       resources :photos, only: :create
@@ -34,5 +33,8 @@ Vk::Application.routes.draw do
   scope ':locale', locale: /ua|en|pl/, as: :locale do
     concerns :apartments_concern, :pages_concern
   end
+
+  devise_for :admin
+
   concerns :pages_concern
 end

@@ -1,6 +1,12 @@
 class Phone
   attr_reader :number, :human_number
 
+  # Hack for not to put 'phones/phone' into view pages.
+  # :to_partial_path stil has some problems with Devise (or, maybe, any engine)
+  def self.to_partial_path
+    'phones/phone'
+  end
+
   # TODO test it, can be problems with 2 ways of using
   def initialize(human_number)
     @human_number = human_number
@@ -12,7 +18,7 @@ class Phone
   end
 
   def to_partial_path
-    'phones/phone'
+    self.class.to_partial_path
   end
 
   def ==(other)
