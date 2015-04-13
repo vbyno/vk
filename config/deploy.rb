@@ -90,11 +90,12 @@ namespace :deploy do
       upload!('shared/Procfile', "#{shared_path}/Procfile")
       upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
 
+      # Commented this because several sites will be stored on one nginx server
+      # so before first deploy of new app fix nginx.conf by hands
       # sudo 'stop nginx'
       # sudo "rm -f /usr/local/nginx/conf/nginx.conf"
       # sudo "ln -s #{shared_path}/nginx.conf /usr/local/nginx/conf/nginx.conf"
       # sudo 'start nginx'
-      sudo 'restart nginx'
 
       within release_path do
         with rails_env: fetch(:rails_env) do
@@ -151,5 +152,4 @@ namespace :deploy do
   before :setup, 'deploy:starting'
   before :setup, 'deploy:updating'
   before :setup, 'bundler:install'
-  before :deploy, 'git:deploy'
 end

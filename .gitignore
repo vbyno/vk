@@ -10,6 +10,7 @@ capybara-*.html
 /db/*.sqlite3
 /public/system/*
 /public/uploads/*
+/public/assets/
 /coverage/
 /spec/tmp/*
 /spec/support/uploads/*
@@ -22,4 +23,3 @@ pickle-email-*.html
 /config/deploy/
 /shared/
 /Procfile
-
