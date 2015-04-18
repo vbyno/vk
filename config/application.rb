@@ -1,7 +1,5 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails/all'
-# https://github.com/magnusvk/counter_culture/issues/87
-ActiveRecord::Base.raise_in_transactional_callbacks = true
 Bundler.require(:default, Rails.env)
 
 module Vk
@@ -21,5 +19,13 @@ module Vk
                        helper_specs: false,
                        routing_specs: false
     end
+
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    config.time_zone = 'Kyiv'
+
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    # https://github.com/magnusvk/counter_culture/issues/87
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
