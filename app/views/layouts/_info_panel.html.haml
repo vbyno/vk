@@ -1,9 +1,9 @@
 .topic{:class => ('margin-bottom-0' if @main_page)}
-  .home-services.margin-0
+  .home-services.margin-0.home-services-custom
     .container
       .row
         - if @main_page || @apartment
-          .col-md-5.visible-lg-block.default-cursor
+          .col-md-4.visible-lg-block.default-cursor
             %ul
               %li
                 %i.fa.fa-compass
@@ -14,7 +14,7 @@
               %li
                 %i.fa.fa-money
                 %p!= t('.money_starts')
-          .col-md-7.info-panel
+          .col-md-8.info-panel
             .lead.phones
               = render collection: Contact.instance.phones, partial: Phone.to_partial_path, wrapper: :div
         - else
