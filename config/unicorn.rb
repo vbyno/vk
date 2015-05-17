@@ -37,7 +37,7 @@ check_client_connection false
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
-  
+
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
   # The following is only recommended for memory/DB-constrained
