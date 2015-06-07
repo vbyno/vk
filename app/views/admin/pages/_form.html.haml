@@ -1,4 +1,4 @@
-= semantic_form_for [:admin, @page], html: { role: 'form', data: new_admin_picture_url_params(@page) } do |f|
+= semantic_form_for [:admin, page], html: { role: 'form', data: new_admin_picture_url_params(page) } do |f|
   = f.semantic_errors *f.object.errors.keys
   %ul.nav.nav-tabs
     %li= link_to 'Main Info', '#main-info', data: { toggle: 'tab' }

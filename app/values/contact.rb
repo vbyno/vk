@@ -8,7 +8,8 @@ class Contact
     @email = contact_hash[:email]
   end
 
-private
+  private
+
   def contact_hash
     @contact_hash ||= SiteInfo.fetch(:contact)
   end

@@ -1,9 +1,9 @@
-class ParentPagePresenter < BasicPresenter
+class ParentPagePresenter < PagePresenter
   def path
-    if page.locale_object.default?
-      parent_page_path(page.permalink)
+    if locale_object.default?
+      h.parent_page_path(permalink)
     else
-      locale_parent_page_path(page.locale, page.permalink)
+      h.locale_parent_page_path(locale, permalink)
     end
   end
 end

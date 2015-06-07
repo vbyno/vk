@@ -1,6 +1,6 @@
 %h3
   = I18nUtil.action(action_name)
-  = link_to nil, @page.path
-= render 'form'
+  = link_to nil, present(@page).path
+= render 'form', page: @page
 = render 'admin/pictures/modal_form'
 

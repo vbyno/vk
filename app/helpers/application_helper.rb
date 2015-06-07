@@ -1,4 +1,24 @@
 module ApplicationHelper
+  # options = { presenter_class: ApartmentPresenter, locale: Locale.new(:ru) }
+  def present(object, options = {})
+    presenter =
+      if object.respond_to?(:presenter?) && object.presenter?
+        object
+      else
+        presenter_class = options.delete(:presenter_class) ||
+          begin
+            "#{object.class}Presenter".constantize
+          rescue
+            "#{object.class.base_class}Presenter".constantize
+          end
+
+        presenter_class.new(object, self, options)
+      end
+
+    yield(presenter) if block_given?
+    presenter
+  end
+
   def locale_link_to(text = nil, path, identifiers: [], locale: @locale,
                      **html_options, &block)
     identifiers = Array(identifiers)

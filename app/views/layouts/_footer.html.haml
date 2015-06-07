@@ -17,12 +17,12 @@
         %h4
           %i.fa.fa-list-alt.text-red
           = t('.last_articles')
-        - Page.by_locale(@locale).recent(3).each do |page|
+        - Page.by_locale(@locale).recent(3).map { |page| present(page) }.each do |page_presenter|
           .tweet
             %i.fa.fa-file-text.fa-2x
             %p
-              = page.intro
-              = link_to '1 day ago', page.path
+              = page_presenter.intro
+              = link_to '1 day ago', page_presenter.path
       .col-sm-4
         %h4
           %i.fa.fa-group.text-red

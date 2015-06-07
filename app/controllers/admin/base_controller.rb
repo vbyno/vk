@@ -6,7 +6,7 @@ class Admin::BaseController < ApplicationController
 
   layout 'admin'
 
-  def default_url_options(options={})
+  def default_url_options(options = {})
     options
   end
 
@@ -14,8 +14,9 @@ class Admin::BaseController < ApplicationController
     @current_ability ||= AdminAbility.new(current_admin)
   end
 
-private
-  def set_locale
-    @locale = Locale.new!(Locale::DEFAULT)
+  private
+
+  def locale
+    @locale ||= Locale.new!(Locale::DEFAULT)
   end
 end

@@ -1,14 +1,15 @@
-.container
+- present(@apartment, locale: @locale) do |apartment|
+  .container
   .row
     .col-sm-6
       .portfolio-slideshow
         #portfolio-slideshow.carousel.slide{data: { ride: 'carousel', interval: 'false' }}
           %ol.carousel-indicators
-            - 0.upto @apartment.photos.count - 1 do |i|
+            - 0.upto apartment.photos.count - 1 do |i|
               %li{data: { :'slide-to' => i, :target => '#portfolio-slideshow' }}
           .carousel-inner
-            = render(@apartment.main_photo, active: true) if @apartment.active?
-            = render @apartment.secondary_photos
+            = render(apartment.main_photo, active: true) if apartment.active?
+            = render apartment.secondary_photos
           .loading.hide
             %img{src: "../img/black.png"}
           %a.carousel-arrow.carousel-arrow-prev{"data-slide" => "prev", :href => "#portfolio-slideshow"}
@@ -17,8 +18,8 @@
             %i.fa.fa-angle-right
     .col-sm-6
       %h3.headline.second-child
-        %span= @apartment.title
-      %p= @apartment.short_description
+        %span= apartment.title
+      %p= apartment.short_description
       %br
         %h4.headline
           %span Apartment Info
@@ -27,20 +28,19 @@
             %tr
               %td Rooms
               %td
-              / TODO : add rooms and other options to database
+              / TODO: add rooms and other options to database
               %td 1
             %tr
               %td= human_attribute(Apartment, :price)
               %td
-              %td= @apartment.price.ceil
+              %td= apartment.price.ceil
   .row
     .col-md-9
-      = @apartment.description.html_safe
+      = apartment.description.html_safe
     .col-md-3.well
       #reservation-form
-        = render 'reservations/form'
+        = render 'reservations/form', reservation: apartment.reservations.build
+  - content_for :admin_edit_link do
+    = apartment.edit_path
 
 = render 'blueimp_gallery'
-- content_for :admin_edit_link do
-  = @apartment.edit_path
-

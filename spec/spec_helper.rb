@@ -55,6 +55,10 @@ RSpec.configure do |config|
     end
   end
 
+  config.before do
+    I18n.locale = Locale::DEFAULT
+  end
+
   config.after(:all) do
     if Rails.env.test?
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])

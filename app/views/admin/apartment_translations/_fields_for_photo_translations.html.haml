@@ -1,9 +1,9 @@
 .table-responsive
   %table.table.table-striped.table-condensed.col-md-12
     %tr
-      %th.col-md-1= PhotoTranslation.human_attribute_name :image
-      %th= PhotoTranslation.human_attribute_name :title
-      %th= PhotoTranslation.human_attribute_name :alt
+      %th.col-md-1= human_attribute(PhotoTranslation, :image)
+      %th= human_attribute(PhotoTranslation, :title)
+      %th= human_attribute(PhotoTranslation, :alt)
       %th.col-md-1
 
     - @apartment_translation.forced_photo_translations.each do |photo_translation|

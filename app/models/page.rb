@@ -33,8 +33,6 @@ class Page < ActiveRecord::Base
   scope :for_menu, ->(locale, limit) { by_locale(locale).order(priority: :desc).
                                                          limit(limit) }
 
-  delegate :path, to: :presenter
-
   validates_with PageValidator
   validates :content, :seo_title, :intro, :permalink, :type, :priority,
             presence: true
@@ -60,14 +58,6 @@ class Page < ActiveRecord::Base
 
   def locale_object
     Locale.new(locale)
-  end
-
-  def hierarchy
-    raise NotImplementedError
-  end
-
-  def presenter
-    raise NotImplementedError
   end
 
   def seo_tags

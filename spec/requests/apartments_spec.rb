@@ -22,7 +22,9 @@ describe 'Apartment LP' do
       locale_apartment_page =
         BasicPage.new("/#{locale}/apartments/#{apartment.permalink}",
                       main_content: title)
-      expect(locale_apartment_page.visit!).to be_loaded
+      locale_apartment_page.visit!
+
+      expect(locale_apartment_page).to be_loaded
     end
   end
 end

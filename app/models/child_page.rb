@@ -32,8 +32,4 @@ class ChildPage < Page
   end
 
   alias_method :parent, :parent_page
-
-  def presenter
-    ChildPagePresenter.new(self)
-  end
 end

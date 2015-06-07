@@ -31,7 +31,8 @@ class Admin::PagesController < Admin::BaseController
     redirect_to :back
   end
 
-private
+  private
+
   def page_params
     params.require(:page).permit(
       :id, :type, :parent_id, :permalink, :locale, :content, :active, :title,

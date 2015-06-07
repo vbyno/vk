@@ -23,9 +23,5 @@ class MainPage < Page
   def main?
     true
   end
-
-  def presenter
-    MainPagePresenter.new(self)
-  end
 end
 

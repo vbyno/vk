@@ -47,6 +47,10 @@ class Apartment < ActiveRecord::Base
     Hash[Locale::SECONDARY.zip values]
   end
 
+  def translation_by_locale(locale)
+    translations.find_by(locale: locale.to_sym) unless locale.default?
+  end
+
   def parent
     MainPage.available!(Locale::DEFAULT)
   end

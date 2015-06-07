@@ -1,5 +1,5 @@
-class MainPagePresenter < BasicPresenter
+class MainPagePresenter < PagePresenter
   def path
-    page.locale_object.default? ? root_path : locale_root_path(page.locale)
+    locale_object.default? ? h.root_path : h.locale_root_path(locale)
   end
 end

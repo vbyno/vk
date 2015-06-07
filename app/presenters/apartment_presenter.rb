@@ -1,12 +1,32 @@
-class ApartmentPresenter < BasicPresenter
-  attr_reader :apartment, :translation
+class ApartmentPresenter < BasePresenter
+  attr_reader :locale
+  presents :apartment
   delegate :title, :description, :short_description, to: :responder
-  delegate :permalink, to: :apartment
 
-  def initialize(apartment, translation = nil)
-    @apartment = apartment
-    # TODO write Locale::DEFAULT translation, not nil
-    @translation = translation
+  def self.all(locale, view)
+    active_apartments = Apartment.active
+    return active_apartments.map { |apartment| new(apartment, view) } if locale.default?
+
+    apartments = active_apartments.translated_to(locale.to_sym)
+    # TODO make include with param :locale
+    translations =
+      ApartmentTranslation.where(apartment_id: apartments.map(&:id), locale: locale.to_sym)
+
+    apartments.map do |apartment|
+      new(apartment, view,
+          translation: translations.detect { |t| t.apartment_id == apartment.id })
+    end
+  end
+
+  def initialize(apartment, view, locale: nil, translation: nil)
+    if translation
+      @translation = translation
+      @locale = Locale.new(translation.locale)
+    else
+      @locale = locale.is_a?(Locale) ? locale : Locale.new(locale)
+    end
+
+    super(apartment, view)
   end
 
   def ==(other)
@@ -18,49 +38,31 @@ class ApartmentPresenter < BasicPresenter
   end
 
   def path
-    translated? ? locale_apartment_path(locale, apartment.permalink) :
-                  apartment_path(apartment.permalink)
+    if translated?
+      h.locale_apartment_path(locale.to_sym, permalink)
+    else
+      h.apartment_path(permalink)
+    end
   end
 
   def edit_path
     if translated?
-      edit_admin_apartment_translation_path(translation)
+      h.edit_admin_apartment_translation_path(translation)
     else
-      edit_admin_apartment_path(apartment)
+      h.edit_admin_apartment_path(apartment)
     end
   end
 
-  def self.all(locale)
-    active_apartments = Apartment.active
-    return active_apartments.map { |a| ApartmentPresenter.new(a) } if locale.default?
+  def translation
+    return @translation if defined?(@translation)
 
-    apartments = active_apartments.translated_to(locale.to_sym)
-    # TODO make include with param :locale
-    translations = ApartmentTranslation.where(apartment_id: apartments.map(&:id),
-                                              locale: locale.to_sym)
-    apartments.map do |apartment|
-      translation = translations.detect { |t| t.apartment_id == apartment.id }
-      ApartmentPresenter.new(apartment, translation)
-    end
+    @translation = translation_by_locale(locale)
   end
 
-  def self.create_by_locale(apartment, locale)
-    translation =
-      apartment.translations.find_by!(locale: locale.to_sym) unless locale.default?
-    new(apartment, translation)
-  end
+  private
 
-  def method_missing(*args)
-    apartment.public_send(*args)
-  end
-
-private
   def responder
     translated? ? translation : apartment
-  end
-
-  def locale
-    Locale.new(translation.try(:locale))
   end
 
   def translated?

@@ -14,7 +14,8 @@ class Admin::ApartmentsController < Admin::BaseController
     render 'create_update'
   end
 
-private
+  private
+
   def apartment_params
     params.require(:apartment).permit(
       :title, :active, :price, :short_description, :description,

@@ -30,11 +30,7 @@ class ParentPage < Page
   end
 
   def parent
-    MainPage.available!(locale)
-  end
-
-  def presenter
-    ParentPagePresenter.new(self)
+    @parent ||= MainPage.available!(locale)
   end
 
   def self.grouped_by_locale
