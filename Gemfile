@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.2'
 
 gem 'rails'
 gem 'pg'
@@ -13,7 +14,6 @@ gem 'figaro'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'resque_mailer'
-gem 'foreman', require: false
 
 gem 'haml-rails'
 gem 'coffee-rails'

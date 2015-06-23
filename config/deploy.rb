@@ -3,7 +3,7 @@ lock '3.4.0'
 
 application = 'vk'
 user_name = 'vbyno'
-rvm_ruby_string = 'ruby-2.2.1@vk'
+rvm_ruby_string = 'ruby-2.2.2@vk'
 
 set :application, application
 set :repo_url, 'git@github.com:vbyno/vk.git'
