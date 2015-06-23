@@ -59,7 +59,9 @@ Vk::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  # https://github.com/spohlenz/tinymce-rails/issues/65
+  config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js
+                                 tinymce/themes/advanced/editor_template.js]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
