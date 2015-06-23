@@ -10,6 +10,7 @@ set :repo_url, 'git@github.com:vbyno/vk.git'
 set :rvm_type, :user
 set :rvm_ruby_version, rvm_ruby_string
 set :deploy_to, "/var/www/apps/#{application}"
+set :sudo, 'env rvmsudo_secure_path=1 rvmsudo'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -84,11 +85,10 @@ namespace :deploy do
       execute "rm -f /var/www/log/upstart"
       sudo "ln -sf /var/log/upstart /var/www/log/upstart"
 
-      upload!('shared/database.yml', "#{shared_path}/config/database.yml")
-      upload!('shared/redis.yml', "#{shared_path}/config/redis.yml")
-      upload!('shared/application.yml', "#{shared_path}/config/application.yml")
-      upload!('shared/Procfile', "#{shared_path}/Procfile")
-      upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
+      upload!('config/application.yml', "#{shared_path}/config/application.yml")
+      upload!('config/database.yml',    "#{shared_path}/config/database.yml")
+      upload!('config/redis.yml',       "#{shared_path}/config/redis.yml")
+      upload!('shared/Procfile',        "#{shared_path}/Procfile")
 
       # Commented this because several sites will be stored on one nginx server
       # so before first deploy of new app fix nginx.conf by hands
@@ -108,11 +108,11 @@ namespace :deploy do
   desc 'Create symlink'
   task :symlink do
     on roles(:all) do
-      execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-      execute "ln -s #{shared_path}/config/redis.yml #{release_path}/config/redis.yml"
       execute "ln -s #{shared_path}/config/application.yml #{release_path}/config/application.yml"
-      execute "ln -s #{shared_path}/Procfile #{release_path}/Procfile"
-      execute "ln -s #{shared_path}/system #{release_path}/public/system"
+      execute "ln -s #{shared_path}/config/database.yml    #{release_path}/config/database.yml"
+      execute "ln -s #{shared_path}/config/redis.yml       #{release_path}/config/redis.yml"
+      execute "ln -s #{shared_path}/Procfile               #{release_path}/Procfile"
+      execute "ln -s #{shared_path}/system                 #{release_path}/public/system"
     end
   end
 
@@ -126,9 +126,9 @@ namespace :deploy do
 
       within current_path do
         execute "cd #{current_path}"
-        # execute :budnle, "exec foreman export upstart #{foreman_temp} -a #{application} -u #{user_name} -l /var/www/apps/#{application}/log -d #{current_path}"
+        execute :bundle, "exec foreman export upstart #{foreman_temp} -a #{application} -u #{user_name} -l /var/www/apps/#{application}/log -d #{current_path}"
       end
-      # sudo "mv #{foreman_temp}/* /etc/init/"
+      sudo "mv #{foreman_temp}/* /etc/init/"
       sudo "rm -r #{foreman_temp}"
     end
   end
@@ -146,7 +146,7 @@ namespace :deploy do
   after :updating, 'deploy:symlink'
   after :setup, 'deploy:foreman_init'
 
-  # after :foreman_init, 'foreman:start'
+  after :foreman_init, 'foreman:start'
   before :foreman_init, 'rvm:hook'
 
   before :setup, 'deploy:starting'

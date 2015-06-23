@@ -1,3 +1,5 @@
+require 'yaml'
+
 set :stage, :production
 
 # Simple Role Syntax
@@ -6,14 +8,16 @@ set :stage, :production
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-server_user = 'vbyno'
-server_ip = '185.65.246.70'
-server_port = 51985
+# Just to not load all environtment with Figaro gem
+figaro_config = YAML.load_file('config/application.yml')
+
+server_user = figaro_config['server_user']
+server_ip   = figaro_config['server_ip']
+server_port = figaro_config['server_port']
 
 role :app, ["#{server_user}@#{server_ip}"]
 role :web, ["#{server_user}@#{server_ip}"]
 role :db,  ["#{server_user}@#{server_ip}"]
-
 
 # Extended Server Syntax
 # ======================
