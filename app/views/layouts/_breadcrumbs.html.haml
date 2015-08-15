@@ -6,7 +6,7 @@
       - (breadcrumbs[0...-1]).each do |page|
         .pull-left{itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb"}
           = succeed ' ' do
-            %a{href: page.path, itemprop: 'url'}
+            %a{href: present(page).path, itemprop: 'url'}
               %span{itemprop: 'title'}
                 = page.title
             = '›› '

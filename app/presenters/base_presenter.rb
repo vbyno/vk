@@ -17,8 +17,4 @@ class BasePresenter < SimpleDelegator
   def h
     @view
   end
-
-  def presenter?
-    true
-  end
 end

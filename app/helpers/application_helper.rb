@@ -1,10 +1,7 @@
 module ApplicationHelper
   # options = { presenter_class: ApartmentPresenter, locale: Locale.new(:ru) }
   def present(object, options = {})
-    presenter =
-      if object.respond_to?(:presenter?) && object.presenter?
-        object
-      else
+    presenter = begin
         presenter_class = options.delete(:presenter_class) ||
           begin
             "#{object.class}Presenter".constantize
