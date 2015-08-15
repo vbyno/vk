@@ -30,7 +30,7 @@ ru:
       currency_after: грн.
   reservations:
     create:
-      thank_you: Спасибо!
+      thank_you: Спасибо! Ваша заявка на бронирование отправлена.
     form:
       submit_loading: Отправляется заявка...
       reservation_blank: Заявка на бронирование

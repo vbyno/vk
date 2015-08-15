@@ -4,34 +4,38 @@ ua:
     header:
       daily_apartments: Квартири подобово
       language: Мова
+      toggle_navigation: Показати/сховати меню
     info_panel:
       center: Центр <span>Львова</span>
       owners: <span>Лише</span> Власники
       money_starts: <span>Від</span> 200 грн
-  head:
-    title: Квартиры посуточно во Львове
-    description: Аренда квартир посуточно во Львове
-    keywords: 'квартиры посуточно, квартиры во Львове'
+    footer:
+      contact_info: Як з нами сконтактуватися
+      call_us: "Телефонуйте за цими номерами:"
+      mail_us: "Або напишіть листа:"
+      last_articles: Останні статті
+      copyright: "VK-Lviv, 2015 | Будь-яке копіювання матеріалів заборонене."
+      social: Ми в соцмережах
   apartments:
     index:
-      headline: Квартиры
+      headline: Квартири
     apartment:
       currency_before: ''
       currency_after: грн.
   reservations:
     create:
-      thank_you: Дякую Тобі!
+      thank_you: Дякуємо! Лист із резервацією надісланий
     form:
-      submit_loading: Отправляется заявка...
-      reservation_blank: Заявка на бронирование
+      submit_loading: Надсилається заявка...
+      reservation_blank: Заявка на бронювання
   formtastic:
     labels:
       reservation:
         customer_name: Ваше імя
         customer_email: Ваш email
+        customer_phone: Ваш телефон
         check_in: Дата заселення
         check_out: Дата виселення
-        customer_phone: Ваш телефон
         body: Повідомлення
     actions:
       reservation:

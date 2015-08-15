@@ -1,24 +1,46 @@
 pl:
   language: Polska
+  layouts:
+    header:
+      daily_apartments: Mieszkania do wynajęcia
+      language: Język
+      toggle_navigation: Pokaż/Ukryj menu
+    info_panel:
+      center: Centrum <span>Lwówa</span>
+      owners: <span>Tylko</span> właściciele
+      money_starts: <span>Z</span> 200 UAH
+    footer:
+      contact_info: Jak się z nami skontaktować
+      call_us: "Zadzwoń do tych numerów:"
+      mail_us: Albo napisać list
+      last_articles: Najnowsze artykuły
+      copyright: "VK-Lwów, 2015 | Wszelkie kopiowanie materiałów jest zabronione."
+      social: Jesteśmy w sieciach
   apartments:
     index:
-      headline: Flats
+      headline: Apartamenty
     apartment:
       currency_before: ''
       currency_after: UAH
   reservations:
     create:
-      thank_you: Thank You PL!!!
+      thank_you: Dzięki! List wysłany rezerwację
     form:
-      submit_loading: Отправляется заявка...
-      reservation_blank: Заявка на бронирование
-  layouts:
-    navigation:
-      language: Mova
-    info_panel:
-      center: centrum <span>miasta</span>
-      owners: <span>bez</span> pośrednika
-      money_starts: <span>Od</span> 200 UAH
+      submit_loading: Wysyłanie aplikacji...
+      reservation_blank: rezerwację
+  formtastic:
+    labels:
+      reservation:
+        customer: Imię
+        customer_email: e-mail
+        customer_phone: Telefon
+        check_in: Data wejście
+        check_out: Data wyjazdy
+        body: Komunikat
+    actions:
+      reservation:
+        create: Zarezerwuj teraz!
   static_pages:
     sitemap:
-      header: Sitemap
+      header: Mapa sayty
+

@@ -1,18 +1,21 @@
 en:
   language: English
   layouts:
-    navigation:
-      daily_apartments: Apartments for rent1
-      how_it_works: How it works
-      feedback: Feedback
-      about_lviv: Lions. What is what
-      contacts: Contacts
-      sign_in: Register
+    header:
+      daily_apartments: Apartments for rent
       language: Language
+      toggle_navigation: Show/hide the menu
     info_panel:
       center: Center <span>of Lviv</span>
       owners: Owners <span>Only</span>
       money_starts: <span>From</span> 200 UAH
+    footer:
+      contact_info: Do not hesitate to contact us if you have any questions
+      call_us: "Call us by these phone numbers:"
+      mail_us: "Or write an email:"
+      last_articles: Last Articles
+      copyright: "VK-Lviv, 2015 | Rights reserved"
+      social: We in Social Networks
   apartments:
     index:
       headline: Apartments
@@ -21,12 +24,22 @@ en:
       currency_after: UAH
   reservations:
     create:
-      thank_you: Thank You!!!
+      thank_you: Thank You! Your reservation request has been sent
     form:
-      submit_loading: Отправляется заявка...
-      reservation_blank: Заявка на бронирование
-  footer:
-    call_us: Do not hesitate to contact us if you have any questions or feature requests
+      submit_loading: Request is being sending
+      reservation_blank: Reservation blank
+  formtastic:
+    labels:
+      reservation:
+        customer_name: Your full name
+        customer_email: Email
+        customer_phone: Phone number
+        check_in: Date of Checking In
+        check_out: Date of Checking Out
+        body: Message
+    actions:
+      reservation:
+        create: Book it!
   static_pages:
     sitemap:
       header: Sitemap
