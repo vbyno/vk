@@ -21,7 +21,6 @@
 
 # From /vendor - for gallery widget
 #= require jquery.blueimp-gallery.min
-#= require bootstrap-image-gallery.min
 
 #= require jquery.masked-input
 #= require lazy-bootstrap-carousel
