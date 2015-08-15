@@ -3,5 +3,5 @@
     = @parent_page.title
   .panel-body
     %ul
-      = list_of(@parent_page.child_pages.active) do |child_page|
-        = link_to_unless_current child_page.title, child_page.path
+      = list_of(@parent_page.child_pages.active.map { |p| present(p) }) do |page_presenter|
+        = link_to_unless_current page_presenter.title, page_presenter.path

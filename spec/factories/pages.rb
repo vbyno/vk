@@ -25,7 +25,7 @@ FactoryGirl.define do
     sequence(:title) { |n| "Page #{n} Title" }
     intro 'Short intro for page'
     locale 'ru'
-    content { "<p>#{Faker::Lorem.paragraph}</p>" }
+    content { "<p>#{FFaker::Lorem.paragraph}</p>" }
     seo_title 'Seo Title'
     priority 0
     active true
