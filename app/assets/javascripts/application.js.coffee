@@ -20,8 +20,8 @@
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.pl.js
 
 # From /vendor - for gallery widget
-#= require bootstrap-image-gallery.min
 #= require jquery.blueimp-gallery.min
+#= require bootstrap-image-gallery.min
 
 #= require jquery.masked-input
 #= require lazy-bootstrap-carousel
